@@ -1,9 +1,14 @@
 
+.wrap{
+    width: 15%;
+    position: absolute;
+    top: 50%;
+    left: 78%;
+    transform: translate(-50%, -50%);
+}
+
 .search {
     width: 100%;
-    position: absolute;
-    left: 37vw;
-    top: -11px;
 }
   
   .searchTerm {
@@ -35,14 +40,6 @@
     cursor: pointer;
     font-size: 20px;
   }
- 
-.wrap{
-    width: 15%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .icon {
     position: absolute;
