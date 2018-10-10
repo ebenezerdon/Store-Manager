@@ -1,7 +1,7 @@
-@import "swatch.css";
-@import "drawline.css";
-@import "form.css";
-@import "nav2.css";
+@import "lib/swatch.css";
+@import "lib/drawline.css";
+@import "lib/form.css";
+@import "lib/nav2.css";
 
 body {
     background: #FFFFFF;
