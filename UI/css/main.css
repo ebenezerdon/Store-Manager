@@ -1,0 +1,45 @@
+@import "swatch.css";
+@import "drawline.css";
+@import "form.css";
+@import "nav2.css";
+
+body {
+    background: #FFFFFF;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    text-align: center;
+    max-width: 100%;
+}
+
+.top-nav {
+    background: #2C2D3A;
+    color: #FFFFFF;
+    font-weight: bold;
+    position: fixed;
+    min-width: 100%;
+    height: 5em;
+    top: 0;
+    left: 0;
+}
+
+.top-nav img {
+    max-width: 100%;
+    width: 8%;
+    height: 200%;
+    right: 20em;
+}
+
+.logo {
+    position: absolute;
+    left: -280px;
+    top: 6.5px;
+}
+
+  

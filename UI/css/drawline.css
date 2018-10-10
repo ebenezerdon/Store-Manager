@@ -1,0 +1,22 @@
+.right-line {
+    width: 40%;
+    height: 2px;
+    position: fixed;
+    left: 0;
+    top: 12.5%;
+    background-color: #262734;
+    animation-name: drawrightline;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    /* animation-direction: reverse; */
+}
+
+@keyframes drawrightline {
+    0% {
+        width: 0%;
+    }
+      100% {
+          width: 40%;
+}				
+}

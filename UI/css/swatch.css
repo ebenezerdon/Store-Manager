@@ -1,0 +1,196 @@
+
+.card {
+    position: absolute;
+    list-style-type: none;
+    font-family: "Helvetica",sans-serif;
+    text-align: center;
+}
+
+.card-item {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    border-left: 0.2em solid #FFFFFF;
+    transition: 1500ms;
+    -webkit-transition: 1500ms;
+    -moz-transition: 1500ms;
+    -ms-transition: 1500ms;
+    -o-transition: 1500ms;
+    animation-name: boxfloat;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-direction: alternate;
+}
+
+.card-item:hover {
+    opacity: 1
+}
+
+.card-item:hover ~ .card-item {
+    transform: translateX(70em);
+    -webkit-transform: translateX(70em);
+    -moz-transform: translateX(70em);
+    -ms-transform: translateX(70em);
+    -o-transform: translateX(70em);
+}
+
+.item6 {
+    background: /* linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ), */ url(https://images.unsplash.com/photo-1532179867542-0818a841bd1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ed815cb9286f98ea18f1987e18ac0618&auto=format&fit=crop&w=334&q=80);
+    left: 15vw;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8
+}
+
+.item5 {
+    background: url(https://images.unsplash.com/photo-1515165616480-efd71925068f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=938a0460b5d5938c5a62e44870fa1ec2&auto=format&fit=crop&w=500&q=60);
+    left: 25vw;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8
+}
+
+.item4 {
+    background: url(https://images.unsplash.com/photo-1531054484133-530a2bcef0ef?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ada2fca00993866018474a39381658f&auto=format&fit=crop&w=500&q=60);
+    left: 35vw;
+    background-position: left;
+    background-size: cover;
+    opacity: 0.8
+}
+
+.item3 {
+    background: url(https://images.unsplash.com/photo-1513521712264-512ceb91a940?ixlib=rb-0.3.5&s=10cfc807218fc50bb512f7a4ae23f4f4&auto=format&fit=crop&w=334&q=80);
+    left: 45vw;
+    background-position: left;
+    background-size: cover;
+    opacity: 0.8
+}
+
+.item2 {
+    background: url(https://images.unsplash.com/photo-1484327973588-c31f829103fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=475aee77344e6a183f7de181bb24f696&auto=format&fit=crop&w=752&q=80);
+    left: 55vw;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.9
+}
+
+.item1 {
+    background: url(https://images.unsplash.com/photo-1531310197839-ccf54634509e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=44079a993a6da9e50ac1156c2ea96843&auto=format&fit=crop&w=401&q=80);
+    left: 65vw;
+    background-position: center;
+    background-size: cover;
+}
+
+@keyframes boxfloat {
+    0%{top: 120px }
+    50%{top: 110px }
+    100%{top: 100px }
+}
+
+@media only screen and (max-width: 1000px) {
+    .item6 {
+       left: 6vw;
+    }
+    
+    .item5 {
+        left: 16vw;
+    }
+    
+    .item4 {
+        left: 26vw;
+    }
+    
+    .item3 {
+        left: 36vw;
+    }
+    
+    .item2 {
+        left: 46vw;
+    }
+    
+    .item1 {
+        left: 56vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .item6 {
+       left: 3vw;
+    }
+    
+    .item5 {
+        left: 13vw;
+    }
+    
+    .item4 {
+        left: 23vw;
+    }
+    
+    .item3 {
+        left: 33vw;
+    }
+    
+    .item2 {
+        left: 43vw;
+    }
+    
+    .item1 {
+        left: 53vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .item6 {
+       left: 0vw;
+    }
+    
+    .item5 {
+        left: 10vw;
+    }
+    
+    .item4 {
+        left: 20vw;
+    }
+    
+    .item3 {
+        left: 30vw;
+    }
+    
+    .item2 {
+        left: 40vw;
+    }
+    
+    .item1 {
+        left: 50vw;
+    }
+}
+
+@media (max-height: 640px) and (max-width: 360px) {
+    .item6 {
+        left: 0vw;
+     }
+     
+     .item5 {
+         left: 11vw;
+     }
+     
+     .item4 {
+         left: 21vw;
+     }
+     
+     .item3 {
+         left: 31vw;
+     }
+     
+     .item2 {
+         left: 41vw;
+     }
+     
+     .item1 {
+         left: 51vw;
+     }
+}
