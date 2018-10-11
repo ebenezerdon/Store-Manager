@@ -66,3 +66,9 @@ body {
     color: #2B2D42;
     font-weight: bold;
 }
+
+.card {
+    background: darkgreen;
+    height: 400px;
+    width: 350px;
+}
