@@ -29,7 +29,7 @@
   
   .searchButton {
     position: absolute;  
-    right: -50px;
+    right: -55px;
     width: 40px;
     height: 24px;
     border: 1px solid #D93B8E;
@@ -43,8 +43,7 @@
 
 .icon {
     position: absolute;
-    top: -0.9px;
+    top: 1px;
     color: #dddddd;
-    width: 5px;
-    height: 5px;
+    font-size: 0.9em;
 }

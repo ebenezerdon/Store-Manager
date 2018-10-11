@@ -1,33 +1,7 @@
+@import "lib/nav.css";
 
 body {
     background: #f2f2f2;
     font-family: 'Open Sans', sans-serif;
 }
 
-.top-nav p {
-    color: #4C4E5E;
-    font-size: 0.9em;
-    float: right;
-    margin-right: 3%;
-    margin-top: 25px;
-}
-
-.top-nav #name {
-    color: #DCDCDE;
-}
-
-.fa-user-circle {
-    font-size: 1.5em;
-    color: #EB3694;
-    float: right;
-    margin-right: 2%;
-    margin-top: 21px;
-}
-
-.fa-bell {
-    color: #EB3694;
-    float: right;
-    margin-right: 2%;
-    margin-top: 24px;
-    font-size: 1.25em;
-}
