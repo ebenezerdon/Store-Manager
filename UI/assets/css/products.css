@@ -22,7 +22,6 @@ body {
 
 .product {
     box-shadow: 1px 5px 15px #CCC;
-    background: linear-gradient( #e2e2e2 40%, #2C2D3A 60%);
     width: 15em;
     height: auto;
     border-radius: 3px;
@@ -31,5 +30,50 @@ body {
     overflow: hidden;
     position: relative;
     flex: auto;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto !important;
+    text-align: center;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+.product-item p {
+    color: rgba(3, 3, 3, 0.9);
+}
+
+.product-item button {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #FFF;
+    border-radius: 3px;
+    padding: 1em 3em;
+    margin: 1em 0 0 0;
+    background: none;
+    cursor: pointer;
+    transition: background ease-in 0.25s;
+}
+
+.product-item button:hover {
+    background: white;
+    color: #2B2D42;
+}
+
+.product-item button:before {
+    font-family: FontAwesome;
+    content: "";
+    color: #FFF;
+    position: absolute;
+    font-size: 1.5em;
+    margin: 0 -1.5em;
+}
+
+.product-item button:hover:before {
+    color: #2B2D42;
 }
 
