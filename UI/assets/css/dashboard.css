@@ -12,10 +12,35 @@ body {
     width: 20em;
     min-height: 25em;
     margin-top: 70px;
-    background: #f7f7f7;
+    background: #fafafa;
     color: black;
 }
 
 .product-item {
     color: #2e2e2e;
+}
+
+.product-item img {
+    width: 15em;
+    height: 15em;
+}
+
+.product-item p {
+    color: #3a3a3a;
+}
+
+.product-item span {
+    color: #EC3594;
+}
+
+.t-products{
+    display:grid;
+    grid-template-columns: 45% 45%;
+    margin-left: 23px;
+}
+
+.t-products > img{
+    box-shadow: 1px 5px 15px #CCC;
+    border-radius: 3px;
+    margin-bottom: 1px;
 }
