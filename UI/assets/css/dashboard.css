@@ -1,8 +1,15 @@
 @import "lib/nav.css";
 @import "lib/footer.css";
+@import "products.css";
 
 body {
     background: #f2f2f2;
     font-family: 'Open Sans', sans-serif;
+    overflow: visible;
 }
 
+.product {
+    width: 20em;
+    min-height: 25em;
+    margin-top: 70px;
+}
