@@ -1,0 +1,12 @@
+
+footer {
+    background: #262734;
+    position: fixed;
+    height: 40px;
+    width: 100vw;
+    bottom: 0;
+}
+
+footer p {
+    color: #d3d3d3;
+}
