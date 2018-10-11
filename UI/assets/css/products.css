@@ -1,4 +1,5 @@
 @import "lib/nav.css";
+@import "lib/fotter.css";
 
 body {
     background: #f2f2f2;
@@ -49,31 +50,19 @@ body {
 }
 
 .product-item button {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #FFF;
+    border: 1px solid #262734;
     border-radius: 3px;
+    color: #fff;
+    font-weight: 2em;
     padding: 1em 3em;
     margin: 1em 0 0 0;
-    background: none;
+    background: #262734;
     cursor: pointer;
     transition: background ease-in 0.25s;
 }
 
 .product-item button:hover {
-    background: white;
+    background: rgb(235, 235, 235);
     color: #2B2D42;
+    font-weight: bold;
 }
-
-.product-item button:before {
-    font-family: FontAwesome;
-    content: "";
-    color: #FFF;
-    position: absolute;
-    font-size: 1.5em;
-    margin: 0 -1.5em;
-}
-
-.product-item button:hover:before {
-    color: #2B2D42;
-}
-
