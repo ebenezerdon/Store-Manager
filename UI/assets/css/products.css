@@ -1,0 +1,35 @@
+@import "lib/nav.css";
+
+body {
+    background: #f2f2f2;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans Condensed", sans-serif;
+    font-weight: 700;
+}
+
+.row {
+    position: absolute;
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 100px;
+    z-index: -1;
+}
+
+.product {
+    box-shadow: 1px 5px 15px #CCC;
+    background: linear-gradient( #e2e2e2 40%, #2C2D3A 60%);
+    width: 15em;
+    height: auto;
+    border-radius: 3px;
+    padding: 2em;
+    margin: 1em;
+    overflow: hidden;
+    position: relative;
+    flex: auto;
+}
+
