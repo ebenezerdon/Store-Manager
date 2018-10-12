@@ -1,6 +1,7 @@
 @import "lib/table.css";
 @import "lib/nav.css";
 @import "lib/footer.css";
+@import "lib/button.css";
 
 body {
     overflow: visible;
@@ -9,5 +10,10 @@ body {
 main {
     width: 90%;
     margin: auto;
-    margin-top: 120px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.green-button {
+    margin: 10px;
 }
