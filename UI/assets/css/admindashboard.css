@@ -5,12 +5,15 @@
     width: 100%;
     box-sizing: border-box;
     margin-left: -35px;
+    margin-top: 15px;
 }
 
 .user-list li {
     list-style: none;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.2em;
+    height: 40px;
+    padding-top: 25px;
 }
 
 .user-list li:nth-child(odd) {
@@ -20,4 +23,11 @@
 .user-list a {
     text-decoration: none;
     color: #5E5555;
+    transition: all 0.3s ease-out;
 }
+
+.user-list a:hover {
+    color: green;
+    font-size: 1.1em
+}
+
