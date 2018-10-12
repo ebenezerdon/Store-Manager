@@ -20,8 +20,14 @@ body {
     color: black;
 }
 
-.product-item {
+.tp {
     color: #2e2e2e;
+    margin-top: -30px;
+}
+
+.product-item h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5em;
 }
 
 .chart-img {
