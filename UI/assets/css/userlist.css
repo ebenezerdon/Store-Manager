@@ -1,0 +1,13 @@
+@import "lib/table.css";
+@import "lib/nav.css";
+@import "lib/footer.css";
+
+body {
+    overflow: visible;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    margin-top: 120px;
+}

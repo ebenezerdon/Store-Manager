@@ -1,2 +1,7 @@
 @import "topnav.css";
 @import "nav2.css";
+@import "footer.css";
+
+.top-nav, .nav-2, footer {
+    z-index: 20;
+}
