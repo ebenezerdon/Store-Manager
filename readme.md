@@ -19,8 +19,8 @@ Browser Example: Google Chrome
 
 ### Github Pages
 
-[Index](https://ebenezerdon.github.io/Store-Manager/UI/index.html)
-[User Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/userdashboard.html)
+[Index](https://ebenezerdon.github.io/Store-Manager/UI/index.html) | 
+[User Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/userdashboard.html) | 
 [Admin Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/admindashboard.html)
 
 
