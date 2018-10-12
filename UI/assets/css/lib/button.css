@@ -15,9 +15,9 @@
 	text-shadow:0px 1px 0px #2f6627;
 }
 .green-button:hover {
-	background-color:#5cbf2a;
+	background-color:#36b357;
 }
 .green-button:active {
 	position:relative;
-	top:1px;
+	top:4px;
 }

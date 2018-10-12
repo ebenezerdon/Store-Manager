@@ -1,6 +1,7 @@
 @import "lib/nav.css";
 @import "lib/footer.css";
 @import "lib/profilecard.css";
+@import "lib/button.css";
 @import "products.css";
 
 body {
@@ -21,9 +22,8 @@ body {
     color: #2e2e2e;
 }
 
-.product-item img {
-    width: 15em;
-    height: 15em;
+.chart-img {
+    margin-top: -100px;
 }
 
 .product-item p {
@@ -44,4 +44,14 @@ body {
     box-shadow: 1px 5px 15px #CCC;
     border-radius: 3px;
     margin-bottom: 1px;
+}
+
+.green-button {
+    margin-top: 30px;
+}
+
+p-desc {
+    width: 100%;
+    background-color: #cec9c954;
+    color: #555;
 }
