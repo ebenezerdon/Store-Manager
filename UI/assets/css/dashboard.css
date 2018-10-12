@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 @import "lib/nav.css";
 @import "lib/footer.css";
 @import "lib/profilecard.css";
@@ -26,14 +28,6 @@ body {
     margin-top: -100px;
 }
 
-.product-item p {
-    color: #3a3a3a;
-}
-
-.product-item span {
-    color: #EC3594;
-}
-
 .t-products{
     display:grid;
     grid-template-columns: 45% 45%;
@@ -50,8 +44,20 @@ body {
     margin-top: 30px;
 }
 
-p-desc {
+.p-desc {
     width: 100%;
     background-color: #cec9c954;
+    height: 170px;
+    margin-top: 20px;
+}
+
+.p-desc p {
+    font-family: 'Josefin Sans', sans-serif;
     color: #555;
+    font-size: 20px;
+}
+
+.p-desc span {
+    color: #a1a1a1;
+    font-size: 17px;
 }
