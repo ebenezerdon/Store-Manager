@@ -49,6 +49,7 @@ body {
     background-color: #cec9c954;
     height: 170px;
     margin-top: 20px;
+    border: none;
 }
 
 .p-desc p {
