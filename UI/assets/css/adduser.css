@@ -1,0 +1,8 @@
+@import "lib/nav.css";
+@import "lib/footer.css";
+@import "lib/button.css";
+@import "lib/regform.css";
+
+.reg {
+    margin-top: 20vw;
+}

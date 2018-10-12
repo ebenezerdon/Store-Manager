@@ -16,6 +16,11 @@ body {
     text-align: center;
 }
 
+main {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
 .container {
     position: absolute;
     text-align: center;
