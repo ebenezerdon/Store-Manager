@@ -1,1 +1,23 @@
-@import "userdashboard.css"
+@import "lib/userlist.css";
+@import "userdashboard.css";
+
+.user-list {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: -35px;
+}
+
+.user-list li {
+    list-style: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+}
+
+.user-list li:nth-child(odd) {
+    background: #ECEAEA;
+}
+
+.user-list a {
+    text-decoration: none;
+    color: #5E5555;
+}
