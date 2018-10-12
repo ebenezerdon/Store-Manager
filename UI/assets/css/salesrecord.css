@@ -1,0 +1,15 @@
+@import "userlist.css";
+
+.cell a {
+    color: brown;
+    text-decoration: none;
+    transition: all ease-out 300ms;
+    -webkit-transition: all ease-out 300ms;
+    -moz-transition: all ease-out 300ms;
+    -ms-transition: all ease-out 300ms;
+    -o-transition: all ease-out 300ms;
+}
+
+.cell a:hover {
+    color: #262734;
+}
