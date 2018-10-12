@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Open+sans);
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 .profile {
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
@@ -22,7 +20,7 @@
   z-index: 1;
   position: relative;
   padding: 10px;
-  border: 2px solid #e8b563;
+  border: 2px solid #005b77;
 }
 
 .profile-image img {
@@ -32,7 +30,7 @@
 
 .profile figcaption {
   width: 100%;
-  background-color: #F2F2F2;
+  background-color: #cec9c954;
   color: #555;
   padding: 125px 25px 25px;
   margin-top: -95px;
