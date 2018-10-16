@@ -8,9 +8,15 @@ class Sales {
     }
 
     static getOne(req, res) {
+        if ((req.params.id) > sales.length ) {
+            return (
+                res.status(404).json
+                ('Hi! Can you check again? There\'s no sale record with that id')
+            );
+        } else {
         return (
             res.status(200).json(sales[req.params.id - 1])
-        );
+        );}
     }
 
     /* Adds a sale record */
