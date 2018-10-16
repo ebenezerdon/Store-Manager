@@ -8,6 +8,8 @@ import usersRouter from './server/routes/users';
 
 const app = express();
 
+app.set('json spaces', 2);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,7 +32,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 export default app;
