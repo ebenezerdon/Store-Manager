@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './server/routes/index';
 import usersRouter from './server/routes/users';
+import auth from './server/configuration/auth';
 
 const app = express();
 
@@ -15,6 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'UI')));
+
+/* Use jwt auth middleware from config*/
+app.use(auth);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

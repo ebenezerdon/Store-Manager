@@ -19,5 +19,4 @@ router.get('/api/v1/sales', sales.getAll);
 router.get('/api/v1/sales/:id', sales.getOne);
 router.post('/api/v1/sales', sales.addSale);
 
-
 export default router;
