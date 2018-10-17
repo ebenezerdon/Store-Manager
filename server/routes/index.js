@@ -8,7 +8,6 @@ router.get('/', (req, res, next) => {
   res.send('index.html');
 });
 
-
 /* Products Router */
 router.get('/api/v1/products', products.getAll);
 router.get('/api/v1/products/:id', products.getOne);

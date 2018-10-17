@@ -7,6 +7,13 @@ const users = [
     type: 'Attendant',
     createdAt: Date.now(),
   },
+  {
+    fullName: 'Sarah Elizabeth',
+    emailAdress: 'sarahbeth@gmail.com',
+    password: 'supersecretstuff',
+    type: 'Admin',
+    createdAt: Date.now(),
+  }
 ];
 
 export default users;
