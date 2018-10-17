@@ -1,1 +1,3 @@
-export const secret = "realsecretstuffoverhere";
+module.exports = {
+    secret : "realsecretstuffoverhere"
+};
