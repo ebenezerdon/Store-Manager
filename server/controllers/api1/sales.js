@@ -1,4 +1,4 @@
-import sales from '../../models/sales';
+const sales = require('../../models/sales');
 
 class Sales {
     static getAll(req, res) {
@@ -43,4 +43,4 @@ class Sales {
   
 }
   
-export default Sales;
+module.exports = Sales;

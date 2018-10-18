@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node ./server/bin/www",
-    "test": "mocha --exec babel-node ./server/tests/" 
+    "start": "SET NODE_ENV=dev && nodemon --exec babel-node ./server/bin/www",
+    "test": "mocha --compilers js:babel-core ./server/tests/products.js" 
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

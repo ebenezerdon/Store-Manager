@@ -1,4 +1,4 @@
-import products from "./products";
+const products = require( "./products");
 
 const sales = [
     {
@@ -43,5 +43,5 @@ const sales = [
     }
   ];
   
-  export default sales;
+  module.exports = sales;
   
