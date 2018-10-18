@@ -37,11 +37,11 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0"
   },
-
   "standard": {
-    "env": [ "mocha" ]
+    "env": [
+      "mocha"
+    ]
   },
-
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory\r records. This application is meant for use in a single store.",
   "main": "app.js",
   "repository": {
