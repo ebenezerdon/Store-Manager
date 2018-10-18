@@ -1,7 +1,7 @@
-import express from 'express';
-import products from '../controllers/api1/products';
-import sales from '../controllers/api1/sales';
-const router = express.Router();
+const express = require('express');
+const products = require('../controllers/api1/products');
+const sales = require('../controllers/api1/sales');
+const router = require(express.Router());
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -18,4 +18,4 @@ router.get('/api/v1/sales', sales.getAll);
 router.get('/api/v1/sales/:id', sales.getOne);
 router.post('/api/v1/sales', sales.addSale);
 
-export default router;
+module.exports = router;

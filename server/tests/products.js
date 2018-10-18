@@ -1,7 +1,7 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import app from '../../app';
-import 'babel';
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const app = require("../../app");
+const babel = require("babel");
 let should = chai.should();
 
 chai.use(chaiHttp);
@@ -38,10 +38,10 @@ describe('Create New Product', () => {
     chai.request(app)
     .post('/api/v1/products')
       .send({
-        name: 'Ankara', 
-        description: 'Akara for everybody', 
-        quantity: '4', 
-        price: '₦5500',
+        'name': 'Ankara', 
+        'description': 'Akara for everybody', 
+        'quantity': '4', 
+        'price': '₦5500',
       })
       .end((err, res) => {
         res.should.have.status(201);

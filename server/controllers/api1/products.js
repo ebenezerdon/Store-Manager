@@ -1,4 +1,4 @@
-import products from '../../models/products';
+const products = require('../../models/products');
 
 class Products {
     /* Gets all products */
@@ -42,4 +42,4 @@ class Products {
   
 }
   
-export default Products;
+module.exports = Products;
