@@ -7,7 +7,7 @@ const products = [
     price: '₦3,300',
     quantity: '50',
     min: '10',
-    max: '100'
+    max: '100',
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const products = [
     price: '₦7,108',
     quantity: '40',
     min: '5',
-    max: '70'
+    max: '70',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const products = [
     price: '₦4,995',
     quantity: '33',
     min: '5',
-    max: '70'
+    max: '70',
   },
   {
     id: 4,
@@ -34,9 +34,9 @@ const products = [
     price: '₦13,550',
     quantity: '20',
     min: '10',
-    max: '100'
+    max: '100',
   },
-  
+
 ];
 
 export default products;

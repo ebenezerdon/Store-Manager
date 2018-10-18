@@ -13,6 +13,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
     "http-server": "^0.11.1",
     "nodemon": "^1.17.5",
@@ -35,6 +37,11 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0"
   },
+
+  "standard": {
+    "env": [ "mocha" ]
+  },
+
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory\r records. This application is meant for use in a single store.",
   "main": "app.js",
   "repository": {
