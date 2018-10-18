@@ -8,9 +8,7 @@ import usersRouter from './server/routes/users';
 import auth from './server/configuration/auth';
 
 const app = express();
-
 app.set('json spaces', 2);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
