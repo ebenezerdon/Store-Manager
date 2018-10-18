@@ -1,13 +1,13 @@
 import express from 'express';
 import products from '../controllers/api1/products';
 import sales from '../controllers/api1/sales';
+import users from '../controllers/api1/users';
 const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.send('index.html');
 });
-
 
 /* Products Router */
 router.get('/api/v1/products', products.getAll);
@@ -18,5 +18,10 @@ router.post('/api/v1/products', products.addProduct);
 router.get('/api/v1/sales', sales.getAll);
 router.get('/api/v1/sales/:id', sales.getOne);
 router.post('/api/v1/sales', sales.addSale);
+
+/* Users Router */
+router.get('/api/v1/users', users.getAll);
+router.get('/api/v1/users/:id', users.getOne);
+router.post('/api/v1/users', users.addUser);
 
 export default router;
