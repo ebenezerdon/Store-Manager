@@ -6,9 +6,9 @@ const sales = [
       productId: products[2].id,
       productName: products[2].name,
       AttendantId: 1,
-      prize: products[2].prize,
+      price: products[2].price,
       quantity: 5,
-      totalPrize: 5000,
+      totalprice: 5000,
       created: new Date(),
     },
     {
@@ -16,9 +16,9 @@ const sales = [
       productId: products[1].id,
       productName: products[1].name,
       AttendantId: 1,
-      prize: products[1].prize,
+      price: products[1].price,
       quantity: 5,
-      totalPrize: 5000,
+      totalPrice: 5000,
       created: new Date(),
     },
     {
@@ -26,9 +26,9 @@ const sales = [
       productId: products[3].id,
       productName: products[3].name,
       AttendantId: 1,
-      prize: products[3].prize,
+      price: products[3].price,
       quantity: 5,
-      totalPrize: 5000,
+      totalprice: 5000,
       created: new Date(),
     },
     {
@@ -36,9 +36,9 @@ const sales = [
       productId: products[0].id,
       productName: products[0].name,
       AttendantId: 1,
-      prize: products[0].prize,
+      price: products[0].price,
       quantity: 5,
-      totalPrize: 5000,
+      totalprice: 5000,
       created: new Date(),
     }
   ];
