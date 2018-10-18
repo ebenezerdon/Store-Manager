@@ -10,7 +10,6 @@ class Products {
 
     /* Gets one from products list */
     static getOne(req, res) {
-
         if ((req.params.id) > products.length ) {
             return (
                 res.status(404).json
@@ -28,7 +27,7 @@ class Products {
         product.id = products.length + 1;
         product.name = req.body.name;
         product.description = req.body.description;
-        product.prize = req.body.prize;
+        product.price = req.body.price;
         product.quantity = req.body.quantity;
 
         products.push(product);
