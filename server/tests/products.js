@@ -6,61 +6,149 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
-  /* Test for get all products */
-describe('/GET products', () => {
+/* Test for get all products */
+describe('Get Products', () => {
   it('it should GET all the products', (done) => {
-    chai.request(app)
-      .get('/api/v1/products')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.a('array');
-        done();
-      });
-  });
-});
-
-/* Test for single product */
-describe('Get A Product', () => {
-  it('it should return a specific product', (done) => {
-    chai.request(app).get('/api/v1/products/1')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(1).to.equal(res.body.id);
-        done();
-      });
-  });
-
-  it('it should have a status 404', (done) => {
-    chai.request(app).get('/api/v1/products/1000')
-      .end((err, res) => {
-        expect(res).to.have.status(404);
-        expect(res.body).to.be.a('string');
-        done();
-      });
-  });
-});
-
-/* Test for create new product */
-describe('Create New Product', () => {
-  it('it should POST a new product', (done) => {
-    chai.request(app).post('/api/v1/products')
+    chai.request(app).post('/api/v1/login')
       .send({
-        name: 'Ankara',
-        description: 'Akara for everybody',
-        quantity: '4',
-        price: '₦5500',
+        email: 'joshodogwu@gmail.com', 
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
-        expect(res).to.have.status(201);
+        const { token } = res.body;
+        expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
-        done();
+        expect(res.body.success).to.equal(true);
+        chai.request(app).get('/api/v1/products')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(data.body).to.be.an('array');
+            done();
+          });
       });
   });
 
-  it('it should have status 400 if no data is sent', (done) => {
-    chai.request(app).post('/api/v1/products')
+  it('returns unauthorized because user is not logged in', (done) => {
+    chai.request(app).get('/api/v1/products')
+      .end((error, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
+});
+
+describe('Get A Product', () => {
+  it('returns details of a product', (done) => {
+    chai.request(app).post('/api/v1/users/login')
+      .send({
+        email: 'example@gmail.com', password: '123456',
+      })
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        const { token } = res.body;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.success).to.equal(true);
+        const id = 2;
+        chai.request(app).get(`/api/v1/products/${id}`)
+          .set('Authorization', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(id).to.equal(data.body.id);
+            done();
+          });
+      });
+  });
+
+  it('return product not found error', (done) => {
+    chai.request(app).post('/api/v1/users/login')
+      .send({
+        email: 'example@gmail.com', password: '123456',
+      })
+      .end((err, res) => {
+        const { token } = res.body;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.success).to.equal(true);
+        const id = 89;
+        chai.request(app).get(`/api/v1/products/${id}`)
+          .set('Authorization', token)
+          .end((error, data) => {
+            expect(data).to.have.status(400);
+            expect(res.body).to.be.an('object');
+            expect(data.body.message).to.equal(`Product with id ${id} not found.`);
+            done();
+          });
+      });
+  });
+
+  it('returns unauthorized because user is not logged in', (done) => {
+    const id = 2;
+    chai.request(app).get(`/api/v1/products/${id}`)
+      .end((error, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
+});
+
+describe('Create New Product', () => {
+  it('create a new product', (done) => {
+    chai.request(app).post('/api/v1/users/login')
+      .send({
+        email: 'example@gmail.com', password: '123456',
+      })
+      .end((err, res) => {
+        const { token } = res.body;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.success).to.equal(true);
+        chai.request(app).post('/api/v1/products')
+          .send({
+            name: 'Tecno', description: 'Tecno Phone', quantity: '2', price: '$200',
+          })
+          .set('Authorization', token)
+          .end((error, data) => {
+            expect(data).to.have.status(201);
+            expect(data.body).to.be.an('object');
+            expect(data.body.message).to.equal('Product added successfully');
+            done();
+          });
+      });
+  });
+
+  it('return validation error if no data is sent', (done) => {
+    chai.request(app).post('/api/v1/users/login')
+      .send({
+        email: 'example@gmail.com', password: '123456',
+      })
+      .end((err, res) => {
+        const { token } = res.body;
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.success).to.equal(true);
+        chai.request(app).post('/api/v1/products')
+          .set('Authorization', token)
+          .end((error, data) => {
+            expect(data).to.have.status(400);
+            expect(data.body).to.be.an('object');
+            expect(data.body.name).to.equal('Name field is required');
+            expect(data.body.description).to.equal('Description field is required');
+            expect(data.body.price).to.equal('Price field is required');
+            expect(data.body.quantity).to.equal('Quantity field is required');
+            done();
+          });
+      });
+  });
+
+  it('returns unauthorized because user is not logged in', (done) => {
+    chai.request(app).post('/api/v1/products')
+      .send({
+        name: 'Tecno', description: 'Tecno Phone', quantity: '2', price: '$200',
+      })
+      .end((error, res) => {
+        expect(res).to.have.status(401);
         done();
       });
   });
