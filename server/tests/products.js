@@ -2,9 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app';
 
-const {
-  expect
-} = chai;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,19 +11,14 @@ describe('Get Products', () => {
   it('it should GET all the products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com',
+        email: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body.success).to.equal(true);
-        chai.request(app).set('accesstoken', token)
-          .get('/api/v1/products')
+        const { token } = res.body;
+        chai.request(app).get('/api/v1/products')
+          .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(data.body).to.be.an('array');
@@ -35,31 +28,25 @@ describe('Get Products', () => {
   });
 
   it('it should return unauthorized user if user not logged in',
-    (done) => {
-      chai.request(app).get('/api/v1/products')
-        .end((error, res) => {
-          expect(res).to.have.status(401);
-          done();
-        });
-    });
+   (done) => {
+    chai.request(app).get('/api/v1/products')
+      .end((error, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
 });
 
 describe('Get A Product', () => {
   it('it should return a specific product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com',
+        email: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body.success).to.equal(true);
-        const id = 2;
+        const { token } = res.body;
         chai.request(app).get('/api/v1/products/1')
           .set('accesstoken', token)
           .end((error, data) => {
@@ -73,18 +60,12 @@ describe('Get A Product', () => {
   it('it should have a status 404', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com',
+        email: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body.success).to.equal(true);
-        const id = 89;
+        const { token } = res.body;
         chai.request(app).get('/api/v1/products/1000')
           .set('accesstoken', token)
           .end((error, data) => {
@@ -110,24 +91,19 @@ describe('Create New Product', () => {
   it('create a new product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'sarahbeth@gmail.com',
+        email: 'sarahbeth@gmail.com', 
         password: 'supersecretstuff',
         type: 'admin',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body.success).to.equal(true);
+        const { token } = res.body;
         chai.request(app).post('/api/v1/products')
-          .send({
-            name: 'Ankara',
-            description: 'Akara for everybody',
-            quantity: '4',
-            price: '₦5500',
-          })
+      .send({
+        name: 'Ankara',
+        description: 'Akara for everybody',
+        quantity: '4',
+        price: '₦5500',
+      })
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(201);
@@ -140,17 +116,12 @@ describe('Create New Product', () => {
   it('it should return error if req has no data', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'sarahbeth@gmail.com',
+        email: 'sarahbeth@gmail.com', 
         password: 'supersecretstuff',
         type: 'admin',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body.success).to.equal(true);
+        const { token } = res.body;
         chai.request(app).post('/api/v1/products')
           .set('accesstoken', token)
           .end((error, data) => {
