@@ -1,5 +1,12 @@
 language: node_js
 node_js:
   - "stable"
+
+install: 
+  - npm install
+
+test:
+  - npm test
+
 after_success:
-  npm run coverage
+  - npm run coverage-report
