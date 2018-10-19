@@ -2,6 +2,7 @@ import express from 'express';
 import products from '../controllers/api1/products';
 import sales from '../controllers/api1/sales';
 import users from '../controllers/api1/users';
+import verifyToken from '../middleware/verifytoken';
 const router = express.Router();
 
 /* GET home page. */
@@ -10,9 +11,9 @@ router.get('/', (req, res, next) => {
 });
 
 /* Products Router */
-router.get('/products', products.getAll);
-router.get('/products/:id', products.getOne);
-router.post('/products', products.addProduct);
+router.get('/products', verifyToken.authentication, products.getAll);
+router.get('/products/:id', verifyToken.authentication, products.getOne);
+router.post('/products', verifyToken.authentication, products.addProduct);
 
 /* Sales Router */
 router.get('/sales', sales.getAll);
