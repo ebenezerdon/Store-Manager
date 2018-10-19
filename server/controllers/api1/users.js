@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import users from '../../models/users';
 import config from '../../configuration/config';
 
+const secret = config.secret;
 class Users {
   static getAll(req, res) {
     return (
@@ -40,31 +41,27 @@ class Users {
   }
 
   static loginUser(req, res) {
+    const { emailAdress, password } = req.body;
+    let authenticationDetail;
+    let userFound = false;
     users.map((user) => {
-      if (req.body.emailAdress === user.emailAdress) {
-        if (req.body.password === user.password) {
-            const payload = {
-                check: true
-            };
-            let token = jwt.sign(payload, app.get('Secret'), {
-                expiresIn: 1440 // expires in 24 hours
-            });
-            res.status(200).json({
-                message: 'authentication done ',
-                token: token
-            });
-
-        } else {
-            res.json({
-                message: "please check your password !"
-            });
-        }
-    } else {
-        res.json({
-            message: "user not found !"
-        });
+      if (emailAdress === user.emailAdress && password === user.password) {
+        userFound = true;
+        authenticationDetail = user;
     }
     });
+    if(userFound){
+      const token = jwt.sign(authenticationDetail, secret, { expiresIn: '24hr' });
+      res.status(200).json({
+          message: 'authentication done ',
+          token: token
+      });
+    }
+    else {
+      res.status(404).json({
+          message: "user not found !",
+      });
+  }
   }
 }
 
