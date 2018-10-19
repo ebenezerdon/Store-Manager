@@ -10,18 +10,19 @@ router.get('/', (req, res, next) => {
 });
 
 /* Products Router */
-router.get('/api/v1/products', products.getAll);
-router.get('/api/v1/products/:id', products.getOne);
-router.post('/api/v1/products', products.addProduct);
+router.get('/products', products.getAll);
+router.get('/products/:id', products.getOne);
+router.post('/products', products.addProduct);
 
 /* Sales Router */
-router.get('/api/v1/sales', sales.getAll);
-router.get('/api/v1/sales/:id', sales.getOne);
-router.post('/api/v1/sales', sales.addSale);
+router.get('/sales', sales.getAll);
+router.get('/sales/:id', sales.getOne);
+router.post('/sales', sales.addSale);
 
 /* Users Router */
-router.get('/api/v1/users', users.getAll);
-router.get('/api/v1/users/:id', users.getOne);
-router.post('/api/v1/users', users.addUser);
+router.get('/users', users.getAll);
+router.get('/users/:id', users.getOne);
+router.post('/users', users.addUser);
+router.post('/login', users.loginUser);
 
 export default router;
