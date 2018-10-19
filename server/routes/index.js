@@ -3,7 +3,13 @@ import products from '../controllers/api1/products';
 import sales from '../controllers/api1/sales';
 import users from '../controllers/api1/users';
 import verifyToken from '../middleware/verifytoken';
+import verifyUser from '../middleware/verifyuser';
 const router = express.Router();
+
+const auth = verifyToken.authentication;
+const verifyAdmin = verifyUser.admin;
+const verifyAttendant = verifyUser.attendant;
+
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -11,14 +17,14 @@ router.get('/', (req, res, next) => {
 });
 
 /* Products Router */
-router.get('/products', verifyToken.authentication, products.getAll);
-router.get('/products/:id', verifyToken.authentication, products.getOne);
-router.post('/products', verifyToken.authentication, products.addProduct);
+router.get('/products', auth, products.getAll);
+router.get('/products/:id', auth, products.getOne);
+router.post('/products', auth, verifyAdmin, products.addProduct);
 
 /* Sales Router */
-router.get('/sales', sales.getAll);
-router.get('/sales/:id', sales.getOne);
-router.post('/sales', sales.addSale);
+router.get('/sales', auth, verifyAdmin, sales.getAll);
+router.get('/sales/:id', auth, sales.getOne);
+router.post('/sales', auth, verifyAttendant, sales.addSale);
 
 /* Users Router */
 router.get('/users', users.getAll);
