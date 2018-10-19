@@ -4,7 +4,7 @@ const users = [
     fullName: 'Sarah Elizabeth',
     emailAdress: 'sarahbeth@gmail.com',
     password: 'supersecretstuff',
-    type: 'Admin',
+    type: 'admin',
     createdAt: Date.now(),
   },
   {

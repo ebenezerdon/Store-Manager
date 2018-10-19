@@ -53,7 +53,6 @@ class Users {
     if(userFound){
       const token = jwt.sign(authenticationDetail, secret, { expiresIn: '24hr' });
       res.status(200).json({
-          message: 'authentication done ',
           token: token
       });
     }
