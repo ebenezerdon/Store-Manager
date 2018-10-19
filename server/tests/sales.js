@@ -1,48 +1,66 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app';
-/* const should = chai.should(); */
-chai.use(chaiHttp);
-/* Test the /GET route */
 
+const { expect } = chai;
+
+chai.use(chaiHttp);
+/* Test for all sale records */
 describe('/GET sales', () => {
-  it('it should GET all the sale records', (done) => {
+  it('it should GET all sale records', (done) => {
     chai.request(app)
       .get('/api/v1/sales')
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('array');
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.a('array');
         done();
       });
   });
 });
-/* Test for single sale record */
-describe('/Get sale/:id', () => {
-  it('it should Get a single sale record', (done) => {
-    chai.request(app)
-      .get('/api/v1/sales/1')
+
+/* Test for single sale record*/
+describe('Get A sale', () => {
+  it('it should return a specific sale record', (done) => {
+    chai.request(app).get('/api/v1/sales/1')
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.id.should.be(2);
+        expect(res).to.have.status(200);
+        expect(1).to.equal(res.body.id);
+        done();
+      });
+  });
+
+  it('it should have a status 404', (done) => {
+    chai.request(app).get('/api/v1/sales/1000')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.a('string');
         done();
       });
   });
 });
-/* Test for Create new sale record */
+
 describe('Create New sale record', () => {
   it('it should POST a new sale record', (done) => {
-    chai.request(app)
-      .post('/api/v1/sales')
+    chai.request(app).post('/api/v1/sales')
       .send({
-        productName: 'Ankara',
-        attendantId: '2',
-        price: '900',
-        quantity: '5',
-        totalprice: '₦5500',
+        productId: '3',
+        productName: 'Akara',
+        AttendantId: '4',
+        price: '₦5500',
+        quantity: '25',
+        totalPrize: '₦57000',
       })
       .end((err, res) => {
-        res.should.have.status(201);
-        res.body.should.be.a('object');
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('it should have status 400 if no data is sent', (done) => {
+    chai.request(app).post('/api/v1/sales')
+      .end((err, res) => {
+        expect(res).to.have.status(400);
         done();
       });
   });
