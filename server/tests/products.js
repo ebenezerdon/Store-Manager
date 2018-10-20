@@ -11,14 +11,23 @@ describe('Get Products', () => {
   it('it should GET all the products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
       .end((err, res) => {
-        const { token } = res.body;
-        chai.request(app).get('/api/v1/products')
+        const token = res.body.token;
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        console.log(token);
+        chai.request(app)
           .set('accesstoken', token)
+          .get('/api/v1/products')
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(data.body).to.be.an('array');
@@ -41,7 +50,7 @@ describe('Get A Product', () => {
   it('it should return a specific product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
@@ -60,7 +69,7 @@ describe('Get A Product', () => {
   it('it should have a status 404', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com', 
         password: 'realsecret',
         type: 'attendant',
       })
@@ -91,7 +100,7 @@ describe('Create New Product', () => {
   it('create a new product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'sarahbeth@gmail.com', 
+        emailAdress: 'sarahbeth@gmail.com', 
         password: 'supersecretstuff',
         type: 'admin',
       })
@@ -116,7 +125,7 @@ describe('Create New Product', () => {
   it('it should return error if req has no data', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        email: 'sarahbeth@gmail.com', 
+        emailAdress: 'sarahbeth@gmail.com', 
         password: 'supersecretstuff',
         type: 'admin',
       })

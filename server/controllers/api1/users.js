@@ -41,26 +41,36 @@ class Users {
   }
 
   static loginUser(req, res) {
-    const { emailAdress, password } = req.body;
-    let authenticationDetail;
+    const {
+      emailAdress,
+      password,
+      type
+    } = req.body;
+    let authDetail;
     let userFound = false;
     users.map((user) => {
-      if (emailAdress === user.emailAdress && password === user.password) {
+      if (emailAdress === user.emailAdress &&
+        password === user.password &&
+        type === user.type) {
         userFound = true;
-        authenticationDetail = user;
-    }
+        authDetail = user;
+      }
     });
-    if(userFound){
-      const token = jwt.sign(authenticationDetail, secret, { expiresIn: '24hr' });
-      res.status(200).json({
+    if (userFound) {
+      const token = jwt.sign(authDetail, secret, {
+        expiresIn: '24hr'
+      });
+      return (
+        res.status(200).json({
           token: token
-      });
-    }
-    else {
-      res.status(404).json({
+        })
+      );
+    } else {
+      return (
+        res.status(404).json({
           message: "user not found !",
-      });
-  }
+        }));
+    }
   }
 }
 
