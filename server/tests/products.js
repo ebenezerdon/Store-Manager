@@ -16,18 +16,11 @@ describe('Get Products', () => {
         type: 'attendant',
       })
       .end((err, res) => {
-        const token = res.body.token;
-        console.log(token);
-        console.log(token);
-        console.log(token);
-        console.log(token);
-        console.log(token);
-        console.log(token);
-        console.log(token);
-        console.log(token);
+        const token = res.body;
+        expect(res).to.have.status(200);
         chai.request(app)
-          .set('accesstoken', token)
           .get('/api/v1/products')
+          .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(data.body).to.be.an('array');
@@ -66,7 +59,7 @@ describe('Get A Product', () => {
       });
   });
 
-  it('it should have a status 404', (done) => {
+  it('it should have a status 404 if product not available', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
         emailAdress: 'joshodogwu@gmail.com', 
@@ -78,17 +71,14 @@ describe('Get A Product', () => {
         chai.request(app).get('/api/v1/products/1000')
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(400);
-            expect(res.body).to.be.an('object');
-            expect(data.body.message).to.equal(`Product with id ${id} not found.`);
-            done();
+            expect(data).to.have.status(404);
+            expect(res.body).to.be.an('object'); done();
           });
       });
   });
 
   it('returns unauthorized because user is not logged in', (done) => {
-    const id = 2;
-    chai.request(app).get(`/api/v1/products/${id}`)
+    chai.request(app).get('/api/v1/products/2')
       .end((error, res) => {
         expect(res).to.have.status(401);
         done();

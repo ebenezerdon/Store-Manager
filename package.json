@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
-    "test": "nyc mocha ./server/tests --compilers js:babel-core/register --exit"
+    "test": "nyc mocha ./server/tests --compilers js:babel-core/register --timeout 1000 --exit"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
