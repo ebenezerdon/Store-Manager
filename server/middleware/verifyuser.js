@@ -1,10 +1,9 @@
-import verifyToken from './verifytoken';
-
-const authData = verifyToken.authenticationData;
+import verifyToken from '../middleware/verifytoken';
 
 class VerifyUser {
   static admin(req, res, next) {
-    if (authData !== 'admin') {
+    const { type } = req.authenticationData.type;
+    if (type !== 'admin') {
       return res.status(401).json({
         message: 'Hi! This info can only be accessed by an admin',
         error: true
