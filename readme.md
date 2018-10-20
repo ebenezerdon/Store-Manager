@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ebenezerdon/Store-Manager.svg?branch=develop)](https://travis-ci.org/ebenezerdon/Store-Manager)
 
-[![Coverage Status](https://coveralls.io/repos/<ebenezerdon>/<store-manager>/badge.svg?branch=develop)](https://coveralls.io/r/<ebenezerdon>/<store-manager>?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/ebenezerdon/Store-Manager/badge.svg)](https://coveralls.io/github/ebenezerdon/Store-Manager)
 
 Store Manager is a web application that helps store owners manage sales and product inventory
 records. This application is meant for use in a single store.
