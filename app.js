@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import router from './server/routes/index';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import router from './server/routes/index';
 
 const app = express();
 
