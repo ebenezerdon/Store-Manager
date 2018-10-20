@@ -10,4 +10,4 @@ test:
   - npm test
 
 after_success:
-  - npm run coverage-report
+  - npm run coveralls
