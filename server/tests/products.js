@@ -11,7 +11,7 @@ describe('Get Products', () => {
   it('it should GET all the products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com',
         password: 'realsecret',
         type: 'attendant',
       })
@@ -30,20 +30,20 @@ describe('Get Products', () => {
   });
 
   it('it should return unauthorized user if user not logged in',
-   (done) => {
-    chai.request(app).get('/api/v1/products')
-      .end((error, res) => {
-        expect(res).to.have.status(401);
-        done();
-      });
-  });
+    (done) => {
+      chai.request(app).get('/api/v1/products')
+        .end((error, res) => {
+          expect(res).to.have.status(401);
+          done();
+        });
+    });
 });
 
 describe('Get A Product', () => {
   it('it should return a specific product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com',
         password: 'realsecret',
         type: 'attendant',
       })
@@ -62,7 +62,7 @@ describe('Get A Product', () => {
   it('it should have a status 404 if product not available', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com', 
+        emailAdress: 'joshodogwu@gmail.com',
         password: 'realsecret',
         type: 'attendant',
       })
@@ -72,7 +72,8 @@ describe('Get A Product', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(404);
-            expect(res.body).to.be.an('object'); done();
+            expect(res.body).to.be.an('object');
+            done();
           });
       });
   });
@@ -90,19 +91,19 @@ describe('Create New Product', () => {
   it('create a new product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com', 
+        emailAdress: 'sarahbeth@gmail.com',
         password: 'supersecretstuff',
         type: 'admin',
       })
       .end((err, res) => {
         const { token } = res.body;
         chai.request(app).post('/api/v1/products')
-      .send({
-        name: 'Ankara',
-        description: 'Akara for everybody',
-        quantity: '4',
-        price: '₦5500',
-      })
+          .send({
+            name: 'Ankara',
+            description: 'Akara for everybody',
+            quantity: '4',
+            price: '₦5500',
+          })
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(201);
@@ -115,7 +116,7 @@ describe('Create New Product', () => {
   it('it should return error if req has no data', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com', 
+        emailAdress: 'sarahbeth@gmail.com',
         password: 'supersecretstuff',
         type: 'admin',
       })

@@ -12,11 +12,10 @@ class Sales {
       return (
         res.status(404).json('Hi! Can you check again? There\'s no sale record with that id')
       );
-    } else {
-      return (
-        res.status(200).json(sales[req.params.id - 1])
-      );
     }
+    return (
+      res.status(200).json(sales[req.params.id - 1])
+    );
   }
 
   /* Adds a sale record */
@@ -37,16 +36,14 @@ class Sales {
       return (
         res.status(400).json('Hi! Can you try again? Your input is invalid')
       );
-    } else {
-      return (
-        res.status(201).json({
-          message: 'Sale record added!',
-          sale
-        })
-      );
     }
+    return (
+      res.status(201).json({
+        message: 'Sale record added!',
+        sale,
+      })
+    );
   }
-
 }
 
 export default Sales;

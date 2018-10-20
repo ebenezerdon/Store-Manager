@@ -14,7 +14,7 @@ const users = [
     password: 'realsecret',
     type: 'attendant',
     createdAt: Date.now(),
-  }
+  },
 ];
 
 export default users;
