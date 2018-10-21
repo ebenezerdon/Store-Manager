@@ -41,13 +41,20 @@
     "mocha": "^5.2.0",
     "morgan": "~1.9.0",
     "nyc": "^13.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "nodemon": "^1.17.5"
   },
   "standard": {
     "env": [
       "mocha"
     ]
   },
+
+  "engines": {
+    "npm": "5.5.1",
+    "node": "8.11.1"
+  },
+
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory\r records. This application is meant for use in a single store.",
   "main": "app.js",
   "repository": {
