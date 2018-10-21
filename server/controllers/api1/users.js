@@ -16,6 +16,7 @@ class Users {
         res.status(404).json('Hi! Can you check again? There\'s no user with that id')
       );
     }
+
     return (
       res.status(200).json(users[req.params.id - 1])
     );
