@@ -29,13 +29,12 @@ describe('Get Sales', () => {
     done();
   });
 
-  it('it should return unauthorized user if user not logged in',
+  it('it should have status 401 if user not logged in',
     (done) => {
       chai.request(app).get('/api/v1/sales')
         .end((error, res) => {
           expect(res).to.have.status(401);
-          done();
-        });
+        }); done();
     });
 });
 
