@@ -21,37 +21,36 @@ class verify {
     }
     return next();
   }
+
   static Admin(req, res, next) {
     const token = req.headers.accesstoken;
-    jwt.verify(token, secret, function (err, authdata) {
+    jwt.verify(token, secret, (err, authdata) => {
       if (err) {
         return console.log('ERROR: ', err);
       }
       if (authdata.type !== 'admin') {
         return res.status(401).json({
           message: 'Hi! This resource can only be accessed by an admin',
-          error: true
+          error: true,
         });
-      } else {
-        return next();
       }
+      return next();
     });
   }
 
   static Attendant(req, res, next) {
     const token = req.headers.accesstoken;
-    jwt.verify(token, secret, function (err, authdata) {
+    jwt.verify(token, secret, (err, authdata) => {
       if (err) {
         return console.log('ERROR: ', err);
       }
-      if (authdata.type !== 'admin') {
+      if (authdata.type !== 'attendant') {
         return res.status(401).json({
           message: 'Hi! This resource can only be accessed by an attendant',
-          error: true
+          error: true,
         });
-      } else {
-        return next();
       }
+      return next();
     });
   }
 }
