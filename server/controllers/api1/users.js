@@ -48,17 +48,12 @@ class Users {
   }
 
   static loginUser(req, res) {
-    const {
-      emailAdress,
-      password,
-      type,
-    } = req.body;
+    const { emailAdress, password, type } = req.body;
     let authDetail;
     let userFound = false;
     users.map((user) => {
       if (emailAdress === user.emailAdress &&
-        password === user.password &&
-        type === user.type) {
+        password === user.password && type === user.type) {
         userFound = true;
         authDetail = user;
       }
@@ -68,9 +63,7 @@ class Users {
         expiresIn: '24hr',
       });
       return (
-        res.status(200).json({
-          token,
-        })
+        res.status(200).json({ token })
       );
     }
     return (
