@@ -8,7 +8,7 @@ class Sales {
   }
 
   static getOne(req, res) {
-    if ((req.params.id) > sales.length) {
+    if (sales.length < req.params.id) {
       return (
         res.status(404).json('Hi! Can you check again? There\'s no sale record with that id')
       );
