@@ -90,9 +90,9 @@ describe('Create New sale', () => {
   it('create a new sale', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
-        type: 'admin',
+        emailAdress: 'joshodogwu@gmail.com',
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
         const { token } = res.body;
@@ -115,9 +115,9 @@ describe('Create New sale', () => {
   it('it should return error if req has no data', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
-        type: 'admin',
+        emailAdress: 'joshodogwu@gmail.com',
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
         const { token } = res.body;
