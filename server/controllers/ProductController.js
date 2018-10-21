@@ -1,4 +1,4 @@
-import products from '../../models/products';
+import products from '../models/products';
 
 class Products {
   /* Gets all products */
