@@ -9,17 +9,18 @@ class Users {
       res.status(200).json(users)
     );
   }
+
   static getOne(req, res) {
     if ((req.params.id) > users.length) {
       return (
         res.status(404).json('Hi! Can you check again? There\'s no user with that id')
       );
-    } else {
-      return (
-        res.status(200).json(users[req.params.id - 1])
-      );
     }
+    return (
+      res.status(200).json(users[req.params.id - 1])
+    );
   }
+
   /* Adds a new user */
   static addUser(req, res) {
     const user = new Users(); // creates a new instance of Products model
@@ -29,13 +30,18 @@ class Users {
     user.password = req.body.password;
     user.type = req.body.type;
     user.createdAt = new Date();
-
     users.push(user);
 
+    if (!req.body.fullName && !req.body.emailAdress &&
+      !req.body.password) {
+      return (
+        res.status(400).json('Hi! Can you try again? Your input is invalid')
+      );
+    }
     return (
       res.status(201).json({
         message: 'New user added!',
-        user
+        user,
       })
     );
   }
@@ -44,7 +50,7 @@ class Users {
     const {
       emailAdress,
       password,
-      type
+      type,
     } = req.body;
     let authDetail;
     let userFound = false;
@@ -58,19 +64,18 @@ class Users {
     });
     if (userFound) {
       const token = jwt.sign(authDetail, secret, {
-        expiresIn: '24hr'
+        expiresIn: '24hr',
       });
       return (
         res.status(200).json({
-          token: token
+          token,
         })
       );
-    } else {
-      return (
-        res.status(404).json({
-          message: "user not found !",
-        }));
     }
+    return (
+      res.status(404).json({
+        message: 'Hi! Can you check again? Ther\'s no user with that id',
+      }));
   }
 }
 
