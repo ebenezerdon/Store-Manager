@@ -28,9 +28,10 @@ class verify {
       if (err) {
         return console.log('ERROR: ', err);
       }
-      if (authdata.type !== 'admin') {
+      const authdataType = authdata.type;
+      if (authdataType !== 'admin') {
         return res.status(401).json({
-          message: 'Hi! This resource can only be accessed by an admin',
+          message: 'Hi! You can only access this resource if you are an admin',
           error: true,
         });
       }
