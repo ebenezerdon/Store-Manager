@@ -92,9 +92,9 @@ run test using 'npm test'.
 
 <tr><td>POST</td> <td>/api/v1/users</td>  <td>Create a user (Only admin)</td></tr>
 
-<tr><td>GET</td> <td>/api/v1/sales</td>  <td>Get sale record</td></tr>
+<tr><td>GET</td> <td>/api/v1/sales</td>  <td>Get all sale records (Only admin)</td></tr>
 
-<tr><td>GET</td> <td>/api/v1/sales/:id</td>  <td>Get a sale record by id</td></tr>
+<tr><td>GET</td> <td>/api/v1/sales/:id</td>  <td>Get a sale record by id (Onlyadmin)</td></tr>
 
 <tr><td>GET</td> <td>/api/v1/products</td>  <td>Gets all products</td></tr>
 
@@ -126,7 +126,7 @@ run test using 'npm test'.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the LICENSE.md file for details.
+ISC
 
 ## Acknowledgement
 
