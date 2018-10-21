@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import users from '../../models/users';
-import config from '../../configuration/config';
+import users from '../models/usersModel';
+import config from '../configuration/config';
 
 const secret = config.secret;
 class Users {

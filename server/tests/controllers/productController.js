@@ -1,37 +1,37 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../app';
+import app from '../../../app';
 
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
-/* Test for get all sales */
-describe('Get Users', () => {
-  it('it should GET all users', (done) => {
+/* Test for get all products */
+describe('Get Products', () => {
+  it('it should GET all the products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
-        type: 'admin',
+        emailAdress: 'joshodogwu@gmail.com',
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
         expect(res).to.have.status(200);
         chai.request(app)
-          .get('/api/v1/users')
+          .get('/api/v1/products')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(data.body).to.be.an('array');
+            done();
           });
       });
-    done();
   });
 
-  it('it should have status 401 if user not logged in',
+  it('it should return unauthorized user if user not logged in',
     (done) => {
-      chai.request(app).get('/api/v1/users')
+      chai.request(app).get('/api/v1/products')
         .end((error, res) => {
           expect(res).to.have.status(401);
           done();
@@ -39,35 +39,36 @@ describe('Get Users', () => {
     });
 });
 
-describe('Get A user', () => {
-  it('it should return a specific user', (done) => {
+describe('Get A Product', () => {
+  it('it should return a specific product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
-        type: 'admin',
+        emailAdress: 'joshodogwu@gmail.com',
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
-        const token = res.body;
-        chai.request(app).get('/api/v1/users/1')
+        const { token } = res.body;
+        chai.request(app).get('/api/v1/products/1')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(1).to.equal(data.body.id);
+            done();
           });
-      }); done();
+      });
   });
 
-  it('it should have a status 404', (done) => {
+  it('it should have a status 404 if product not available', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
-        type: 'admin',
+        emailAdress: 'joshodogwu@gmail.com',
+        password: 'realsecret',
+        type: 'attendant',
       })
       .end((err, res) => {
         const { token } = res.body;
-        chai.request(app).get('/api/v1/users/10000')
+        chai.request(app).get('/api/v1/products/1000')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(404);
@@ -77,8 +78,8 @@ describe('Get A user', () => {
       });
   });
 
-  it('it should return err if user not logged in', (done) => {
-    chai.request(app).get('/api/v1/users/1')
+  it('returns unauthorized because user is not logged in', (done) => {
+    chai.request(app).get('/api/v1/products/2')
       .end((error, res) => {
         expect(res).to.have.status(401);
         done();
@@ -86,8 +87,8 @@ describe('Get A user', () => {
   });
 });
 
-describe('Create New user', () => {
-  it('create a new sale', (done) => {
+describe('Create New Product', () => {
+  it('create a new product', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
         emailAdress: 'sarahbeth@gmail.com',
@@ -96,12 +97,12 @@ describe('Create New user', () => {
       })
       .end((err, res) => {
         const { token } = res.body;
-        chai.request(app).post('/api/v1/users')
+        chai.request(app).post('/api/v1/products')
           .send({
-            fullName: 'Winifred Briggs',
-            emailAdress: 'winibrigs@gmail.com',
-            password: 'anothersecretstuff',
-            type: 'attendant',
+            name: 'Ankara',
+            description: 'Akara for everybody',
+            quantity: '4',
+            price: '₦5500',
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -121,7 +122,7 @@ describe('Create New user', () => {
       })
       .end((err, res) => {
         const { token } = res.body;
-        chai.request(app).post('/api/v1/users')
+        chai.request(app).post('/api/v1/products')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(400);
@@ -131,12 +132,12 @@ describe('Create New user', () => {
   });
 
   it('it should have status 401 if user not logged in', (done) => {
-    chai.request(app).post('/api/v1/users')
+    chai.request(app).post('/api/v1/products')
       .send({
-        fullName: 'Winifred Briggs',
-        emailAdress: 'winibrigs@gmail.com',
-        password: 'anothersecretstuff',
-        type: 'attendant',
+        name: 'Ankara',
+        description: 'Akara for everybody',
+        quantity: '4',
+        price: '₦5500',
       })
       .end((error, res) => {
         expect(res).to.have.status(401);
