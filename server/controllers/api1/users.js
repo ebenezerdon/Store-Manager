@@ -2,24 +2,25 @@ import jwt from 'jsonwebtoken';
 import users from '../../models/users';
 import config from '../../configuration/config';
 
-const secret = config.secret;
+const { secret } = config.secret;
 class Users {
   static getAll(req, res) {
     return (
       res.status(200).json(users)
     );
   }
+
   static getOne(req, res) {
     if ((req.params.id) > users.length) {
       return (
         res.status(404).json('Hi! Can you check again? There\'s no user with that id')
       );
-    } else {
-      return (
-        res.status(200).json(users[req.params.id - 1])
-      );
-    }
+    } 
+    return (
+      res.status(200).json(users[req.params.id - 1])
+    );
   }
+
   /* Adds a new user */
   static addUser(req, res) {
     const user = new Users(); // creates a new instance of Products model
@@ -35,7 +36,7 @@ class Users {
     return (
       res.status(201).json({
         message: 'New user added!',
-        user
+        user,
       })
     );
   }
@@ -44,33 +45,32 @@ class Users {
     const {
       emailAdress,
       password,
-      type
+      type,
     } = req.body;
     let authDetail;
     let userFound = false;
     users.map((user) => {
-      if (emailAdress === user.emailAdress &&
-        password === user.password &&
-        type === user.type) {
+      if (emailAdress === user.emailAdress
+        && password === user.password
+        && type === user.type) {
         userFound = true;
         authDetail = user;
       }
     });
     if (userFound) {
       const token = jwt.sign(authDetail, secret, {
-        expiresIn: '24hr'
+        expiresIn: '24hr',
       });
       return (
         res.status(200).json({
-          token: token
+          token,
         })
       );
-    } else {
-      return (
-        res.status(404).json({
-          message: "user not found !",
-        }));
     }
+    return (
+      res.status(404).json({
+        message: 'user not found !',
+      }));
   }
 }
 
