@@ -29,13 +29,12 @@ describe('Get Sales', () => {
     done();
   });
 
-  it('it should return unauthorized user if user not logged in',
+  it('it should have status 401 if user not logged in',
     (done) => {
       chai.request(app).get('/api/v1/sales')
         .end((error, res) => {
           expect(res).to.have.status(401);
-          done();
-        });
+        }); done();
     });
 });
 
@@ -67,9 +66,7 @@ describe('Get A sale record', () => {
         type: 'attendant',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
+        const { token } = res.body;
         chai.request(app).get('/api/v1/sales/1000')
           .set('accesstoken', token)
           .end((error, data) => {
@@ -98,9 +95,7 @@ describe('Create New sale', () => {
         type: 'admin',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
+        const { token } = res.body;
         chai.request(app).post('/api/v1/sales')
           .send({
             name: 'Ankara',
@@ -125,9 +120,7 @@ describe('Create New sale', () => {
         type: 'admin',
       })
       .end((err, res) => {
-        const {
-          token
-        } = res.body;
+        const { token } = res.body;
         chai.request(app).post('/api/v1/sales')
           .set('accesstoken', token)
           .end((error, data) => {
