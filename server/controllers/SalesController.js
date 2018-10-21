@@ -1,4 +1,4 @@
-import sales from '../../models/sales';
+import sales from '../models/salesModel';
 
 class Sales {
   static getAll(req, res) {

@@ -1,7 +1,7 @@
 import express from 'express';
-import products from '../controllers/api1/products';
-import sales from '../controllers/api1/sales';
-import users from '../controllers/api1/users';
+import products from '../controllers/ProductController';
+import sales from '../controllers/SalesController';
+import users from '../controllers/UserController';
 import verify from '../middleware/verify';
 
 const router = express.Router();
