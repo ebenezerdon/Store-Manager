@@ -1,7 +1,8 @@
 # Store Manager
 
 [![Build Status](https://travis-ci.org/ebenezerdon/Store-Manager.svg?branch=develop)](https://travis-ci.org/ebenezerdon/Store-Manager)
-[![Coverage Status](https://coveralls.io/repos/github/ebenezerdon/Store-Manager/badge.svg)](https://coveralls.io/github/ebenezerdon/Store-Manager)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 Store Manager is a web application that helps store owners manage sales and product inventory
 records. This application is meant for use in a single store.
