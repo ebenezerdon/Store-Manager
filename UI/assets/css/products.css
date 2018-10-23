@@ -73,6 +73,10 @@ body {
     width: 350px;
 }
 
+.p-name {
+    color: red !important;
+}
+
 .hover-effect a {
     transition: all 250ms ease-in;
     -webkit-transition: all 250ms ease-in;
@@ -87,4 +91,13 @@ body {
     -moz-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
+}
+
+.product-item a {
+    text-decoration: none;
+    color: red;
+}
+
+.product-item p:hover {
+    text-decoration: underline;
 }
