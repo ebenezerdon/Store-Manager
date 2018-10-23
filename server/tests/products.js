@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 /* Test for get all products */
 describe('Get Products', () => {
-  it('it should GET all the products', (done) => {
+  it('it should GET all products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
         emailAdress: 'joshodogwu@gmail.com',
@@ -24,9 +24,9 @@ describe('Get Products', () => {
           .end((error, data) => {
             expect(data).to.have.status(200);
             expect(data.body).to.be.an('array');
-            done();
           });
       });
+    done();
   });
 
   it('it should return unauthorized user if user not logged in',
