@@ -1,5 +1,6 @@
 @import "lib/nav.css";
 @import "lib/footer.css";
+@import "lib/popup.css";
 
 body {
     background: #f2f2f2;
@@ -100,3 +101,4 @@ body {
 .product-item p:hover {
     text-decoration: underline;
 }
+
