@@ -10,25 +10,8 @@
     left: 0;
 }
 
-.user-select {
-    position: absolute;
-    top: 7px;
-    left: 15px;
+.nav-2 h2 {
+    margin-top: 7px;
+    color: #dfdfdf;
 }
 
-.user-select select {
-    border-color: #E83794;
-    background: transparent;
-    color: #E83794;
-    font-size: 1.1em;
-    height: 28px;
-    width: 180px;
-    border-radius: 20px;
-    padding-left: 9px;
-    box-shadow: 0 1px 2px #2b2b2b;
-}
-
-.user-select select option {
-    background: #fff;
-    color: #878A93;
-}
