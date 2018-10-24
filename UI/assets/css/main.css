@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+sans);
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 
-@import "lib/swatch.css";
+/* @import "lib/swatch.css"; */
 @import "lib/drawline.css";
 @import "lib/form.css";
 @import "lib/nav2.css";
@@ -51,10 +51,26 @@ main {
   top: 6.5px;
 }
 
-.card-div {
+/* .showcase {
+  background: url(https://images.pexels.com/photos/338027/pexels-photo-338027.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+  height: 200px;
+  width: 700px;
+  position: absolute;
+  z-index: 20;
+  top: 110px;
+  left: 20px;
+  right: 20px;
+} */
+
+/* .card-div {
   position: absolute;
   display: flex;
   flex-flow: row wrap;
+} */
+
+.login-form {
+  position: absolute;
+  top: 300px;
 }
 
 .user-select {
