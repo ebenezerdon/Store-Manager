@@ -1,8 +1,5 @@
 
 .card {
-    position: relative;
-    flex: auto;
-    float: left;
     list-style-type: none;
     font-family: "Helvetica",sans-serif;
 }
@@ -41,7 +38,7 @@
         rgba(0, 0, 0, 0.7), 
         rgba(0, 0, 0, 0.7)
       ), */ url(https://images.unsplash.com/photo-1532179867542-0818a841bd1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ed815cb9286f98ea18f1987e18ac0618&auto=format&fit=crop&w=334&q=80);
-    left: 15vw;
+    right: 15vw;
     background-position: center;
     background-size: cover;
     opacity: 0.8
