@@ -14,13 +14,15 @@
     display: block;
     width: 100%;
     background: #4C4E5E;
-    height: 55px;
-    padding-left: 10px;
+    height: 35px;
     color: #fff;
     font-size: 20px;
-    line-height: 55px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
     box-sizing: border-box;
+}
+
+.caption p {
+    padding-top: 5px;
 }
 
 .header-row {
