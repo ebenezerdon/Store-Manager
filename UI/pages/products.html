@@ -55,7 +55,7 @@
           <p>Long Sleeve Hooded T Shirt- Wine & Grey</p>
           <p>₦3,300</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -66,7 +66,7 @@
           <p>Fashion Quality Ankara Fabrics For Women-multi-colour</p>
           <p>₦7,108</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -77,7 +77,7 @@
           <p>Breathable Sneakers For Men</p>
           <p>₦4,995</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -88,7 +88,7 @@
           <p>Luxe Linient Solution Towels</p>
         </a>
         <p>₦13,550</p>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -99,7 +99,7 @@
           <p>Short Sleeve T-shirt - White</p>
           <p>₦2,100</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -110,7 +110,7 @@
           <p>Drapery Skirt - Green</p>
           <p>₦3,422</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -121,7 +121,7 @@
           <p>Men's Casual Slim Fit Jeans - Blue</p>
           <p>₦9,700</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class='product'>
@@ -132,12 +132,29 @@
           <p>Duanxinyv Knee Boot</p>
           <p>₦6,390</p>
         </a>
-        <button>Add to cart</button>
+        <button id="cart-popup">Add to cart</button>
       </div>
     </div>
     <div class="footer"></div>
   </div>
 
+  <div id="popup" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Add product to cart</p>
+      <form class="reg">
+          <input type="text" placeholder="Buyer's Name">
+          <input type="number" placeholder="Number of products">
+          <input type="number" placeholder="Amount">
+          <input type="submit" value="Add product">
+        </form>
+    </div>
+  </div>
+
+  <div></div>
+
+  <script src="../assets/js/popup.js"></script>
 
 </body>
 
