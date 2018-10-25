@@ -51,4 +51,8 @@ main {
     top: 6.5px;
 }
 
-  
+.card-div {
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+}

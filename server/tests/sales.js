@@ -42,9 +42,9 @@ describe('Get A sale record', () => {
   it('it should return a specific sale record', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com',
-        password: 'realsecret',
-        type: 'attendant',
+        emailAdress: 'sarahbeth@gmail.com',
+        password: 'supersecretstuff',
+        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
