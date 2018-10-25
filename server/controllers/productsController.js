@@ -29,14 +29,13 @@ const addProduct = (req, res) => {
     price: req.body.price,
     quantity: req.body.quantity,
   };
-
-  products.push(product);
-
   if (!req.body.name && !req.body.price) {
     return (
       res.status(400).json('Hi! Can you try again? Your input is invalid')
     );
   }
+  products.push(product);
+
   return (
     res.status(201).json({
       message: 'Product added!',
