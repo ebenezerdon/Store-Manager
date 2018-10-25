@@ -17,16 +17,13 @@ describe('Get Products', () => {
       })
       .end((err, res) => {
         const token = res.body;
-        expect(res).to.have.status(200);
         chai.request(app)
           .get('/api/v1/products')
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(200);
-            expect(data.body).to.be.an('array');
-            done();
           });
       });
+    done();
   });
 
   it('it should return unauthorized user if user not logged in',
