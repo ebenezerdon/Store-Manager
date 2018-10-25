@@ -5,10 +5,9 @@
 	top: 23em;
 	left: 35vw;
 	right: 35vw;
-	padding: 25px 0 0;
 	text-align: center;
 	text-shadow: 0 1px 0 #fff;
-	width: 400px;
+	width: 390px;
 	z-index: 2;
 }
 
@@ -129,25 +128,25 @@
    10:41 am, 10-10-18 
    - Ebenezer Don */
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) and (min-width: 799px) {
 	.login-form {
 		left: 27vw;
 	}
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) and (min-width: 599px){
 	.login-form {
 		left: 19vw;
 	}
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width: 499px) {
 	.login-form {
 		left: 15vw;
 	}
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) and (min-width: 424px) {
 	.login-form {
 		left: 11vw;
 	}
@@ -156,19 +155,21 @@
 @media only screen and (max-width: 425px) {
 	.login-form {
 		left: 5.5vw;
+		width: 370px;
 	}
 }
 
-@media (max-height: 640px) and (max-width: 360px) {
+@media only screen and (max-width: 400px) and (min-width: 359px) {
+	.login-form {
+		left: 0vw;
+		width: 370px;
+	}
+}
+
+@media (max-width: 360px) {
 	.login-form {
 		left: 2vw;
 		top: 28em;
-	}
-}
-
-@media only screen and (max-width: 400px) {
-	.login-form {
-		left: 0vw;
-		width: 99vw;
+		width: 370px;
 	}
 }
