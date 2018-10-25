@@ -1,14 +1,8 @@
-main {
-<<<<<<< HEAD
-  margin-top: -90px;
-=======
-  margin-top: -100px;
->>>>>>> ae58a5956ac995f4df99a78696c490d8b3cd9f7d
-}
+
 
 .reg {
-    margin: auto;
     width: 70%;
+    margin: auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 3px;
@@ -35,7 +29,6 @@ main {
     border-bottom: 1px solid #d8d8d8;
   }
   .reg-input:focus {
-<<<<<<< HEAD
     border-color: #262734;
     outline: 0;
   }
@@ -77,17 +70,5 @@ main {
   }
 
   .green-button:hover {
-    background: #00050c;
-=======
-    border-color: #1d2325;
-    outline: 0;
-  }
-  
-  .green-button {
-    background: #1d2325;
-  }
-
-  .green-button:hover {
     background: #111516;
->>>>>>> ae58a5956ac995f4df99a78696c490d8b3cd9f7d
   }

@@ -2,123 +2,118 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>List of Store Attendants</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/userlist.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
-    <script src="main.js"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>List of Store Attendants</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/userlist.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <script src="main.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="top-nav">
-            <div class="logo">
-                <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
-            </div>
-            <a href="userdashboard.html"><i class="far fa-user-circle"></i></a>
-            <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
-            <a href="#"><i class="far fa-bell"></i></a>
-            <p>Hello, <span id="name">Josh</span></p>
-        </div>
-        <div class="nav-2">
-            <div class="option-select">
-                <div class="user-select">
-                    <select>
-                        <option>Dashboard</option>
-                        <option>Products</option>
-                    </select>
-                </div>
-            </div>
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Search">
-                    <button type="submit" class="searchButton">
-                        <div class="icon"><i class="fa fa-search"></i></div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+  <header>
+    <div class="top-nav">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
+      </div>
+      <a href="userdashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="#"><i class="far fa-bell"></i></a>
+      <p>Hello, <span id="name">Josh</span></p>
+    </div>
+    <div class="nav-2">
+      <div class="option-select">
 
-    <main>
-        <a href="adduser.html" class="green-button">Add New Attendant</a>
-        <div class="caption">Store Attendants</div>
-        <div class="table">
-            <div class="header-row row">
-                <span class="cell primary">Name</span>
-                <span class="cell">Number of Sales</span>
-                <span class="cell">Total Worth of Goods Sold</span>
-                <span class="cell">Action</span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Josh Odogwu</span>
-                <span class="cell" data-label="numberOfSales">351</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
-                <span class="cell" data-label="numberOfSales">214</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Josh Odogwu</span>
-                <span class="cell" data-label="numberOfSales">351</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
-                <span class="cell" data-label="numberOfSales">214</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Josh Odogwu</span>
-                <span class="cell" data-label="numberOfSales">351</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            <div class="row">
-                <input type="radio" name="expand">
-                <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
-                <span class="cell" data-label="numberOfSales">214</span>
-                <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
-                <span class="cell" data-label="action">
-                    <a href="" class='button'>Make Admin</a>
-                    <a href="" class='button red'>Remove User</a>
-                </span>
-            </div>
-            
+      </div>
+      <div class="wrap">
+        <div class="search">
+          <input type="text" class="searchTerm" placeholder="Search">
+          <button type="submit" class="searchButton">
+            <div class="icon"><i class="fa fa-search"></i></div>
+          </button>
         </div>
-    </main>
+      </div>
+    </div>
+  </header>
 
-    <footer></footer>
+  <main>
+    <a href="adduser.html" class="green-button">Add New Attendant</a>
+    <div class="caption">Store Attendants</div>
+    <div class="table">
+      <div class="header-row row">
+        <span class="cell primary">Name</span>
+        <span class="cell">Number of Sales</span>
+        <span class="cell">Total Worth of Goods Sold</span>
+        <span class="cell">Action</span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Josh Odogwu</span>
+        <span class="cell" data-label="numberOfSales">351</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
+        <span class="cell" data-label="numberOfSales">214</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Josh Odogwu</span>
+        <span class="cell" data-label="numberOfSales">351</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
+        <span class="cell" data-label="numberOfSales">214</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Josh Odogwu</span>
+        <span class="cell" data-label="numberOfSales">351</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦215,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+      <div class="row">
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="name">Sylvia Okonkwo</span>
+        <span class="cell" data-label="numberOfSales">214</span>
+        <span class="cell" data-label="totalWorthOfGoodsSold">₦132,000</span>
+        <span class="cell" data-label="action">
+          <a href="" class='button'>Make Admin</a>
+          <a href="" class='button red'>Remove User</a>
+        </span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer></footer>
 </body>
 
 </html>
