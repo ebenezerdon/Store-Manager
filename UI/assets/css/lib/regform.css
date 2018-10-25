@@ -1,12 +1,16 @@
 main {
+<<<<<<< HEAD
   margin-top: -90px;
+=======
+  margin-top: -100px;
+>>>>>>> ae58a5956ac995f4df99a78696c490d8b3cd9f7d
 }
 
 .reg {
     margin: auto;
-    width: 40%;
+    width: 70%;
     padding: 20px;
-    background: #f4f4f4;
+    background: #ffffff;
     border-radius: 3px;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -24,13 +28,14 @@ main {
     display: block;
     width: 100%;
     height: 38px;
-    margin-top: 2px;
+    margin: 25px;
     font-weight: 500;
     background: none;
     border: 0;
     border-bottom: 1px solid #d8d8d8;
   }
   .reg-input:focus {
+<<<<<<< HEAD
     border-color: #262734;
     outline: 0;
   }
@@ -73,4 +78,16 @@ main {
 
   .green-button:hover {
     background: #00050c;
+=======
+    border-color: #1d2325;
+    outline: 0;
+  }
+  
+  .green-button {
+    background: #1d2325;
+  }
+
+  .green-button:hover {
+    background: #111516;
+>>>>>>> ae58a5956ac995f4df99a78696c490d8b3cd9f7d
   }
