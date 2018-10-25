@@ -1,10 +1,10 @@
 import express from 'express';
 import {
-  getAllProducts, getOneProduct, addProduct,
-} from '../controllers/productsController';
-import {
   getAllSales, getOneSale, addSale,
 } from '../controllers/salesController';
+import {
+  getAllProducts, getOneProduct, addProduct,
+} from '../controllers/productsController';
 import {
   getAllUsers, getOneUser, addUser, loginUser,
 } from '../controllers/usersController';
@@ -15,7 +15,7 @@ const router = express.Router();
 /* GET home page. */
 /* router.get('/', (req, res, next) => {
   res.send('index.html');
-}); */
+});  */
 
 /* Products Router */
 router.get('/products', authenticate, getAllProducts);
