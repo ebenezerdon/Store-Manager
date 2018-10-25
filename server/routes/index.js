@@ -9,6 +9,9 @@ import {
   getAllUsers, getOneUser, addUser, loginUser,
 } from '../controllers/usersController';
 import { authenticate, verifyAdmin, verifyAttendant } from '../middleware/verify';
+import { 
+  validateUserInput, validateProductInput, validateSaleInput
+} from '../middleware/validateInput';
 
 const router = express.Router();
 
@@ -20,17 +23,17 @@ const router = express.Router();
 /* Products Router */
 router.get('/products', authenticate, getAllProducts);
 router.get('/products/:id', authenticate, getOneProduct);
-router.post('/products', authenticate, verifyAdmin, addProduct);
+router.post('/products', authenticate, verifyAdmin, validateProductInput, addProduct);
 
 /* Sales Router */
 router.get('/sales', authenticate, verifyAdmin, getAllSales);
 router.get('/sales/:id', authenticate, verifyAdmin, getOneSale);
-router.post('/sales', authenticate, verifyAttendant, addSale);
+router.post('/sales', authenticate, verifyAttendant, validateSaleInput, addSale);
 
 /* Users Router */
 router.get('/users', authenticate, verifyAdmin, getAllUsers);
 router.get('/users/:id', authenticate, verifyAdmin, getOneUser);
-router.post('/users', authenticate, verifyAdmin, addUser);
+router.post('/users', authenticate, verifyAdmin, validateUserInput, addUser);
 router.post('/login', loginUser);
 
 export default router;

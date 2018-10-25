@@ -31,7 +31,7 @@ const addUser = (req, res) => {
   const user = {
     id: users.length + 1,
     fullName: req.body.fullName,
-    emailAdress: req.body.emailAdress,
+    emailAdress: req.body.emailAddress,
     password: req.body.password,
     type: req.body.type,
     createdAt: new Date(),
