@@ -24,7 +24,7 @@ router.post('/products', authenticate, verifyAdmin, addProduct);
 
 /* Sales Router */
 router.get('/sales', authenticate, verifyAdmin, getAllSales);
-router.get('/sales/:id', authenticate, getOneSale);
+router.get('/sales/:id', authenticate, verifyAdmin, getOneSale);
 router.post('/sales', authenticate, verifyAttendant, addSale);
 
 /* Users Router */
