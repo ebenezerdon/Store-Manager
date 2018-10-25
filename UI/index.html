@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Store Manager</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
-        <script src="main.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="top-nav">
-                <div class="logo">
-                    <img src="./assets/images/logo.png" alt="">
-                </div>
-                <a href="userdashboard.html"><i class="far fa-user-circle"></i></a>
-            <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
-            </div>
-            <div class="nav-2">
-                <div class="user-select">
-                        <select>
-                            <option class="selecter">Store Owner</option>
-                            <option>Store Attendant</option>
-                        </select>
-                </div>
-            </div>
-            <div class="card-div">
-                <ul class="card">
-                    <li class="card-item item6"></li>
-                    <li class="card-item item5"></li>
-                    <li class="card-item item4"></li>
-                    <li class="card-item item3"></li>
-                    <li class="card-item item2"></li>
-                    <li class="card-item item1"></li>
-                </ul> 
-            </div>
-            <section class="login-form">
-                <form action="" autocomplete="on">
-                    <h1>Login Here</h1>
-                    <div>
-                        <input type="text" placeholder="Username" required="" id="username" autofocus />
-                    </div>
-                    <div>
-                        <input type="password" placeholder="Password" required="" id="password" />
-                    </div>
-                    <div>
-                        <a href="./pages/userdashboard.html" class="button">Login</a>
-                       <!--  <a href="#">Lost your password?</a> -->
-                    </div>
-                </form>
-            </section>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Store Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="top-nav">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="">
+      </div>
+    </div>
+    <div class="nav-2">
+        <h2>Hello awesome!</h2>
+    </div>
+    
+    <!-- <div class="card-div">
+      <ul class="card">
+        <li class="card-item item6"></li>
+        <li class="card-item item5"></li>
+        <li class="card-item item4"></li>
+        <li class="card-item item3"></li>
+        <li class="card-item item2"></li>
+        <li class="card-item item1"></li>
+      </ul>
+    </div> -->
+    <section class="login-form">
+      <form action="" autocomplete="on">
+        <h1>Login Here</h1>
+        <div>
+          <input type="text" placeholder="Username" required="" id="username" autofocus />
         </div>
-    </body>
+        <div>
+          <input type="password" placeholder="Password" required="" id="password" />
+        </div>
+        <div class="user-select">
+            <select>
+              <option value="select">Select role</option>
+              <option value="attendant">Attendant</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        <div>
+          <a href="./pages/userdashboard.html" class="button">Login</a>
+          <!--  <a href="#">Lost your password?</a> -->
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+
 </html>
