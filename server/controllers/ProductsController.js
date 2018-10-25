@@ -9,6 +9,11 @@ const getAllProducts = (req, res) => {
 
 /* Gets one from products list */
 const getOneProduct = (req, res) => {
+  if (!Number(req.params.id)) {
+    return (
+      res.status(400).json('The id has to be a number!')
+    );
+  }
   if ((req.params.id) > products.length) {
     return (
       res.status(404).json('Hi! Can you check again? There\'s no product with that id')
@@ -17,7 +22,6 @@ const getOneProduct = (req, res) => {
   return (
     res.status(200).json(products[req.params.id - 1])
   );
-
 };
 
 /* Adds a product */

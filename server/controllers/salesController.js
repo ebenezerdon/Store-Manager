@@ -7,6 +7,11 @@ const getAllSales = (req, res) => {
 };
 
 const getOneSale = (req, res) => {
+  if (!Number(req.params.id)) {
+    return (
+      res.status(400).json('The id has to be a number!')
+    );
+  }
   if (sales.length < req.params.id) {
     return (
       res.status(404).json('Hi! Can you check again? There\'s no sale record with that id')

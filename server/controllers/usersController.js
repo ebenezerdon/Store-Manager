@@ -11,12 +11,16 @@ const getAllUsers = (req, res) => {
 };
 
 const getOneUser = (req, res) => {
+  if (!Number(req.params.id)) {
+    return (
+      res.status(400).json('The id has to be a number!')
+    );
+  }
   if ((req.params.id) > users.length) {
     return (
       res.status(404).json('Hi! Can you check again? There\'s no user with that id')
     );
   }
-
   return (
     res.status(200).json(users[req.params.id - 1])
   );
