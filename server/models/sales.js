@@ -1,4 +1,3 @@
-import products from './products';
 
 const sales = [
   {

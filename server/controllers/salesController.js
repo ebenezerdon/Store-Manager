@@ -31,7 +31,7 @@ const addSale = (req, res) => {
     AttendantId: req.body.AttendantId,
     price: req.body.price,
     quantity: req.body.quantity,
-    totalPrize: req.body.totalPrize,
+    totalPrice: req.body.totalPrice,
     created: new Date(),
   };
 
