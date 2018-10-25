@@ -12,15 +12,14 @@
 
 .caption {
     display: block;
-    width: 100%;
+    width: 99.1%;
     background: #4C4E5E;
-    height: 55px;
+    height: 35px;
     padding-left: 10px;
     color: #fff;
     font-size: 20px;
-    line-height: 55px;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-    box-sizing: border-box;
+    line-height: 35px;
+   
 }
 
 .header-row {
@@ -55,7 +54,7 @@ input[type="checkbox"] {
 }
 
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1000px) {
 
     body {
         padding: 0;
@@ -78,43 +77,18 @@ input[type="checkbox"] {
 
     .row {
         position: relative;
-        display: block;
         border-bottom: 1px solid #ccc;
 
     }
 
-    .header-row {
-        display: none;
-    }
-
     .cell {
         display: block;
-
         border: none;
         position: relative;
-        height: 45px;
+        height: 65px;
         line-height: 45px;
         text-align: left;
-    }
-
-    .primary:after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 18px;
-        z-index: 2;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid #ccc;
-
-    }
-
-    .cell:nth-of-type(n+2) {
-        display: none;
-    }
+    }   
 
 
     input[type="radio"],

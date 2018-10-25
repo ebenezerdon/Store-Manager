@@ -16,4 +16,9 @@ main {
 
 .green-button {
     margin: 10px;
+    background: #262734;
+}
+
+.green-button:hover {
+    background: #16161d;
 }
