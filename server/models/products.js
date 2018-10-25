@@ -10,7 +10,7 @@ const products = [
     max: '100',
   },
   {
-    id: 2,
+    id: 12,
     name: 'Fashion Quality Ankara Fabrics For Women-multi-colour',
     description: 'Fashion Quality Ankara Fabrics For Women-multi-colour',
     price: '₦7,108',
@@ -28,7 +28,7 @@ const products = [
     max: '70',
   },
   {
-    id: 4,
+    id: 2,
     name: 'Luxe Linient Solution Towels',
     description: 'Luxe Linient Solution Towels',
     price: '₦13,550',

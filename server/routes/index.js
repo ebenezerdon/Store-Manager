@@ -2,13 +2,9 @@ import express from 'express';
 import products from '../controllers/api1/products';
 import sales from '../controllers/api1/sales';
 import users from '../controllers/api1/users';
-import verify from '../middleware/verify';
+import { authenticate, verifyAdmin, verifyAttendant } from '../middleware/verify';
 
 const router = express.Router();
-
-const auth = verify.authentication;
-const verifyAdmin = verify.Admin;
-const verifyAttendant = verify.Attendant;
 
 /* GET home page. */
 /* router.get('/', (req, res, next) => {
@@ -16,19 +12,19 @@ const verifyAttendant = verify.Attendant;
 }); */
 
 /* Products Router */
-router.get('/products', auth, products.getAll);
-router.get('/products/:id', auth, products.getOne);
-router.post('/products', auth, verifyAdmin, products.addProduct);
+router.get('/products', authenticate, products.getAll);
+router.get('/products/:id', authenticate, products.getOne);
+router.post('/products', authenticate, verifyAdmin, products.addProduct);
 
 /* Sales Router */
-router.get('/sales', auth, verifyAdmin, sales.getAll);
-router.get('/sales/:id', auth, sales.getOne);
-router.post('/sales', auth, verifyAttendant, sales.addSale);
+router.get('/sales', authenticate, verifyAdmin, sales.getAll);
+router.get('/sales/:id', authenticate, sales.getOne);
+router.post('/sales', authenticate, verifyAttendant, sales.addSale);
 
 /* Users Router */
-router.get('/users', auth, verifyAdmin, users.getAll);
-router.get('/users/:id', auth, verifyAdmin, users.getOne);
-router.post('/users', auth, verifyAdmin, users.addUser);
+router.get('/users', authenticate, verifyAdmin, users.getAll);
+router.get('/users/:id', authenticate, verifyAdmin, users.getOne);
+router.post('/users', authenticate, verifyAdmin, users.addUser);
 router.post('/login', users.loginUser);
 
 export default router;
