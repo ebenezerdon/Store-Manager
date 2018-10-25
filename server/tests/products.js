@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 /* Test for get all products */
 describe('Get Products', () => {
-  it('it should GET all the products', (done) => {
+  it('it should GET all products', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
         emailAdress: 'joshodogwu@gmail.com',
