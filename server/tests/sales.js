@@ -56,9 +56,9 @@ describe('Get A sale record', () => {
   it('it should have a status 404', (done) => {
     chai.request(app).post('/api/v1/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com',
-        password: 'realsecret',
-        type: 'attendant',
+        emailAdress: 'sarahbeth@gmail.com',
+        password: 'supersecretstuff',
+        type: 'admin',
       })
       .end((err, res) => {
         const { token } = res.body;
@@ -93,7 +93,7 @@ describe('Create New sale', () => {
         const { token } = res.body;
         chai.request(app).post('/api/v1/sales')
           .send({
-            name: 'Ankara',
+            productName: 'Ankara',
             description: 'Akara for everybody',
             quantity: '4',
             price: '₦5500',
