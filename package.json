@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
     "test": "nyc mocha ./server/tests --compilers js:babel-core/register --timeout 1000 --exit",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "migration": "babel-node server/models/migration.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -40,21 +41,20 @@
     "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
     "morgan": "~1.9.0",
+    "nodemon": "^1.17.5",
     "nyc": "^13.1.0",
     "path": "^0.12.7",
-    "nodemon": "^1.17.5"
+    "pg": "^7.5.0"
   },
   "standard": {
     "env": [
       "mocha"
     ]
   },
-
   "engines": {
     "npm": "5.5.1",
     "node": "8.11.1"
   },
-
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory\r records. This application is meant for use in a single store.",
   "main": "app.js",
   "repository": {
