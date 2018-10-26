@@ -9,5 +9,8 @@
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module"
-  }
+  },
+  "rules": {
+    "linebreak-style": ["error", "windows"]
+  } 
 }

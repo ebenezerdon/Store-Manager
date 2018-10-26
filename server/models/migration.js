@@ -1,0 +1,5 @@
+import pool from './db';
+
+pool.query('CREATE TABLE IF NOT EXISTS products(id SERIAL PRIMARY KEY, name VARCHAR(100) NOT NULL, description TEXT, price INTEGER, quantity INTEGER,  min INTEGER)');
+pool.query('CREATE TABLE IF NOT EXISTS sales(id SERIAL PRIMARY KEY, productId SERIAL NOT NULL, attendantId SERIAL NOT NULL, price INTEGER NOT NULL, quantity INTEGER,  totalPrice INTEGER, createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');
+pool.query('CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, fullName VARCHAR(100) NOT NULL, emailAdress TEXT NOT NULL, password TEXT NOT NULL, type TEXT NOT NULL, createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');

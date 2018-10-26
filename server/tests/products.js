@@ -132,7 +132,7 @@ describe('Create New Product', () => {
     chai.request(app).post('/api/v1/products')
       .send({
         name: 'Ankara',
-        description: 'Akara for everybody',
+        description: 'Ankara for everybody',
         quantity: '4',
         price: '₦5500',
       })
