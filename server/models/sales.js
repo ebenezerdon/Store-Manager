@@ -1,11 +1,10 @@
-import products from './products';
 
 const sales = [
   {
     id: 1,
     productId: 1,
     productName: 'Long Sleeve Hooded T Shirt- Wine & Grey',
-    AttendantId: 1,
+    attendantId: 1,
     price: '₦3,300',
     quantity: 5,
     totalprice: 5000,
