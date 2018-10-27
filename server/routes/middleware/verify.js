@@ -23,7 +23,6 @@ const authenticate = (req, res, next) => {
   });
 };
 
-
 const verifyAdmin = (req, res, next) => {
   const { decoded } = req;
   if (decoded.type !== 'admin') {
