@@ -1,4 +1,4 @@
-import sales from '../models/sales';
+import sales from '../dummyModels/sales';
 
 const getAllSales = (req, res) => {
   return (
