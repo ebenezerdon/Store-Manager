@@ -1,4 +1,4 @@
-import products from '../models/products';
+import products from '../dummyModels/products';
 
 /* Gets all products */
 const getAllProducts = (req, res) => {

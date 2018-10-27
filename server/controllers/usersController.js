@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import users from '../models/usersModel';
+import users from '../dummyModels/usersModel';
 import config from '../configuration/config';
 
 const { secret } = config;
