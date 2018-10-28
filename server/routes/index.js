@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-  getAllProducts, getOneProduct, addProduct, deleteProduct,
+  getAllProducts, getOneProduct, addProduct, deleteProduct, updateProduct,
 } from './controllers/productsController';
 /* import {
   getAllSales, getOneSale, addSale,
@@ -21,9 +21,10 @@ const router = express.Router();
 }); */
 
 /* Products Router */
-router.post('/products', getAllProducts);
+router.get('/products', getAllProducts);
 router.get('/products/:id', getOneProduct);
-/* router.post('/products', addProduct); */
+router.post('/products', addProduct);
+router.put('/products/:id', updateProduct);
 router.delete('/products/:id', deleteProduct);
 
 /* Sales Router */
