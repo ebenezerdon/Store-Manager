@@ -1,34 +1,32 @@
 import moment from 'moment';
-import { query } from '../../models/db';
+import pool from '../../models/db';
+
 
 const getAllProducts = (req, res) => {
-  const findAllQuery = 'SELECT * FROM products';
-  try {
-    const { rows, rowCount } = query(findAllQuery);
-    console.log({ rows, rowCount });
-    console.log(res);
-    return res.status(200).json({ rows, rowCount });
-  } catch (error) {
-    return res.status(400).json(error);
-  }
+  console.log(req.body.productName);
+  const text = 'SELECT * FROM products';
+  pool.query(text, (err, data) => {
+    if (err) {
+      throw err;
+    }
+    return res.status(200).json(data.rows);
+  });
 };
 
 const getOneProduct = (req, res) => {
-  const findQuery = 'SELECT * FROM products WHERE id = $1';
-  try {
-    const { rows } = query(findQuery, [req.params.id]);
-    if (!rows[0]) {
-      return res.status(404).json('Hi! There\'s no product with that id');
+  const text = 'SELECT * FROM products WHERE id = $1';
+  pool.query(text, [req.params.id], (err, data) => {
+    if (err) {
+      throw err;
     }
-    return res.status(200).json(rows[0]);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
+    return res.status(200).json(data.rows[0]);
+  });
 };
 
 const addProduct = (req, res) => {
+  console.log(req.body.productName);
   const { body } = req;
-  const addQuery = `INSERT INTO
+  const text = `INSERT INTO
     products(productName, description, price, quantity)
     VALUES($1, $2, $3, $4)
     returning *`;
@@ -38,13 +36,12 @@ const addProduct = (req, res) => {
     body.price,
     body.quantity,
   ];
-
-  try {
-    const { rows } = query(addQuery, values);
-    return res.status(201).json(rows[0]);
-  } catch (error) {
-    return res.status(400).json(error);
-  }
+  pool.query(text, values, (err, data) => {
+    if (err) {
+      throw err;
+    }
+    return res.status(200).json(data.rows[0]);
+  });
 };
 
 const updateProduct = (req, res) => {
@@ -53,7 +50,9 @@ const updateProduct = (req, res) => {
     SET name=$1, description=$2, price=$3, quantity=$4, min=$5, modifiedAt=$6
     WHERE id=$7 returning *`;
   try {
-    const { rows } = query(findQuery, [req.params.id]);
+    const {
+      rows
+    } = query(findQuery, [req.params.id]);
     if (!rows[0]) {
       return res.status(404).json('Hi! There\'s no product with that id');
     }
@@ -76,7 +75,9 @@ const updateProduct = (req, res) => {
 const deleteProduct = (req, res) => {
   const deleteQuery = 'DELETE FROM products WHERE id=$1 returning *';
   try {
-    const { rows } = query(deleteQuery, [req.params.id]);
+    const {
+      rows
+    } = query(deleteQuery, [req.params.id]);
     if (!rows[0]) {
       return res.status(404).json('Hi! There\'s no product with that id');
     }
