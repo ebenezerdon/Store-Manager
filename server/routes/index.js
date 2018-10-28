@@ -21,9 +21,9 @@ const router = express.Router();
 }); */
 
 /* Products Router */
-router.get('/products', getAllProducts);
+router.post('/products', getAllProducts);
 router.get('/products/:id', getOneProduct);
-router.post('/products', addProduct);
+/* router.post('/products', addProduct); */
 router.delete('/products/:id', deleteProduct);
 
 /* Sales Router */
