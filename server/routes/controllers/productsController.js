@@ -28,13 +28,14 @@ const addProduct = (req, res) => {
   const { body } = req;
   const text = `INSERT INTO
     products(productname, description, price, quantity)
-    VALUES($1, $2, $3, $4)
+    VALUES($1, $2, $3, $4, $5)
     returning *`;
   const values = [
     body.productname,
     body.description,
     body.price,
     body.quantity,
+    body.min,
   ];
   pool.query(text, values, (err, data) => {
     if (!data.rowCount) {
@@ -48,16 +49,16 @@ const addProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
-  console.log(req.body);
   const { body } = req;
   const text = `UPDATE products
-    SET productname=$1, description=$2, price=$3, quantity=$4
-    WHERE id=$5 returning *`;
+    SET productname=$1, description=$2, price=$3, quantity=$4, min=$5
+    WHERE id=$6 returning *`;
   const values = [
     body.productname,
     body.description,
     body.price,
     body.quantity,
+    body.min,
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
