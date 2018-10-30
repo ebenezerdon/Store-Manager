@@ -12,6 +12,9 @@ const getAllSales = (req, res) => {
 };
 
 const getOneSale = (req, res) => {
+  if (!Number(req.params.id)) {
+    return res.status(404).json('Hi! The id has to be a number');
+  }
   const text = 'SELECT * FROM sales WHERE id = $1';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
@@ -38,9 +41,9 @@ const addSale = (req, res) => {
     body.attendant_id,
   ];
   pool.query(text, values, (err, data) => {
-    /* if (!data.rowCount) {
+    if (!data.rowCount) {
       return res.status(404).json('Hi! There\'s no sale record with that id');
-    } */
+    }
     if (err) {
       throw err;
     }
@@ -49,7 +52,6 @@ const addSale = (req, res) => {
 };
 
 const updateSale = (req, res) => {
-  console.log(req.body);
   const { body } = req;
   const text = `UPDATE sales
     SET productname=$1, productId=$2, price=$3, attendant_id=$4, quantity=$5
