@@ -25,7 +25,6 @@ const getOneProduct = (req, res) => {
 };
 
 const addProduct = (req, res) => {
-  console.log(req);
   const { body } = req;
   const text = `INSERT INTO
     products(productname, description, price, quantity, min)
