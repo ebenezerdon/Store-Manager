@@ -1,7 +1,7 @@
 /* import moment from 'moment'; */
 import pool from '../../models/db';
 
-const getAllsales = (req, res) => {
+const getAllSales = (req, res) => {
   const text = 'SELECT * FROM sales';
   pool.query(text, (err, data) => {
     if (err) {
@@ -27,20 +27,20 @@ const getOneSale = (req, res) => {
 const addSale = (req, res) => {
   const { body } = req;
   const text = `INSERT INTO
-    sales(productname, productId, attendant_id, price, quantity)
+    sales(productname, productId, price, attendant_id, quantity)
     VALUES($1, $2, $3, $4, $5)
     returning *`;
   const values = [
     body.productname,
     body.productId,
     body.price,
-    body.attendant_id,
     body.quantity,
+    body.attendant_id,
   ];
   pool.query(text, values, (err, data) => {
-    if (!data.rowCount) {
+    /* if (!data.rowCount) {
       return res.status(404).json('Hi! There\'s no sale record with that id');
-    }
+    } */
     if (err) {
       throw err;
     }
@@ -84,7 +84,7 @@ const deleteSale = (req, res) => {
 };
 
 export {
-  getAllsales,
+  getAllSales,
   getOneSale,
   addSale,
   updateSale,

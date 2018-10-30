@@ -25,9 +25,10 @@ const getOneProduct = (req, res) => {
 };
 
 const addProduct = (req, res) => {
+  console.log(req);
   const { body } = req;
   const text = `INSERT INTO
-    products(productname, description, price, quantity)
+    products(productname, description, price, quantity, min)
     VALUES($1, $2, $3, $4, $5)
     returning *`;
   const values = [
@@ -38,9 +39,6 @@ const addProduct = (req, res) => {
     body.min,
   ];
   pool.query(text, values, (err, data) => {
-    if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no product with that id');
-    }
     if (err) {
       throw err;
     }
@@ -62,6 +60,9 @@ const updateProduct = (req, res) => {
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
+    if (!data.rowCount) {
+      return res.status(404).json('Hi! There\'s no product with that id');
+    }
     if (err) {
       throw err;
     }
