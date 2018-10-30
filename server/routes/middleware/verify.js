@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
-import config from '../configuration/config';
+import dotenv from 'dotenv';
 
-const { secret } = config;
+dotenv.config();
+const secret = process.env.SECRET_KEY;
 
 const authenticate = (req, res, next) => {
   const token = req.headers.accesstoken;
@@ -11,7 +12,6 @@ const authenticate = (req, res, next) => {
     });
   }
   jwt.verify(token, secret, (error, decoded) => {
-      console.log(decoded);
     if (error) {
       return res.status(401).json({
         message: 'Invalid authencation! Can you check and try again?',
