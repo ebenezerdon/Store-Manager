@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
-import config from '../../configuration/config';
+import dotenv from 'dotenv';
 import pool from '../../models/db';
 
-const { secret } = config;
+dotenv.config();
+const secret = process.env.SECRET_KEY;
 
 const getAllUsers = (req, res) => {
   const text = 'SELECT * FROM users';
@@ -85,25 +86,22 @@ const deleteUser = (req, res) => {
 
 const loginUser = (req, res) => {
   const { body } = req;
-  const text = `SELECT * FROM users WHERE
-    emailaddress=$1 AND password=$2 AND type=$3`;
-  const values = [
-    body.emailaddress,
-    body.description,
-    body.type,
-  ];
-  pool.query(text, values, (err, data) => {
-    if (err) {
-      return (
-        res.status(404).json({
-          message: 'Hi! Can you check again? Ther\'s no user with that id',
-        }));
-    }
+  const query = {
+    text: `SELECT * FROM users WHERE
+    emailaddress = $1 AND password = $2 AND type=$3`,
+    values: [
+      body.emailaddress,
+      body.password,
+      body.type,
+    ],
+  };
+  pool.query(query).then((data) => {
+    if (!data.rowCount) return (res.status(404).json('Hi! Can you check again? Ther\'s no user with those details'));
     const token = jwt.sign(data.rows[0], secret, {
-      expiresIn: '24hr',
+      expiresIn: '1hr',
     });
     return res.status(200).json(token);
-  });
+  }).catch(err => (res.status(500).json(err)));
 };
 
 export {
