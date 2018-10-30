@@ -3,13 +3,13 @@ import {
   getAllProducts, getOneProduct, addProduct, deleteProduct, updateProduct,
 } from './controllers/productsController';
 import {
-  getAllSales, getOneSale, addSale, updateSale, deleteSale,
+  getAllSales, getOneSale, addSale,
 } from './controllers/salesController';
 import {
   getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser,
 } from './controllers/usersController';
 /* import { authenticate, verifyAdmin, verifyAttendant } from '../middleware/verify'; */
-/* import { 
+/* import {
   validateUserInput, validateProductInput, validateSaleInput,
 } from './middleware/validateinput'; */
 
@@ -31,8 +31,6 @@ router.delete('/products/:id', deleteProduct);
 router.get('/sales', getAllSales);
 router.get('/sales/:id', getOneSale);
 router.post('/sales', addSale);
-router.put('/sales/:id', updateSale);
-router.delete('/sales/:id', deleteSale);
 
 /* Users Router */
 router.get('/users', getAllUsers);
