@@ -1,15 +1,8 @@
 const validateUserInput = (req, res, next) => {
-  const { body } = req;
-  /* if (null(body)) {
-    return (
-      res.status(400).json('Hi! You\'d have to send something')
-    );
-  } */
-  if (!String(body.fullName)) {
-    return (
-      res.status(400).json('The user\'s name has to be a string!')
-    );
-  }
+  const {
+    body,
+  } = req;
+
   if (!String(body.emailAddress)) {
     return (
       res.status(400).json('The user\'s email adress has to be a string!')
@@ -28,9 +21,23 @@ const validateUserInput = (req, res, next) => {
   return next();
 };
 
+const validateUserSignup = (req, res, next) => {
+  const {
+    body,
+  } = req;
+  if (!String(body.fullname)) {
+    return (
+      res.status(400).json('The user\'s name has to be a string!')
+    );
+  }
+  return next();
+};
+
 const validateProductInput = (req, res, next) => {
-  const { body } = req;
-  if (!body.name || !body.description || !body.price || !body.quantity) {
+  const {
+    body,
+  } = req;
+  if (!body.productname || !body.description || !body.price || !body.quantity || !body.min) {
     return (
       res.status(400).json('Hi! Some details are missing. Can you check and try again?')
     );
@@ -39,7 +46,9 @@ const validateProductInput = (req, res, next) => {
 };
 
 const validateSaleInput = (req, res, next) => {
-  const { body } = req;
+  const {
+    body,
+  } = req;
   if (!body.productName || !body.price || !body.quantity) {
     return (
       res.status(400).json('Hi! Some details are missing. Can you check and try again?')
@@ -48,4 +57,9 @@ const validateSaleInput = (req, res, next) => {
   return next();
 };
 
-export { validateUserInput, validateProductInput, validateSaleInput };
+export {
+  validateUserSignup,
+  validateUserInput,
+  validateProductInput,
+  validateSaleInput,
+};

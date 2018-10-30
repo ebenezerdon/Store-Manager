@@ -8,10 +8,10 @@ import {
 import {
   getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser,
 } from './controllers/usersController';
-/* import { authenticate, verifyAdmin, verifyAttendant } from '../middleware/verify'; */
-/* import {
-  validateUserInput, validateProductInput, validateSaleInput,
-} from './middleware/validateinput'; */
+import { authenticate, verifyAdmin, verifyAttendant } from './middleware/verify';
+import {
+  validateUserInput, validateUserSignup, validateProductInput, validateSaleInput,
+} from './middleware/validateinput';
 
 const router = express.Router();
 
@@ -21,23 +21,23 @@ const router = express.Router();
 }); */
 
 /* Products Router */
-router.get('/products', getAllProducts);
-router.get('/products/:id', getOneProduct);
-router.post('/products', addProduct);
-router.put('/products/:id', updateProduct);
-router.delete('/products/:id', deleteProduct);
+router.get('/products', authenticate, getAllProducts);
+router.get('/products/:id', authenticate, getOneProduct);
+router.post('/products', authenticate, validateProductInput, verifyAdmin, addProduct);
+router.put('/products/:id', authenticate, validateProductInput, verifyAdmin, updateProduct);
+router.delete('/products/:id', authenticate, verifyAdmin, deleteProduct);
 
 /* Sales Router */
-router.get('/sales', getAllSales);
-router.get('/sales/:id', getOneSale);
-router.post('/sales', addSale);
+router.get('/sales', authenticate, verifyAdmin, getAllSales);
+router.get('/sales/:id', authenticate, verifyAdmin, getOneSale);
+router.post('/sales', authenticate, verifyAttendant, validateSaleInput, addSale);
 
 /* Users Router */
-router.get('/users', getAllUsers);
-router.get('/users/:id', getOneUser);
-router.put('/users/:id', updateUser);
-router.delete('/users/:id', deleteUser);
-router.post('/auth/signup', addUser);
-router.post('/auth/login', loginUser);
+router.get('/users', authenticate, verifyAdmin, getAllUsers);
+router.get('/users/:id', authenticate, verifyAdmin, getOneUser);
+router.put('/users/:id', authenticate, validateUserInput, verifyAdmin, updateUser);
+router.delete('/users/:id', authenticate, verifyAdmin, deleteUser);
+router.post('/auth/signup', validateUserInput, validateUserSignup, authenticate, verifyAdmin, addUser);
+router.post('/auth/login', validateUserInput, loginUser);
 
 export default router;
