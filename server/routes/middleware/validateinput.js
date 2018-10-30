@@ -21,10 +21,15 @@ const validateUserInput = (req, res, next) => {
   return next();
 };
 
+const validateId = (req, res, next) => {
+  if (!Number(req.params.id)) {
+    return res.status(404).json('Hi! The id has to be a number');
+  }
+  return next();
+};
+
 const validateUserSignup = (req, res, next) => {
-  const {
-    body,
-  } = req;
+  const { body } = req;
   if (!String(body.fullname)) {
     return (
       res.status(400).json('The user\'s name has to be a string!')
@@ -62,4 +67,5 @@ export {
   validateUserInput,
   validateProductInput,
   validateSaleInput,
+  validateId,
 };
