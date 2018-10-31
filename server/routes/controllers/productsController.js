@@ -15,7 +15,10 @@ const getOneProduct = (req, res) => {
   const text = 'SELECT * FROM products WHERE id = $1';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no product with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no product with that id',
+        success: false,
+      });
     }
     if (err) {
       throw err;
@@ -60,7 +63,10 @@ const updateProduct = (req, res) => {
   ];
   pool.query(text, values, (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no product with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no product with that id',
+        success: false,
+      });
     }
     if (err) {
       throw err;
@@ -73,12 +79,18 @@ const deleteProduct = (req, res) => {
   const text = 'DELETE FROM products WHERE id=$1 returning *';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no product with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no product with that id',
+        success: false,
+      });
     }
     if (err) {
       throw err;
     }
-    return res.status(204).json('Cool. Deleted!');
+    return res.status(200).json({
+      message: 'Deleted!',
+      success: true,
+    });
   });
 };
 
