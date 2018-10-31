@@ -3,7 +3,7 @@ import {
   getAllProducts, getOneProduct, addProduct, deleteProduct, updateProduct,
 } from './controllers/productsController';
 import {
-  getAllSales, getOneSale, addSale,
+  getAllSales, getOneSale, addSale, updateSale, deleteSale,
 } from './controllers/salesController';
 import {
   getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser,
@@ -31,13 +31,17 @@ router.delete('/products/:id', authenticate, verifyAdmin, deleteProduct);
 router.get('/sales', authenticate, verifyAdmin, getAllSales);
 router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
 router.post('/sales', authenticate, verifyAttendant, validateSaleInput, addSale);
+router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
+router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
+router.put('/sales/:id', authenticate, verifyAdmin, validateId, validateSaleInput, updateSale);
+router.delete('/sales/:id', authenticate, verifyAdmin, validateId, deleteSale);
 
 /* Users Router */
 router.get('/users', authenticate, verifyAdmin, getAllUsers);
 router.get('/users/:id', authenticate, verifyAdmin, validateId, getOneUser);
 router.put('/users/:id', authenticate, validateUserInput, validateId, verifyAdmin, updateUser);
 router.delete('/users/:id', authenticate, verifyAdmin, validateId, deleteUser);
-router.post('/auth/signup', validateUserInput, validateUserSignup, authenticate, verifyAdmin, addUser);
+router.post('/auth/signup', authenticate, validateUserInput, validateUserSignup, verifyAdmin, addUser);
 router.post('/auth/login', validateUserInput, loginUser);
 
 export default router;

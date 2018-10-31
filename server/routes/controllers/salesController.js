@@ -4,9 +4,7 @@ import pool from '../../models/db';
 const getAllSales = (req, res) => {
   const text = 'SELECT * FROM sales';
   pool.query(text, (err, data) => {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows);
   });
 };
@@ -20,9 +18,7 @@ const getOneSale = (req, res) => {
     if (!data.rowCount) {
       return res.status(404).json('Hi! There\'s no sale record with that id');
     }
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -44,9 +40,7 @@ const addSale = (req, res) => {
     if (!data.rowCount) {
       return res.status(404).json('Hi! There\'s no sale record with that id');
     }
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -65,9 +59,7 @@ const updateSale = (req, res) => {
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -76,12 +68,18 @@ const deleteSale = (req, res) => {
   const text = 'DELETE FROM sales WHERE id=$1 returning *';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no sale record with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no sale record with that id',
+        success: false,
+      });
     }
     if (err) {
       throw err;
     }
-    return res.status(204).json('Cool. Deleted!');
+    return res.status(200).json({
+      message: 'Deleted!',
+      success: true,
+    });
   });
 };
 
