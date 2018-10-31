@@ -9,7 +9,7 @@ services:
   - postgresql
 
 env:
-  - DB_USERNAME=user DB_PASSWORD=ebenezer DBNAME=storemanagertest
+  - DB_USERNAME=user DB_PASSWORD=ebenezer DBNAME=storemanager
 
 before_script:
   - psql -c 'create database storemanager;' -U postgres
