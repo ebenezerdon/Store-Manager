@@ -6,6 +6,12 @@ node_js:
 install: 
   - npm install
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database storemanagertest;' -U postgres
+  - psql -c 'CREATE USER User WITH PASSWORD 'ebenezer';' -U postgres
 env:
   - NODE_ENV=test
 
