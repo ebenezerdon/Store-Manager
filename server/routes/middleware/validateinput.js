@@ -23,7 +23,7 @@ const validateUserInput = (req, res, next) => {
 
 const validateId = (req, res, next) => {
   if (!Number(req.params.id)) {
-    return res.status(404).json('Hi! The id has to be a number');
+    return res.status(401).json('Hi! The id has to be a number');
   }
   return next();
 };
@@ -54,7 +54,7 @@ const validateSaleInput = (req, res, next) => {
   const {
     body,
   } = req;
-  if (!body.productName || !body.price || !body.quantity) {
+  if (!body.productname || !body.price || !body.quantity || !body.attendant_id) {
     return (
       res.status(400).json('Hi! Some details are missing. Can you check and try again?')
     );
