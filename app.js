@@ -6,7 +6,7 @@ import router from './server/routes/index';
 
 const app = express();
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 5002);
 app.set('json spaces', 2);
 
 app.use(logger('dev'));

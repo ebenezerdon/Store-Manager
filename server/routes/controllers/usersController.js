@@ -8,9 +8,7 @@ const secret = process.env.SECRET_KEY;
 const getAllUsers = (req, res) => {
   const text = 'SELECT * FROM users';
   pool.query(text, (err, data) => {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows);
   });
 };
@@ -21,9 +19,7 @@ const getOneUser = (req, res) => {
     if (!data.rowCount) {
       return res.status(404).json('Hi! There\'s no user with that id');
     }
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -41,9 +37,7 @@ const addUser = (req, res) => {
     body.type,
   ];
   pool.query(text, values, (err, data) => {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -62,11 +56,12 @@ const updateUser = (req, res) => {
   ];
   pool.query(text, values, (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no user with that id');
+      return res.status(200).json({
+        message: 'Hi! There\'s no user with that id',
+        success: false,
+      });
     }
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
@@ -75,12 +70,16 @@ const deleteUser = (req, res) => {
   const text = 'DELETE FROM users WHERE id=$1 returning *';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no user with that id');
+      return res.status(200).json({
+        message: 'Hi! There\'s no user with that id',
+        success: false,
+      });
     }
-    if (err) {
-      throw err;
-    }
-    return res.status(204).json('So.. The user has been removed');
+    if (err) throw err;
+    return res.status(200).json({
+      message: 'The user has been removed',
+      success: true,
+    });
   });
 };
 
@@ -98,7 +97,7 @@ const loginUser = (req, res) => {
   pool.query(query).then((data) => {
     if (!data.rowCount) return (res.status(404).json('Hi! Can you check again? Ther\'s no user with those details'));
     const token = jwt.sign(data.rows[0], secret, {
-      expiresIn: '1hr',
+      expiresIn: '24hrs',
     });
     return res.status(200).json(token);
   }).catch(err => (res.status(500).json(err)));
