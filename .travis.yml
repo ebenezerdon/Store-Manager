@@ -3,20 +3,18 @@ language: node_js
 node_js:
   - "stable"
 
-install: 
-  - npm install
+install: npm install
 
 services:
   - postgresql
 
+env:
+  - DB_USERNAME=User DB_PASSWORD=ebenezer DBNAME=storemanagertest
+
 before_script:
   - psql -c 'create database storemanagertest;' -U postgres
   - psql -c 'CREATE USER User WITH PASSWORD 'ebenezer';' -U postgres
-env:
-  - NODE_ENV=test
 
-test:
-  - npm test
+script: npm test
 
-after_success:
-  - npm run coveralls
+after_success: npm run coveralls
