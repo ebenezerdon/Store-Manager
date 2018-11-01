@@ -158,6 +158,30 @@ describe('Create New user', () => {
           });
       });
   });
+  it('it should return error if email already exists', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .post('/api/v1/auth/signup')
+          .send({
+            fullname: 'admin',
+            emailaddress: 'admin@gmail.com',
+            password: 'admin',
+            type: 'admin',
+          })
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(400);
+            done();
+          });
+      });
+  });
 
   it('should return error if req has no data', (done) => {
     chai.request(app).post('/api/v1/auth/signup')

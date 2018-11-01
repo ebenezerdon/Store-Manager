@@ -23,6 +23,28 @@ const getOneSale = (req, res) => {
   });
 };
 
+const getMySale = (req, res) => {
+  const text = 'SELECT * FROM sales WHERE attendant_id = $1';
+  pool.query(text, [req.decoded.id], (err, data) => {
+    if (!data.rowCount) {
+      return res.status(404).json('Hi! There\'s no sale record with that attendant_id');
+    }
+    if (err) throw err;
+    return res.status(200).json(data.rows[0]);
+  });
+};
+
+const getAttSale = (req, res) => {
+  const text = 'SELECT * FROM sales WHERE attendant_id = $1';
+  pool.query(text, [req.params.id], (err, data) => {
+    if (!data.rowCount) {
+      return res.status(404).json('Hi! There\'s no sale record with that attendant_id');
+    }
+    if (err) throw err;
+    return res.status(200).json(data.rows[0]);
+  });
+};
+
 const addSale = (req, res) => {
   const { body } = req;
   const text = `INSERT INTO
@@ -86,6 +108,8 @@ const deleteSale = (req, res) => {
 export {
   getAllSales,
   getOneSale,
+  getMySale,
+  getAttSale,
   addSale,
   updateSale,
   deleteSale,
