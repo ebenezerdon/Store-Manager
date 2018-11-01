@@ -115,7 +115,6 @@ describe('Get sales', () => {
             productid: 4,
             price: '56',
             quantity: 5,
-            attendant_id: 45,
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -170,11 +169,11 @@ describe('Create New sale', () => {
             productid: 4,
             price: '56',
             quantity: 5,
-            attendant_id: 45,
           })
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
+            expect(data.body.attendant_id).to.equal(2);
             done();
           });
       });

@@ -48,7 +48,7 @@ const getAttSale = (req, res) => {
 const addSale = (req, res) => {
   const { body } = req;
   const text = `INSERT INTO
-    sales(productname, productId, price, attendant_id, quantity)
+    sales(productname, productId, price, quantity, attendant_id)
     VALUES($1, $2, $3, $4, $5)
     returning *`;
   const values = [
@@ -56,7 +56,7 @@ const addSale = (req, res) => {
     body.productId,
     body.price,
     body.quantity,
-    body.attendant_id,
+    req.decoded.id,
   ];
   pool.query(text, values, (err, data) => {
     if (!data.rowCount) {
