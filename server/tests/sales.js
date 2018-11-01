@@ -2,17 +2,18 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app';
 
-const { expect } = chai;
-
+const {
+  expect,
+} = chai;
 chai.use(chaiHttp);
 
 /* Test for get all sales */
-describe('Get Sales', () => {
-  it('it should GET all sale records', (done) => {
-    chai.request(app).post('/api/v1/login')
+describe('Get sales', () => {
+  it('it should GET all sales record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
         type: 'admin',
       })
       .end((err, res) => {
@@ -20,60 +21,193 @@ describe('Get Sales', () => {
         chai.request(app)
           .get('/api/v1/sales')
           .set('accesstoken', token)
-          .end((error, data) => {
-          });
+          .end((error, data) => {});
       });
     done();
   });
-
-  it('it should have status 401 if user not logged in',
-    (done) => {
-      chai.request(app).get('/api/v1/sales')
-        .end((error, res) => {
-          expect(res).to.have.status(401);
-        }); done();
-    });
-});
-
-describe('Get A sale record', () => {
-  it('it should return a specific sale record', (done) => {
-    chai.request(app).post('/api/v1/login')
+  it('should GET a specific sale record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
         type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
-        chai.request(app).get('/api/v1/sales/1')
+        chai.request(app)
+          .get('/api/v1/sales/1')
           .set('accesstoken', token)
           .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(1).to.equal(data.body.id);
             done();
           });
       });
   });
-
-  it('it should have a status 404', (done) => {
-    chai.request(app).post('/api/v1/login')
+  it('should GET attendant sale record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
       .send({
-        emailAdress: 'sarahbeth@gmail.com',
-        password: 'supersecretstuff',
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
         type: 'admin',
       })
       .end((err, res) => {
-        const { token } = res.body;
-        chai.request(app).get('/api/v1/sales/1000')
+        const token = res.body;
+        chai.request(app)
+          .get('/api/v1/sales/att/41')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(41).to.equal(data.body.attendant_id);
+            done();
+          });
+      });
+  });
+  it('it should return status 401 if id not valid', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .get('/api/v1/sales/d')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(401);
+            done();
+          });
+      });
+  });
+  it('GET should return unauthorized user if user not admin', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'attendant@gmail.com',
+        password: 'attendantpassword',
+        type: 'attendant',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .get('/api/v1/sales')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(401);
+            done();
+          });
+      });
+  });
+  it('POST should return unauthorized user if user not attendant', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .post('/api/v1/sales')
+          .send({
+            productname: 'Ankara',
+            productid: 4,
+            price: '56',
+            quantity: 5,
+          })
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(401);
+            done();
+          });
+      });
+  });
+  it('should have a status 404 if sale not available', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .get('/api/v1/sales/1000000000')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(404);
-            expect(res.body).to.be.an('object');
             done();
           });
       });
   });
 
-  it('it should return err if user not logged in', (done) => {
-    chai.request(app).get('/api/v1/sales/2')
+  it('it should return unauthorized user if user not logged in',
+    (done) => {
+      chai.request(app).get('/api/v1/sales')
+        .end((error, res) => {
+          expect(res).to.have.status(401);
+          done();
+        });
+    });
+});
+
+describe('Create New sale', () => {
+  it('it should create a new sale', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'attendant@gmail.com',
+        password: 'attendantpassword',
+        type: 'attendant',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .post('/api/v1/sales')
+          .send({
+            productname: 'Ankara',
+            productid: 4,
+            price: '56',
+            quantity: 5,
+          })
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(data.body.attendant_id).to.equal(2);
+            done();
+          });
+      });
+  });
+
+  it('should return error if req has no data', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'attendant@gmail.com',
+        password: 'attendantpassword',
+        type: 'attendant',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .post('/api/v1/sales')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(400);
+            done();
+          });
+      });
+  });
+
+
+  it('it should have status 401 if user not logged in', (done) => {
+    chai.request(app).post('/api/v1/sales')
+      .send({
+        productname: 'Ankara',
+        productid: 4,
+        price: '56',
+        quantity: 5,
+        attendant_id: 45,
+      })
       .end((error, res) => {
         expect(res).to.have.status(401);
         done();
@@ -81,42 +215,71 @@ describe('Get A sale record', () => {
   });
 });
 
-describe('Create New sale', () => {
-  it('create a new sale', (done) => {
-    chai.request(app).post('/api/v1/login')
+describe('Update sales record', () => {
+  it('it should update sales record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com',
-        password: 'realsecret',
-        type: 'attendant',
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
       })
       .end((err, res) => {
-        const { token } = res.body;
-        chai.request(app).post('/api/v1/sales')
+        const token = res.body;
+        chai.request(app)
+          .put('/api/v1/sales/1')
           .send({
-            productName: 'Ankara',
-            description: 'Akara for everybody',
-            quantity: '4',
-            price: '₦5500',
+            productname: 'Ankara',
+            productid: 4,
+            price: '56',
+            quantity: 5,
+            attendant_id: 45,
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(201);
-            expect(data.body).to.be.an('object');
+            expect(data).to.have.status(200);
+            expect(data.body.productname).to.equal('Ankara');
+            done();
+          });
+      });
+  });
+
+  it('it should return unauthorized user if user not admin', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'attendant@gmail.com',
+        password: 'attendantpassword',
+        type: 'attendant',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .put('/api/v1/sales/1')
+          .send({
+            productname: 'Ankara',
+            productid: 4,
+            price: '56',
+            quantity: 5,
+            attendant_id: 45,
+          })
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(401);
             done();
           });
       });
   });
 
   it('it should return error if req has no data', (done) => {
-    chai.request(app).post('/api/v1/login')
+    chai.request(app).post('/api/v1/auth/login')
       .send({
-        emailAdress: 'joshodogwu@gmail.com',
-        password: 'realsecret',
-        type: 'attendant',
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
       })
       .end((err, res) => {
-        const { token } = res.body;
-        chai.request(app).post('/api/v1/sales')
+        const token = res.body;
+        chai.request(app)
+          .put('/api/v1/sales/2')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(400);
@@ -126,16 +289,60 @@ describe('Create New sale', () => {
   });
 
   it('it should have status 401 if user not logged in', (done) => {
-    chai.request(app).post('/api/v1/sales')
+    chai.request(app).put('/api/v1/sales/2')
       .send({
-        name: 'Ankara',
-        description: 'Akara for everybody',
-        quantity: '4',
-        price: '₦5500',
+        id: 3,
+        productname: 'Ankara',
+        productid: 4,
+        price: '56',
+        quantity: 5,
+        attendant_id: 45,
       })
       .end((error, res) => {
         expect(res).to.have.status(401);
         done();
+      });
+  });
+});
+
+describe('Delete sale record', () => {
+  it('should delete a sale record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .delete('/api/v1/sales/2')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(data.body.message).to.equal('Deleted!');
+            expect(data.body.success).to.equal(true);
+            done();
+          });
+      });
+  });
+
+  it('it should return unauthorized user if user not admin', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'attendant@gmail.com',
+        password: 'attendantpassword',
+        type: 'attendant',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .delete('/api/v1/sales/2')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(401);
+            done();
+          });
       });
   });
 });
