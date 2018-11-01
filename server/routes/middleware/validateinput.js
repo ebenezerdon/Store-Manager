@@ -35,6 +35,13 @@ const validateUserSignup = (req, res, next) => {
       res.status(400).json('The user\'s name has to be a string!')
     );
   }
+  if(!body.fullname || !body.emailaddress 
+    || !body.type || !body.password) {
+    return res.status(400).json({
+      message: 'Some details are missing. Maybe check and try again?',
+      success: false
+    });
+  }
   return next();
 };
 

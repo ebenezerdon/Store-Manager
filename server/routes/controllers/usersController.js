@@ -25,25 +25,38 @@ const getOneUser = (req, res) => {
 };
 
 const addUser = (req, res) => {
-  const { body } = req;
-  const text = `INSERT INTO
-    users(fullname, emailaddress, password, type)
-    VALUES($1, $2, $3, $4)
-    returning *`;
-  const values = [
-    body.fullname,
-    body.emailaddress,
-    body.password,
-    body.type,
-  ];
-  pool.query(text, values, (err, data) => {
-    if (err) throw err;
-    return res.status(200).json(data.rows[0]);
+  const {
+    body
+  } = req;
+  const text = 'SELECT * FROM users WHERE emailaddress = $1';
+  pool.query(text, [body.emailaddress], (err, data) => {
+    if (data.rowCount) {
+      return res.status(400).json({
+        message: 'There\'s already a user with that email address. Maybe you want to login?',
+        success: false,
+      });
+    }
+    const addQuery = `INSERT INTO
+        users(fullname, emailaddress, password, type)
+        VALUES($1, $2, $3, $4)
+        returning *`;
+    const values = [
+      body.fullname,
+      body.emailaddress,
+      body.password,
+      body.type,
+    ];
+    pool.query(addQuery, values, (err, data) => {
+      if (err) throw err;
+      return res.status(200).json(data.rows[0]);
+    });
   });
 };
 
 const updateUser = (req, res) => {
-  const { body } = req;
+  const {
+    body
+  } = req;
   const text = `UPDATE users
     SET fullname=$1, emailaddress=$2, password=$3, type=$4
     WHERE id=$5 returning *`;
@@ -52,6 +65,26 @@ const updateUser = (req, res) => {
     body.emailaddress,
     body.password,
     body.type,
+    req.params.id,
+  ];
+  pool.query(text, values, (err, data) => {
+    if (!data.rowCount) {
+      return res.status(200).json({
+        message: 'Hi! There\'s no user with that id',
+        success: false,
+      });
+    }
+    if (err) throw err;
+    return res.status(200).json(data.rows[0]);
+  });
+};
+
+const makeAdmin = (req, res) => {
+  const text = `UPDATE users
+    SET type=$1
+    WHERE id=$2 returning *`;
+  const values = [
+    'admin',
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
@@ -84,7 +117,9 @@ const deleteUser = (req, res) => {
 };
 
 const loginUser = (req, res) => {
-  const { body } = req;
+  const {
+    body
+  } = req;
   const query = {
     text: `SELECT * FROM users WHERE
     emailaddress = $1 AND password = $2 AND type=$3`,
@@ -110,4 +145,5 @@ export {
   updateUser,
   deleteUser,
   loginUser,
+  makeAdmin,
 };
