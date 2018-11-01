@@ -1,24 +1,28 @@
-@import "lib/table.css";
 @import "lib/nav.css";
-@import "lib/footer.css";
-@import "lib/button.css";
+@import "lib/table.css";
+
 
 body {
     overflow: visible;
+    max-width: 150%;
+}
+
+table {
+    overflow: visible;
+    margin-top: 33px;
 }
 
 main {
-    width: 90%;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 50px;
+    margin-top: 115px;
 }
 
-.green-button {
-    margin: 10px;
-    background: #262734;
+button {
+    background:linear-gradient(to bottom, #283758 5%, #1d2942 100%);
+    color:#ffffff;
 }
 
-.green-button:hover {
-    background: #16161d;
+button a {
+    color: white;
+    text-decoration: none;
+    font-size:15px;
 }
