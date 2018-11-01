@@ -3,10 +3,10 @@ import {
   getAllProducts, getOneProduct, addProduct, deleteProduct, updateProduct,
 } from './controllers/productsController';
 import {
-  getAllSales, getOneSale, addSale, updateSale, deleteSale,
+  getAllSales, getOneSale, getMySale, getAttSale, addSale, updateSale, deleteSale,
 } from './controllers/salesController';
 import {
-  getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser,
+  getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser, makeAdmin,
 } from './controllers/usersController';
 import { authenticate, verifyAdmin, verifyAttendant } from './middleware/verify';
 import {
@@ -19,7 +19,8 @@ const router = express.Router();
 /* router.get('/', (req, res, next) => {
   res.send('index.html');
 }); */
-
+router.get('/sales/att', authenticate, verifyAttendant, getMySale);
+router.get('/sales/att/:id', authenticate, verifyAdmin, getAttSale);
 /* Products Router */
 router.get('/products', authenticate, getAllProducts);
 router.get('/products/:id', authenticate, validateId, getOneProduct);
@@ -32,7 +33,7 @@ router.get('/sales', authenticate, verifyAdmin, getAllSales);
 router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
 router.post('/sales', authenticate, verifyAttendant, validateSaleInput, addSale);
 router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
-router.get('/sales/:id', authenticate, verifyAdmin, validateId, getOneSale);
+
 router.put('/sales/:id', authenticate, verifyAdmin, validateId, validateSaleInput, updateSale);
 router.delete('/sales/:id', authenticate, verifyAdmin, validateId, deleteSale);
 
@@ -40,6 +41,7 @@ router.delete('/sales/:id', authenticate, verifyAdmin, validateId, deleteSale);
 router.get('/users', authenticate, verifyAdmin, getAllUsers);
 router.get('/users/:id', authenticate, verifyAdmin, validateId, getOneUser);
 router.put('/users/:id', authenticate, validateUserInput, validateId, verifyAdmin, updateUser);
+router.put('/users/makeadmin/:id', authenticate, validateId, verifyAdmin, makeAdmin);
 router.delete('/users/:id', authenticate, verifyAdmin, validateId, deleteUser);
 router.post('/auth/signup', authenticate, validateUserInput, validateUserSignup, verifyAdmin, addUser);
 router.post('/auth/login', validateUserInput, loginUser);

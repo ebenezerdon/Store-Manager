@@ -100,6 +100,33 @@ describe('Create New Product', () => {
       });
   });
 
+  it('should return error if product already exists', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .post('/api/v1/products')
+          .send({
+            productname: 'Long Sleeve T shirt',
+            description: 'Really cool stuff',
+            price: '52000',
+            quantity: 41,
+            min: 25,
+          })
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(400);
+            expect(data.body.success).to.equal(false);
+            done();
+          });
+      });
+  });
+
   it('it should return unauthorized user if user not admin', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({

@@ -45,6 +45,7 @@ const verifyAttendant = (req, res, next) => {
   return next();
 };
 
+
 export {
   authenticate,
   verifyAdmin,

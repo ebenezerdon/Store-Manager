@@ -44,6 +44,25 @@ describe('Get sales', () => {
           });
       });
   });
+  it('should GET attendant sale record', (done) => {
+    chai.request(app).post('/api/v1/auth/login')
+      .send({
+        emailaddress: 'admin@gmail.com',
+        password: 'adminpassword',
+        type: 'admin',
+      })
+      .end((err, res) => {
+        const token = res.body;
+        chai.request(app)
+          .get('/api/v1/sales/att/41')
+          .set('accesstoken', token)
+          .end((error, data) => {
+            expect(data).to.have.status(200);
+            expect(41).to.equal(data.body.attendant_id);
+            done();
+          });
+      });
+  });
   it('it should return status 401 if id not valid', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
