@@ -3,11 +3,15 @@ language: node_js
 node_js:
   - "stable"
 
-install: 
-  - npm install
+install: npm install
 
-test:
-  - npm test
+services:
+  - postgresql
 
-after_success:
-  - npm run coveralls
+before_script:
+  - psql -c 'create database storemanagertest;' -U postgres
+
+script: npm test
+
+
+after_success: npm run coveralls
