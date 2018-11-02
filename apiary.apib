@@ -1,80 +1,114 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://newstoremanager.herokuapp.com/
 
-# Store Manager
+# STORE-MANAGER
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store.
 
-## Questions Collection [/questions]
+## Registration [/api/v1/auth/signup]
 
-### List All Questions [GET]
+### Sign up [POST]
 
-+ Response 200 (application/json)
+The store admin can create a new user through this endpoint. This resource takes a JSON 
+payload as part of the request. Response returns 'success' with the created user details. `fullname`, `emailaddress`, `password` and `type` are required. Type specifies
+whether the user is either a store admin or a store attendant.
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
 
-### Create a New Question [POST]
++ Headers
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+        Content-Type: application/json
+
+        
++ Request (application/json)
+
+        {
+            "email": "user@domain.com",
+            "fullname": "Userfullname",
+            "password": "Userpassword",
+            "type": "usertype"
+        }
+
+
+## Authentication [/api/v1/auth/login]
+
+### Log in [POST]
+
+A user can log in by sending a json of `emailaddress`, `password` and `type` to this endpoint. Response
+returns a token which can be used on other routes.
+This action returns a 200 status code along with a JSON body. The token should be sent
+in the header of every request as `accesstoken`.
+
++ Headers
+
+        Content-Type: application/json
+
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "emailaddress": "user@domain.com",
+            "password": "userpassword"
+        }
+        
+## Sale Order [/api/v1/auth/sales]
+
+### Create sale order [POST]
+
+A store attendant can create a sale order by sending a json of `productname`, `productId`, `price`, and `quantity` to this endpoint. Response
+returns a success message with the new created sale order. This endpoint is only accessible by the store attendant.
+This action returns a 200 status code along with a JSON body.
+
+
++ Request (application/json)
+
+        {
+            "productname": "productname",
+            "productId": "userpassword",
+            "price": "2340",
+            "quantity": 4
         }
 
-+ Response 201 (application/json)
 
-    + Headers
+### GET all sale orders [GET]
 
-            Location: /questions/2
+A store admin can get all sale orders by sending a get request to this endpoint. Response
+returns a success message with all created sale orders.
 
-    + Body
+### GET sale order by sale id [GET]
+[/api/v1/auth/sales/:id]
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+A store admin can get a sale order by id by sending a get request to this endpoint. Response
+returns a success message with the matching sale order.
+
+### GET sale order by store attendant id[GET]
+[/api/v1/auth/sales/att/:id]
+
+A store admin can get all sale orders of a particular store attendant by sending a get request to this endpoint. 
+Response returns a success message with the matching sale orders.
+This endpoint is only accessible by the store admin.
+
+### GET sale order of store attendant[GET]
+[/api/v1/auth/sales/att]
+
+A store attendant can get all sale orders he or she has created by sending a get request to this endpoint. 
+Response returns a success message with the matching sale orders. This endpoint is only accessible
+by the store attendant.
+
+### Update a sale order [PUT]
+
+A store admin can update a sale order by sending a json of `productname`, `productId`, `price`, and `quantity` to this endpoint. Response
+returns a success message with the new created sale order. This endpoint is only accessible by the admin.
+This action returns a 200 status code along with a JSON body.
+
+
++ Request (application/json)
+
+        {
+            "productname": "productname",
+            "productId": "userpassword",
+            "price": "2340",
+            "quantity": 4
+        }
+### DELETE a sale order [PUT]
+
+A store admin can delete a sale order by sending a `delete` request to this endpoint. This endpoint is only accessible by the admin.
