@@ -3,7 +3,7 @@ import {
   getAllProducts, getOneProduct, addProduct, deleteProduct, updateProduct,
 } from './controllers/productsController';
 import {
-  getAllSales, getOneSale, getMySale, getAttSale, addSale, updateSale, deleteSale,
+  getAllSales, getOneSale, getMySale, getAttendantSale, addSale, updateSale, deleteSale,
 } from './controllers/salesController';
 import {
   getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser, makeAdmin,
@@ -19,8 +19,8 @@ const router = express.Router();
 /* router.get('/', (req, res, next) => {
   res.send('index.html');
 }); */
-router.get('/sales/att', authenticate, verifyAttendant, getMySale);
-router.get('/sales/att/:id', authenticate, verifyAdmin, getAttSale);
+router.get('/sales/user', authenticate, verifyAttendant, getMySale);
+router.get('/sales/users/:id', authenticate, verifyAdmin, getAttendantSale);
 /* Products Router */
 router.get('/products', authenticate, getAllProducts);
 router.get('/products/:id', authenticate, validateId, getOneProduct);
