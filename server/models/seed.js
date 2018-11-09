@@ -57,7 +57,7 @@ const seedSales = () => {
 
 const seedUsers = () => {
   const text1 = `INSERT INTO
-  users(fullname, emailaddress, password, type)
+  users(fullname, emailaddress, password, role)
     VALUES($1, $2, $3, $4)`;
   const values1 = [
     'Admin',
@@ -66,7 +66,7 @@ const seedUsers = () => {
     'admin',
   ];
   const text2 = `INSERT INTO
-  users(fullname, emailaddress, password, type)
+  users(fullname, emailaddress, password, role)
     VALUES($1, $2, $3, $4)`;
   const values2 = [
     'attendant',
