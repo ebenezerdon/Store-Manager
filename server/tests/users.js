@@ -14,7 +14,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -30,7 +29,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -49,7 +47,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -67,7 +64,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -85,7 +81,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -95,7 +90,7 @@ describe('Get users', () => {
             fullname: 'Josh Odogwu',
             emailaddress: 'joshodogwu@gmail.com',
             password: 'passswordy',
-            type: 'attendant',
+            role: 'admin',
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -109,7 +104,6 @@ describe('Get users', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -139,7 +133,6 @@ describe('Create New user', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -149,7 +142,7 @@ describe('Create New user', () => {
             fullname: 'Josh Odogwu',
             emailaddress: 'joshodogwu@gmail.com',
             password: 'passswordy',
-            type: 'attendant',
+            role: 'attendant',
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -163,7 +156,6 @@ describe('Create New user', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -173,7 +165,7 @@ describe('Create New user', () => {
             fullname: 'admin',
             emailaddress: 'admin@gmail.com',
             password: 'admin',
-            type: 'admin',
+            
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -188,7 +180,6 @@ describe('Create New user', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;

@@ -13,11 +13,6 @@ const validateUserInput = (req, res, next) => {
       res.status(400).json('The user\'s password has to be more than 6 characters!')
     );
   }
-  if (!body.type) {
-    return (
-      res.status(400).json('There really has to be a type!')
-    );
-  }
   return next();
 };
 
@@ -36,7 +31,7 @@ const validateUserSignup = (req, res, next) => {
     );
   }
   if(!body.fullname || !body.emailaddress 
-    || !body.type || !body.password) {
+    || !body.role || !body.password) {
     return res.status(400).json({
       message: 'Some details are missing. Maybe check and try again?',
       success: false
