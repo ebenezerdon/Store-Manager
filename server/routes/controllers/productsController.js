@@ -38,15 +38,16 @@ const addProduct = (req, res) => {
       });
     }
     const addQuery = `INSERT INTO
-    products(productname, description, price, quantity, min)
-    VALUES($1, $2, $3, $4, $5)
+    products(productname, description, productimage, price, quantity, minallowed)
+    VALUES($1, $2, $3, $4, $5, $6)
     returning *`;
     const values = [
       body.productname,
       body.description,
+      body.productimage,
       body.price,
       body.quantity,
-      body.min,
+      body.minallowed,
     ];
     pool.query(addQuery, values, (err, data) => {
       if (err) {
@@ -58,18 +59,17 @@ const addProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
-  const {
-    body
-  } = req;
+  const { body } = req;
   const text = `UPDATE products
-    SET productname=$1, description=$2, price=$3, quantity=$4, min=$5
-    WHERE id=$6 returning *`;
+    SET productname=$1, description=$2, productimage=$3, price=$4, quantity=$5, minallowed=$6
+    WHERE id=$7 returning *`;
   const values = [
     body.productname,
     body.description,
+    body.productimage,
     body.price,
     body.quantity,
-    body.min,
+    body.minallowed,
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
