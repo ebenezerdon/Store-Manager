@@ -14,7 +14,6 @@ describe('Get Products', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -30,7 +29,6 @@ describe('Get Products', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -49,7 +47,6 @@ describe('Get Products', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -79,7 +76,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -106,7 +102,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -134,7 +129,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -161,7 +155,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -197,7 +190,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -225,7 +217,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -252,7 +243,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -288,7 +278,6 @@ describe('Delete Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
