@@ -117,9 +117,7 @@ const deleteUser = (req, res) => {
 };
 
 const loginUser = (req, res) => {
-  const {
-    body
-  } = req;
+  const { body } = req;
   const query = {
     text: `SELECT * FROM users WHERE
     emailaddress = $1 AND password = $2 AND type=$3`,
