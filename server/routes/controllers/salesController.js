@@ -11,12 +11,18 @@ const getAllSales = (req, res) => {
 
 const getOneSale = (req, res) => {
   if (!Number(req.params.id)) {
-    return res.status(404).json('Hi! The id has to be a number');
+    return res.status(400).json({
+      message: 'Hi! The id has to be a number',
+      success: false,
+    });
   }
   const text = 'SELECT * FROM sales WHERE id = $1';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no sale record with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no sale record with that id',
+        success: false,
+      });
     }
     if (err) throw err;
     return res.status(200).json(data.rows[0]);
@@ -27,18 +33,24 @@ const getMySale = (req, res) => {
   const text = 'SELECT * FROM sales WHERE attendant_id = $1';
   pool.query(text, [req.decoded.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no sale record with that attendant_id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no sale record with that attendant_id',
+        success: false,
+      });
     }
     if (err) throw err;
     return res.status(200).json(data.rows[0]);
   });
 };
 
-const getAttSale = (req, res) => {
+const getAttendantSale = (req, res) => {
   const text = 'SELECT * FROM sales WHERE attendant_id = $1';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no sale record with that attendant_id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no sale record with that attendant_id',
+        success: false,
+      });
     }
     if (err) throw err;
     return res.status(200).json(data.rows[0]);
@@ -59,8 +71,11 @@ const addSale = (req, res) => {
     req.decoded.id,
   ];
   pool.query(text, values, (err, data) => {
-    if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no sale record with that id');
+    if (!data.rowCount) { 
+      return res.status(404).json({
+        message: 'Hi! There\'s no sale record with that id',
+        success: false,
+      });
     }
     if (err) throw err;
     return res.status(200).json(data.rows[0]);
@@ -99,7 +114,7 @@ const deleteSale = (req, res) => {
       throw err;
     }
     return res.status(200).json({
-      message: 'Deleted!',
+      message: 'Sale record deleted!',
       success: true,
     });
   });
@@ -109,7 +124,7 @@ export {
   getAllSales,
   getOneSale,
   getMySale,
-  getAttSale,
+  getAttendantSale,
   addSale,
   updateSale,
   deleteSale,

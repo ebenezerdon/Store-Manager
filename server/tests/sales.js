@@ -54,7 +54,7 @@ describe('Get sales', () => {
       .end((err, res) => {
         const token = res.body;
         chai.request(app)
-          .get('/api/v1/sales/att/41')
+          .get('/api/v1/sales/users/41')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
@@ -320,7 +320,7 @@ describe('Delete sale record', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(data.body.message).to.equal('Deleted!');
+            expect(data.body.message).to.equal('Sale record deleted!');
             expect(data.body.success).to.equal(true);
             done();
           });

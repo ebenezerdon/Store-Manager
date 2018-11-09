@@ -120,7 +120,7 @@ describe('Create New Product', () => {
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(400);
+            expect(data).to.have.status(402);
             expect(data.body.success).to.equal(false);
             done();
           });
@@ -291,7 +291,7 @@ describe('Delete Product', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(data.body.message).to.equal('Deleted!');
+            expect(data.body.message).to.equal('Product deleted!');
             expect(data.body.success).to.equal(true);
             done();
           });
