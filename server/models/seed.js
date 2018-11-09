@@ -2,23 +2,25 @@ import pool from './db';
 
 const seedProducts = () => {
   const text1 = `INSERT INTO
-    products(productname, description, price, quantity, min)
-    VALUES($1, $2, $3, $4, $5)
+    products(productname, description, productimage, price, quantity, minallowed)
+    VALUES($1, $2, $3, $4, $5, $6)
     returning *`;
   const values1 = [
     'Long Sleeve T shirt',
     'Really cool stuff',
+    'http://productimagestuff.com/img1',
     '52000',
     41,
     25,
   ];
   const text2 = `INSERT INTO
-    products(productname, description, price, quantity, min)
-    VALUES($1, $2, $3, $4, $5)
+    products(productname, description, productimage, price, quantity, minallowed)
+    VALUES($1, $2, $3, $4, $5, $6)
     returning *`;
   const values2 = [
     'Black Long Sleeve T shirt',
     'Another Long sleeve',
+    'http://productimagestuff.com/img1',
     '34512',
     45,
     21,

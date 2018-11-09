@@ -49,7 +49,7 @@ const validateProductInput = (req, res, next) => {
   const {
     body,
   } = req;
-  if (!body.productname || !body.description || !body.price || !body.quantity || !body.min) {
+  if (!body.productname || !body.description || !body.price || !body.quantity || !body.minallowed) {
     return (
       res.status(400).json('Hi! Some details are missing. Can you check and try again?')
     );
