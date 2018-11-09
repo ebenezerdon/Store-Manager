@@ -88,7 +88,7 @@ main {
   padding-left: 9px;
 }
 
-.user-select select option {
-  background: #fff;
-  color: #878A93;
+button a {
+  text-decoration: none;
+  color: white;
 }
