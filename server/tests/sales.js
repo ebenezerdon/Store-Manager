@@ -14,7 +14,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -30,7 +29,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -49,12 +47,11 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
         chai.request(app)
-          .get('/api/v1/sales/att/41')
+          .get('/api/v1/sales/users/41')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
@@ -68,7 +65,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -86,7 +82,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -104,7 +99,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -128,7 +122,6 @@ describe('Get sales', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -158,7 +151,6 @@ describe('Create New sale', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -184,7 +176,6 @@ describe('Create New sale', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -221,7 +212,6 @@ describe('Update sales record', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -248,7 +238,6 @@ describe('Update sales record', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -274,7 +263,6 @@ describe('Update sales record', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -311,7 +299,6 @@ describe('Delete sale record', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -320,7 +307,7 @@ describe('Delete sale record', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(data.body.message).to.equal('Deleted!');
+            expect(data.body.message).to.equal('Sale record deleted!');
             expect(data.body.success).to.equal(true);
             done();
           });
@@ -332,7 +319,6 @@ describe('Delete sale record', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;

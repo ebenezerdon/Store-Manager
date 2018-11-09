@@ -25,7 +25,7 @@ const authenticate = (req, res, next) => {
 
 const verifyAdmin = (req, res, next) => {
   const { decoded } = req;
-  if (decoded.type !== 'admin') {
+  if (decoded.role !== 'admin') {
     return res.status(401).json({
       message: 'Hi! This resource can only be accessed by an admin',
       error: true,
@@ -36,7 +36,7 @@ const verifyAdmin = (req, res, next) => {
 
 const verifyAttendant = (req, res, next) => {
   const { decoded } = req;
-  if (decoded.type !== 'attendant') {
+  if (decoded.role !== 'attendant') {
     return res.status(401).json({
       message: 'Hi! This resource can only be accessed by an attendant',
       error: true,

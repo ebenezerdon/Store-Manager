@@ -14,7 +14,6 @@ describe('Get Products', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -25,31 +24,29 @@ describe('Get Products', () => {
       });
     done();
   });
-  it('should GET a specific product', (done) => {
+  it('it should GET a specific product', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
         chai.request(app)
-          .get('/api/v1/products/2')
+          .get('/api/v1/products/1')
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(2).to.equal(data.body.id);
+            expect(1).to.equal(data.body.id);
             done();
           });
       });
   });
-  it('should have a status 404 if product not available', (done) => {
+  it('it should have a status 404 if product not available', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -74,12 +71,11 @@ describe('Get Products', () => {
 });
 
 describe('Create New Product', () => {
-  it('should create a new product', (done) => {
+  it('it should create a new product', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -88,9 +84,10 @@ describe('Create New Product', () => {
           .send({
             productname: 'Ankara',
             description: 'Ankara for everybody',
+            productimage: 'http://productimagestuff.com/img1',
             price: '400',
             quantity: 24,
-            min: 14,
+            minallowed: 14,
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -105,7 +102,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -114,13 +110,14 @@ describe('Create New Product', () => {
           .send({
             productname: 'Long Sleeve T shirt',
             description: 'Really cool stuff',
+            productimage: 'http://productimagestuff.com/img1',
             price: '52000',
             quantity: 41,
-            min: 25,
+            minallowed: 25,
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(400);
+            expect(data).to.have.status(402);
             expect(data.body.success).to.equal(false);
             done();
           });
@@ -132,7 +129,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -141,9 +137,10 @@ describe('Create New Product', () => {
           .send({
             productname: 'Ankara',
             description: 'Ankara for everybody',
+            productimage: 'http://productimagestuff.com/img1',
             price: '400',
             quantity: 24,
-            min: 14,
+            minallowed: 14,
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -158,7 +155,6 @@ describe('Create New Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -194,7 +190,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -203,9 +198,10 @@ describe('Update Product', () => {
           .send({
             productname: 'Ankaraq',
             description: 'Ankaraq for everybody',
+            productimage: 'http://productimagestuff.com/img1',
             price: '400',
             quantity: 24,
-            min: 14,
+            minallowed: 14,
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -221,7 +217,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'attendant@gmail.com',
         password: 'attendantpassword',
-        type: 'attendant',
       })
       .end((err, res) => {
         const token = res.body;
@@ -230,9 +225,10 @@ describe('Update Product', () => {
           .send({
             productname: 'Ankara',
             description: 'Ankara for everybody',
+            productimage: 'http://productimagestuff.com/img1',
             price: '400',
             quantity: 24,
-            min: 14,
+            minallowed: 14,
           })
           .set('accesstoken', token)
           .end((error, data) => {
@@ -247,7 +243,6 @@ describe('Update Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -266,6 +261,7 @@ describe('Update Product', () => {
       .send({
         name: 'Ankara',
         description: 'Ankara for everybody',
+        productimage: 'http://productimagestuff.com/img1',
         quantity: '4',
         price: '₦5500',
       })
@@ -282,7 +278,6 @@ describe('Delete Product', () => {
       .send({
         emailaddress: 'admin@gmail.com',
         password: 'adminpassword',
-        type: 'admin',
       })
       .end((err, res) => {
         const token = res.body;
@@ -291,7 +286,7 @@ describe('Delete Product', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(data.body.message).to.equal('Deleted!');
+            expect(data.body.message).to.equal('Product deleted!');
             expect(data.body.success).to.equal(true);
             done();
           });
