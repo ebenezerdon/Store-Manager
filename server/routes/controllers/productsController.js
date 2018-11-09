@@ -32,7 +32,7 @@ const addProduct = (req, res) => {
   const text = 'SELECT * FROM products WHERE productname = $1';
   pool.query(text, [body.productname], (err, data) => {
     if (data.rowCount) {
-      return res.status(400).json({
+      return res.status(402).json({
         message: 'There\'s already a product with that name',
         success: false,
       });
@@ -99,7 +99,7 @@ const deleteProduct = (req, res) => {
       throw err;
     }
     return res.status(200).json({
-      message: 'Deleted!',
+      message: 'Product deleted!',
       success: true,
     });
   });
