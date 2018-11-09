@@ -37,14 +37,14 @@ const addUser = (req, res) => {
       });
     }
     const addQuery = `INSERT INTO
-        users(fullname, emailaddress, password, type)
+        users(fullname, emailaddress, password, role)
         VALUES($1, $2, $3, $4)
         returning *`;
     const values = [
       body.fullname,
       body.emailaddress,
       body.password,
-      body.type,
+      body.role,
     ];
     pool.query(addQuery, values, (err, data) => {
       if (err) throw err;
@@ -58,13 +58,13 @@ const updateUser = (req, res) => {
     body
   } = req;
   const text = `UPDATE users
-    SET fullname=$1, emailaddress=$2, password=$3, type=$4
+    SET fullname=$1, emailaddress=$2, password=$3, role=$4
     WHERE id=$5 returning *`;
   const values = [
     body.fullname,
     body.emailaddress,
     body.password,
-    body.type,
+    body.role,
     req.params.id,
   ];
   pool.query(text, values, (err, data) => {
@@ -81,7 +81,7 @@ const updateUser = (req, res) => {
 
 const makeAdmin = (req, res) => {
   const text = `UPDATE users
-    SET type=$1
+    SET role=$1
     WHERE id=$2 returning *`;
   const values = [
     'admin',
@@ -117,16 +117,13 @@ const deleteUser = (req, res) => {
 };
 
 const loginUser = (req, res) => {
-  const {
-    body
-  } = req;
+  const { body } = req;
   const query = {
     text: `SELECT * FROM users WHERE
-    emailaddress = $1 AND password = $2 AND type=$3`,
+    emailaddress = $1 AND password = $2`,
     values: [
       body.emailaddress,
       body.password,
-      body.type,
     ],
   };
   pool.query(query).then((data) => {

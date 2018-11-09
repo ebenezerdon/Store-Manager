@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/ebenezerdon/Store-Manager.svg?branch=develop)](https://travis-ci.org/ebenezerdon/Store-Manager)
 [![Coverage Status](https://coveralls.io/repos/github/ebenezerdon/Store-Manager/badge.svg?branch=develop)](https://coveralls.io/github/ebenezerdon/Store-Manager?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/2c68e4fc48e2ed74f959/maintainability)](https://codeclimate.com/github/ebenezerdon/Store-Manager/maintainability)
 
 Store Manager is a web application that helps store owners manage sales and product inventory
 records. This application is meant for use in a single store.
@@ -15,7 +14,7 @@ records. This application is meant for use in a single store.
 
 ## Server side hosted on Heroku
 
-https://realstoremanager.herokuapp.com/
+https://newstoremanager.herokuapp.com/
 
 ## Getting Started
 
@@ -65,22 +64,6 @@ run test using 'npm test'.
 - Store attendant/admin can see available products.
 - Store owner can see sales and can get sale record by id.
 
-### This api is still in its early stage of development. Feel free to test it with the credentials
-
- {
-     emailAdress: 'sarahbeth@gmail.com',
-     password: 'supersecretstuff',
-     type: 'admin',
- }
-
- and
-
- {
-     emailAdress: 'joshodogwu@gmail.com',
-     password: 'realsecret',
-     type: 'attendant'
- }
-
 ### API End Points Test Using Postman
 
 <table>
@@ -105,20 +88,6 @@ run test using 'npm test'.
 <tr><td>GET</td> <td>/api/v1/users/:id/</td>  <td>Gets a user by id</td></tr>
 
 </table>
-
-### Coding Style
-
-- Airbnb style guide.
-
-## Built With
-
-- NodeJs-EXPRESS: Node.js is a javascript runtime built on Chrome's V8 javascript engine.
-
-- html5: It is used for structuring the frontend.
-
-- css: It is used for styling the frontend.
-
-- Vannila Javascript: It is used for scripting the client side.
 
 ## Author
 
