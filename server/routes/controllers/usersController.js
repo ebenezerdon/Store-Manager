@@ -131,8 +131,10 @@ const loginUser = (req, res) => {
     const token = jwt.sign(data.rows[0], secret, {
       expiresIn: '24hrs',
     });
+
     return res.status(201).json({
       token,
+      role: jwt.verify(token, secret, (error, decoded) => decoded.role),
       success: true,
     });
   }).catch(err => (res.status(500).json(err)));
