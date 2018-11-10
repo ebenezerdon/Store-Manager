@@ -25,16 +25,22 @@ const validateId = (req, res, next) => {
 
 const validateUserSignup = (req, res, next) => {
   const { body } = req;
+  if (!body) {
+    return res.status(400).json({
+      message: 'The request body should not be empty',
+      success: false,
+    });
+  }
   if (!String(body.fullname)) {
     return (
       res.status(400).json('The user\'s name has to be a string!')
     );
   }
-  if(!body.fullname || !body.emailaddress 
+  if (!body.fullname || !body.emailaddress
     || !body.role || !body.password) {
     return res.status(400).json({
       message: 'Some details are missing. Maybe check and try again?',
-      success: false
+      success: false,
     });
   }
   return next();
