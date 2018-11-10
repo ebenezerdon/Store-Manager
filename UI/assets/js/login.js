@@ -18,6 +18,7 @@ const loginUser = (e) => {
         localStorage.setItem('accesstoken', data.token);
         if (data.role === 'admin') {
           window.location.replace('./pages/admindashboard.html');
+          return;
         }
         window.location.replace('./pages/userdashboard.html');
       }
