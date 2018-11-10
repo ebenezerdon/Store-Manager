@@ -1,15 +1,32 @@
-getProducts = () => {
-  const options = {
-    headers: new Headers({
+const getProducts = () => {
+  fetch('https://newstoremanager.herokuapp.com/api/v1/products', {
+    headers: {
       'Content-Type': 'application/json',
-      'accessstoken': localStorage.accesstoken,
-    }),
-  };
-  fetch('https://newstoremanager.herokuapp.com/api/v1/products', options)
+      accesstoken: localStorage.accesstoken,
+    },
+  })
     .then(res => res.json())
     .then((data) => {
-      let output = '<h2>Products</h2>';
-      console.log(data);
+      let output = null;
+      data.forEach((user) => {
+        console.log(user.productimage);
+        output += `
+          <div class='product'>
+            <div class = 'product-item hover-effect'>
+              <a href="product-item.html">
+                <img src=${user.productimage} width='300'>
+              </a>
+              <a href='product-item.html'>
+                <p>${user.productname}</p>
+                <p>${user.price}</p>
+              </a>
+              <button>Add to cart</button>
+            <div>
+          </div>
+        `;
+      });
+      document.getElementById('products-list').innerHTML = output;
     });
-  console.log(localStorage.accesstoken);
 };
+
+/* document.getElementById('products-list').addEventListener('mouseover', getProducts); */
