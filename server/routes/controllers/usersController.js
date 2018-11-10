@@ -134,10 +134,7 @@ const loginUser = (req, res) => {
 
     return res.status(201).json({
       token,
-      role: jwt.verify(token, secret, (error, decoded) => {
-        const { role } = decoded;
-        return role;
-      }),
+      role: jwt.verify(token, secret, (error, decoded) => decoded.role),
       success: true,
     });
   }).catch(err => (res.status(500).json(err)));
