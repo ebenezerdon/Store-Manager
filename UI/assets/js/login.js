@@ -13,7 +13,13 @@ const loginUser = (e) => {
   };
   fetch('https://newstoremanager.herokuapp.com/api/v1/auth/login', options)
     .then(res => res.json())
-    .then(data => console.log(data.token))
+    .then((data) => {
+      if (data.success === true) {
+        localStorage.setItem('accesstoken', data.token);
+        console.log(data.token);
+        console.log(data.token.role);
+      }
+    })
     .catch(err => console.log(err));
 };
 
