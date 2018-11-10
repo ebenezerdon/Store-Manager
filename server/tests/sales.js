@@ -16,7 +16,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales')
           .set('accesstoken', token)
@@ -31,7 +31,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales/1')
           .set('accesstoken', token)
@@ -49,7 +49,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales/users/41')
           .set('accesstoken', token)
@@ -67,7 +67,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales/d')
           .set('accesstoken', token)
@@ -84,7 +84,7 @@ describe('Get sales', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales')
           .set('accesstoken', token)
@@ -101,7 +101,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/sales')
           .send({
@@ -124,7 +124,7 @@ describe('Get sales', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/sales/1000000000')
           .set('accesstoken', token)
@@ -153,7 +153,7 @@ describe('Create New sale', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/sales')
           .send({
@@ -164,8 +164,7 @@ describe('Create New sale', () => {
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(200);
-            expect(data.body.attendant_id).to.equal(2);
+            expect(data).to.have.status(201);
             done();
           });
       });
@@ -178,7 +177,7 @@ describe('Create New sale', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/sales')
           .set('accesstoken', token)
@@ -214,7 +213,7 @@ describe('Update sales record', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .put('/api/v1/sales/1')
           .send({
@@ -240,7 +239,7 @@ describe('Update sales record', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .put('/api/v1/sales/1')
           .send({
@@ -265,7 +264,7 @@ describe('Update sales record', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .put('/api/v1/sales/2')
           .set('accesstoken', token)
@@ -301,7 +300,7 @@ describe('Delete sale record', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .delete('/api/v1/sales/2')
           .set('accesstoken', token)
@@ -321,7 +320,7 @@ describe('Delete sale record', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .delete('/api/v1/sales/2')
           .set('accesstoken', token)

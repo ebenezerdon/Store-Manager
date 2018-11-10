@@ -43,7 +43,7 @@ router.get('/users/:id', authenticate, verifyAdmin, validateId, getOneUser);
 router.put('/users/:id', authenticate, validateUserInput, validateId, verifyAdmin, updateUser);
 router.put('/users/makeadmin/:id', authenticate, validateId, verifyAdmin, makeAdmin);
 router.delete('/users/:id', authenticate, verifyAdmin, validateId, deleteUser);
-router.post('/auth/signup', authenticate, validateUserInput, validateUserSignup, verifyAdmin, addUser);
+router.post('/auth/signup', authenticate, verifyAdmin, validateUserSignup, addUser);
 router.post('/auth/login', validateUserInput, loginUser);
 
 export default router;

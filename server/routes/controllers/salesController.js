@@ -78,7 +78,7 @@ const addSale = (req, res) => {
       });
     }
     if (err) throw err;
-    return res.status(200).json(data.rows[0]);
+    return res.status(201).json(data.rows[0]);
   });
 };
 
