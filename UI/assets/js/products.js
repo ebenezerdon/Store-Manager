@@ -29,4 +29,4 @@ const getProducts = () => {
     });
 };
 
-/* document.getElementById('products-list').addEventListener('mouseover', getProducts); */
+window.onload = getProducts();
