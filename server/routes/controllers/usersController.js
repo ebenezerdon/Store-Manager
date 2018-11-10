@@ -48,7 +48,7 @@ const addUser = (req, res) => {
     ];
     pool.query(addQuery, values, (err, data) => {
       if (err) throw err;
-      return res.status(200).json(data.rows[0]);
+      return res.status(201).json(data.rows[0]);
     });
   });
 };
@@ -131,7 +131,10 @@ const loginUser = (req, res) => {
     const token = jwt.sign(data.rows[0], secret, {
       expiresIn: '24hrs',
     });
-    return res.status(200).json(token);
+    return res.status(201).json({
+      token,
+      success: true,
+    });
   }).catch(err => (res.status(500).json(err)));
 };
 
