@@ -16,7 +16,7 @@ describe('Get users', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/users')
           .set('accesstoken', token)
@@ -31,7 +31,7 @@ describe('Get users', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/users/1')
           .set('accesstoken', token)
@@ -49,7 +49,7 @@ describe('Get users', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/users/d')
           .set('accesstoken', token)
@@ -66,7 +66,7 @@ describe('Get users', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/users')
           .set('accesstoken', token)
@@ -83,7 +83,7 @@ describe('Get users', () => {
         password: 'attendantpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/auth/signup')
           .send({
@@ -106,7 +106,7 @@ describe('Get users', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .get('/api/v1/users/1000000000')
           .set('accesstoken', token)
@@ -135,7 +135,7 @@ describe('Create New user', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/auth/signup')
           .send({
@@ -146,7 +146,7 @@ describe('Create New user', () => {
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(200);
+            expect(data).to.have.status(201);
             done();
           });
       });
@@ -158,7 +158,7 @@ describe('Create New user', () => {
         password: 'adminpassword',
       })
       .end((err, res) => {
-        const token = res.body;
+        const { token } = res.body;
         chai.request(app)
           .post('/api/v1/auth/signup')
           .send({
@@ -170,24 +170,6 @@ describe('Create New user', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(400);
-            done();
-          });
-      });
-  });
-
-  it('should return error if req has no data', (done) => {
-    chai.request(app).post('/api/v1/auth/signup')
-      .send({
-        emailaddress: 'admin@gmail.com',
-        password: 'adminpassword',
-      })
-      .end((err, res) => {
-        const token = res.body;
-        chai.request(app)
-          .post('/api/v1/auth/signup')
-          .set('accesstoken', token)
-          .end((error, data) => {
-            expect(data).to.have.status(401);
             done();
           });
       });
