@@ -16,8 +16,10 @@ const loginUser = (e) => {
     .then((data) => {
       if (data.success === true) {
         localStorage.setItem('accesstoken', data.token);
-        console.log(data.token);
-        console.log(data.token.role);
+        if (data.role === 'admin') {
+          window.location.replace('./pages/admindashboard.html');
+        }
+        window.location.replace('./pages/userdashboard.html');
       }
     })
     .catch(err => console.log(err));
