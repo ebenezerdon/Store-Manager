@@ -8,17 +8,17 @@ const getProducts = () => {
     .then(res => res.json())
     .then((data) => {
       let output;
-      data.forEach((user) => {
-        console.log(user.productimage);
+      data.forEach((product) => {
+        console.log(product.productimage);
         output = `
           <div class='product'>
             <div class='product-item hover-effect'>
               <a href="product-item.html">
-                <img src=${user.productimage} width='300'>
+                <img src=${product.productimage} width='300'>
               </a>
               <a href='product-item.html'>
-                <p>${user.productname}</p>
-                <p>${user.price}</p>
+                <p>${product.productname}</p>
+                <p>${product.price}</p>
               </a>
               <button>Add to cart</button>
             <div>
