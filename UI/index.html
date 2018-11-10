@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <script src="main.js"></script>
 </head>
 
 <body>
@@ -21,18 +20,7 @@
     <div class="nav-2">
         <h2>Hello awesome!</h2>
     </div>
-    
-    <!-- <div class="card-div">
-      <ul class="card">
-        <li class="card-item item6"></li>
-        <li class="card-item item5"></li>
-        <li class="card-item item4"></li>
-        <li class="card-item item3"></li>
-        <li class="card-item item2"></li>
-        <li class="card-item item1"></li>
-      </ul>
-    </div> -->
-    <section class="login-form">
+    <section class="login-form" id="login">
       <form action="" autocomplete="on">
         <h1>Login Here</h1>
         <div>
@@ -41,12 +29,13 @@
         <div>
           <input type="password" placeholder="Password" required="" id="password" />
         </div>
-          <button class="button"><a href="./pages/userdashboard.html">Login</a></button>
+        <button type="submit" class="button">Login</button>
+          <!-- <button class="button" id="loginbutton">Login</button> -->
           <!--  <a href="#">Lost your password?</a> -->
-        </div>
       </form>
     </section>
   </div>
+  <script type="text/javascript" src="assets/js/login.js"></script>
 </body>
 
 </html>
