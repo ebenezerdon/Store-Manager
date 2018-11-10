@@ -7,12 +7,12 @@ const getProducts = () => {
   })
     .then(res => res.json())
     .then((data) => {
-      let output = null;
+      let output;
       data.forEach((user) => {
         console.log(user.productimage);
-        output += `
+        output = `
           <div class='product'>
-            <div class = 'product-item hover-effect'>
+            <div class='product-item hover-effect'>
               <a href="product-item.html">
                 <img src=${user.productimage} width='300'>
               </a>
@@ -24,8 +24,9 @@ const getProducts = () => {
             <div>
           </div>
         `;
+        document.getElementById('products-list').innerHTML += output;
       });
-      document.getElementById('products-list').innerHTML = output;
+      document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
     });
 };
 
