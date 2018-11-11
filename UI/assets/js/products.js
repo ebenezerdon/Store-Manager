@@ -20,7 +20,10 @@ const getProducts = () => {
                 <p>${product.productname}</p>
                 <p>${product.price}</p>
               </a>
-              <button>Add to cart</button>
+              <form>
+                <input type="number" value="1" size="10" id="quantity">
+                <button type="submit">Add to cart</button>
+              </form>
             <div>
           </div>
         `;
