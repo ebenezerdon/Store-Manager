@@ -17,7 +17,6 @@ body {
     justify-content: flex-start;
     display: flex;
     flex-flow: row wrap;
-    margin-top: 100px;
     z-index: -1;
 }
 
@@ -99,4 +98,22 @@ body {
 
 .product-item p:hover {
     text-decoration: underline;
+}
+
+.btn {
+    border: 1px solid #262734;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 2em;
+    padding: 1em 3em;
+    margin-top: 120px;
+    background: #262734;
+    cursor: pointer;
+    transition: background ease-in 0.25s;
+}
+
+.btn:hover {
+    background: rgb(235, 235, 235);
+    color: #2B2D42;
+    font-weight: bold;
 }
