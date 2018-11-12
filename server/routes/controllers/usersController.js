@@ -37,12 +37,14 @@ const addUser = (req, res) => {
       });
     }
     const addQuery = `INSERT INTO
-        users(fullname, emailaddress, password, role)
-        VALUES($1, $2, $3, $4)
+        users(fullname, emailaddress, phonenumber, userimage, password, role)
+        VALUES($1, $2, $3, $4, $5, $6)
         returning *`;
     const values = [
       body.fullname,
       body.emailaddress,
+      body.phonenumber,
+      body.userimage,
       body.password,
       body.role,
     ];
@@ -58,11 +60,13 @@ const updateUser = (req, res) => {
     body
   } = req;
   const text = `UPDATE users
-    SET fullname=$1, emailaddress=$2, password=$3, role=$4
-    WHERE id=$5 returning *`;
+    SET fullname=$1, emailaddress=$2, phonenumber=$3, userimage=$4, password=$5, role=$6
+    WHERE id=$7 returning *`;
   const values = [
     body.fullname,
     body.emailaddress,
+    body.phonenumber,
+    body.userimage,
     body.password,
     body.role,
     req.params.id,
