@@ -45,18 +45,21 @@
   </header>
 
     <main>
-        <form class="reg">
+        <form class="reg" id="add-user">
             <div class="reg-switch">
-                <input type="radio" name="role" value="Attendant" id="attendant" class="reg-switch-input" checked>
+                <input type="radio" name="role" value="attendant" id="attendant" class="reg-switch-input" checked>
                 <label for="attendant" class="switch-label">Attendant</label>
-                <input type="radio" name="role" value="Admin" id="admin" class="reg-switch-input">
+                <input type="radio" name="role" value="admin" id="admin" class="reg-switch-input">
                 <label for="admin" class="switch-label">Admin</label>
             </div>
-            <input type="text" class="reg-input" placeholder="Full Name">
-            <input type="email" class="reg-input" placeholder="Email address">
-            <input type="tel" class="reg-input" placeholder="Phone Number">
-            <input type="text" class="reg-input" placeholder="Password">
+            <input type="text" class="reg-input" placeholder="Full Name" id="fullname">
+            <input type="email" class="reg-input" placeholder="Email address" id="emailaddress">
+            <input type="tel" class="reg-input" placeholder="Phone Number" id="phonenumber">
+            <input type="text" class="reg-input" placeholder="Password" id="password">
             <label for="userimage" class="user-image">Select User Image</label>
+            <!-- in future, when user has selected image, something should happen to the select-image guy
+              Use select-user-image .hascontent to tweak this buddy 
+              Ebenezer - 12th-11-2018-->
             <button id="upload-image">upload</button> <br></br>
             <input type="file" class="select-user-image" value="Select user image" id="userimage">
             <input type="submit" value="Create Account" class="green-button">
@@ -64,6 +67,7 @@
     </main>
 
   <footer></footer>
+  <script type="text/javascript" src="../assets/js/users.js"></script>
 </body>
 
 </html>
