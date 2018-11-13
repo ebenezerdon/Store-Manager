@@ -53,7 +53,11 @@ const addProduct = (req, res) => {
       if (err) {
         throw err;
       }
-      return res.status(200).json(data.rows[0]);
+      return res.status(201).json({
+        message: 'Product created',
+        'New product': data.rows[0],
+        success: true,
+      });
     });
   });
 };
