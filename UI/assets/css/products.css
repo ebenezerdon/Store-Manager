@@ -125,6 +125,11 @@ body {
     margin-top: 10px;
 }
 
+.reg a {
+    text-decoration: none;
+    padding: 11px;
+}
+
 .reg {
     margin-top: 10px;
     display: none;
