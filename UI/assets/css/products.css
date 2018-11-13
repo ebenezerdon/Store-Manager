@@ -1,5 +1,8 @@
 @import "lib/nav.css";
 @import "lib/footer.css";
+@import "lib/button.css";
+@import "lib/regform.css";
+@import "adduser.css";
 
 body {
     background: #f2f2f2;
@@ -116,4 +119,13 @@ body {
     background: rgb(235, 235, 235);
     color: #2B2D42;
     font-weight: bold;
+}
+
+.p-modal {
+    margin-top: 10px;
+}
+
+.reg {
+    margin-top: 10px;
+    display: none;
 }

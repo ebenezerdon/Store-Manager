@@ -45,7 +45,19 @@
     </div>
   </header>
 
-  <button class="btn">Add New Product</button>
+  <button class="btn" id="add-product-btn">Add New Product</button>
+  <form class="reg" id="add-product">
+      <input type="text" class="reg-input" placeholder="Product Name" id="productname">
+      <input type="text" class="reg-input" placeholder="Description" id="description">
+      <input type="text" class="reg-input" placeholder="Price" id="price">
+      <input type="number" class="reg-input" placeholder="Quantity" id="quantity">
+      <input type="number" class="reg-input" placeholder="Minimum quantiy allowed" id="minallowed">
+      <label for="productimage" class="user-image">Select Product Image</label>
+      <button id="upload-image">upload</button> <br></br>
+      <input type="file" class="select-user-image" value="Select product image" id="productimage">
+      <button type="submit"class="btn p-modal">Add product</button>
+      <button class="btn p-modal" id="close-modal-btn">Cancel</button>
+  </form>
   
   <div class='row' id="products-list"></div>
 

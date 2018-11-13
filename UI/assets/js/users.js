@@ -6,7 +6,7 @@ const createUser = (e) => {
     phonenumber: document.getElementById('phonenumber').value,
     userimage: document.getElementById('userimage').value,
     password: document.getElementById('password').value,
-    role: document.querySelector('input[name = "role"]:checked').value,
+    role: document.querySelector('input[name="role"]:checked').value,
   };
   console.log(userDetails);
   const options = {
