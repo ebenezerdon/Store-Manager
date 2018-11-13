@@ -29,6 +29,10 @@ const getProducts = () => {
                 <p>${product.price}</p>
               </a>
               <button>Add to cart</button>
+              <div class='edit-product-div'>
+                <button>Edit</button>
+                <button>Delete</button>
+              </div>
             <div>
           </div>
         `;
@@ -64,8 +68,7 @@ const postProduct = (e) => {
     .then((data) => {
       if (data.success === true) {
         console.log('Product created!');
-      }
-      console.log('Not successful!');
+      } else { console.log('Not successful!'); }
     })
     .catch(err => console.log(err));
 };
