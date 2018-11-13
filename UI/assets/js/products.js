@@ -1,9 +1,17 @@
 const addProductDiv = document.getElementById('add-product');
+const deleteProductDiv = document.getElementById('confirm-delete');
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
 const closeProductModal = () => {
   addProductDiv.style.display = 'none';
+};
+
+const deleteProductModal = () => {
+  deleteProductDiv.style.display = 'block';
+};
+const closeDeleteModal = () => {
+  deleteProductDiv.style.display = 'none';
 };
 
 const getProducts = () => {
@@ -30,8 +38,8 @@ const getProducts = () => {
               </a>
               <button>Add to cart</button>
               <div class='edit-product-div'>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button class='edit-product'>Edit</button>
+                <button class='delete-product'>Delete</button>
               </div>
             <div>
           </div>
@@ -39,6 +47,11 @@ const getProducts = () => {
         document.getElementById('products-list').innerHTML += output;
       });
       document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
+      const classname = document.getElementsByClassName('delete-product');
+      for (let i = 0; i < classname.length; i += 1) {
+        classname[i].addEventListener('click', deleteProductModal);
+      }
+      document.getElementById('close-delete-modal').addEventListener('click', closeDeleteModal);
     });
 };
 
