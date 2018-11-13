@@ -134,3 +134,7 @@ body {
     margin-top: 10px;
     display: none;
 }
+
+.edit-product-div {
+    display: inline;
+}
