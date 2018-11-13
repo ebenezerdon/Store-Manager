@@ -54,7 +54,8 @@ const addProduct = (req, res) => {
         throw err;
       }
       return res.status(201).json({
-        message: data.rows[0],
+        message: 'Product created',
+        'New product': data.rows[0],
         success: true,
       });
     });
