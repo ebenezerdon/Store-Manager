@@ -52,12 +52,13 @@ const postProduct = (e) => {
   console.log(localStorage.accesstoken);
   const options = {
     method: 'POST',
-    body: productDetails,
+    body: JSON.stringify(productDetails),
     headers: new Headers({
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
     }),
   };
+  console.log(options.body);
   fetch('https://newstoremanager.herokuapp.com/api/v1/products', options)
     .then(res => res.json())
     .then((data) => {
