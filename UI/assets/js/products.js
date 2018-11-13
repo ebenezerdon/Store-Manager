@@ -45,6 +45,26 @@ const getProducts = () => {
           </div>
         `;
         document.getElementById('products-list').innerHTML += output;
+        const productId = product.id;
+
+        const deleteProduct = (e) => {
+          e.preventDefault();
+          const options = {
+            method: 'DELETE',
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              accesstoken: localStorage.accesstoken,
+            }),
+          };
+          fetch(`https://newstoremanager.herokuapp.com/api/v1/products/${productId}`, options)
+            .then(res => res.json())
+            .then((data) => {
+              if (data.success === true) {
+                console.log('Product deleted!');
+              } else { console.log('Not successful!'); }
+            })
+            .catch(err => console.log(err));
+        };
       });
       document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
       const classname = document.getElementsByClassName('delete-product');
@@ -52,6 +72,7 @@ const getProducts = () => {
         classname[i].addEventListener('click', deleteProductModal);
       }
       document.getElementById('close-delete-modal').addEventListener('click', closeDeleteModal);
+      console.log(data[1].id);
     });
 };
 
