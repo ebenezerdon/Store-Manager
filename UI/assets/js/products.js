@@ -1,8 +1,10 @@
 const addProductDiv = document.getElementById('add-product');
+const url = 'https://newstoremanager.herokuapp.com/api/v1/products';
 /* const deleteProductDiv = document.getElementById('confirm-delete'); */
-let deleteProduct;
+/* let deleteProduct;
 let confirmDeleteModal;
 let closeDeleteModal;
+let editProductModal; */
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
@@ -18,7 +20,7 @@ const closeDeleteModal = () => {
 }; */
 
 const getProducts = () => {
-  fetch('https://newstoremanager.herokuapp.com/api/v1/products', {
+  fetch(`${url}`, {
     headers: {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
@@ -28,6 +30,7 @@ const getProducts = () => {
     .then((data) => {
       let output;
       data.forEach((product) => {
+        console.log(`${product.id}${product.quantity}`);
         console.log(product.productimage);
         output = `
           <div class='product'>
@@ -42,11 +45,20 @@ const getProducts = () => {
               </a>
               <button>Add to cart</button>
               <div class='edit-product-div'>
-                <button class='edit-product'>Edit</button>
+                <button class='edit-product' onclick='editProductModal(${product.id}${product.quantity})'>Edit</button>
                 <button class='delete-product' onclick='confirmDeleteModal(${product.id})'>Delete</button>
               </div>
             <div>
           </div>
+          <form class="reg edit-product-class" id="${product.id}${product.quantity}">
+            <input type="text" class="reg-input" placeholder="Product Name" id="editproductname" value="${product.productname}">
+            <input type="text" class="reg-input" placeholder="Description" id="editdescription" value="${product.description}">
+            <input type="text" class="reg-input" placeholder="Price" id="editprice" value="${product.price}">
+            <input type="number" class="reg-input" placeholder="Quantity" id="editquantity" value="${product.quantity}">
+            <input type="number" class="reg-input" placeholder="Minimum quantiy allowed" id="editminallowed" value="${product.minallowed}">
+            <button type="submit"class="btn p-modal" onClick='editProduct(${product.id})'>Update product</button>
+            <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
+          </form>
           <div class="confirm-delete" id="${product.id}">
             <h3>Are you sure you want to delete this product?</h3>
             <button id="confirm-delete-btn" onclick='deleteProduct(${product.id}); closeDeleteModal(${product.id})'>Yes</button>
@@ -55,7 +67,44 @@ const getProducts = () => {
         `;
         document.getElementById('products-list').innerHTML += output;
 
+        editProductModal = (ProductId) => {
+          console.log(ProductId);
+          document.getElementById(ProductId).style.display = 'block';
+        };
+
+        editProduct = (productId) => {
+          const editProductDetails = {
+            productname: document.getElementById('editproductname').value,
+            description: document.getElementById('editdescription').value,
+            productimage: product.productimage,
+            price: document.getElementById('editprice').value,
+            quantity: document.getElementById('editquantity').value,
+            minallowed: document.getElementById('editminallowed').value,
+          };
+          console.log(editProductDetails);
+          console.log(localStorage.accesstoken);
+          const options = {
+            method: 'PUT',  
+            body: JSON.stringify(editProductDetails),
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              accesstoken: localStorage.accesstoken,
+            }),
+          };
+          console.log(options.body);
+          console.log(productId);
+          fetch(`${url}/${productId}`, options)
+            .then(res => res.json())
+            .then((data) => {
+              if (data.success === true) {
+                console.log('Edit Product successful!');
+              } else { console.log('Edit Product Not successful!'); }
+            })
+            .catch(err => alert(err));
+        };
+
         confirmDeleteModal = (productId) => {
+          console.log(productId);
           document.getElementById(productId).style.display = 'block';
         };
         closeDeleteModal = (productId) => {
@@ -70,7 +119,7 @@ const getProducts = () => {
               accesstoken: localStorage.accesstoken,
             }),
           };
-          fetch(`https://newstoremanager.herokuapp.com/api/v1/products/${productId}`, options)
+          fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
               if (data.success === true) {
@@ -80,7 +129,6 @@ const getProducts = () => {
             .catch(err => console.log(err));
         };
       });
-      document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
     });
 };
 
@@ -105,7 +153,7 @@ const postProduct = (e) => {
     }),
   };
   console.log(options.body);
-  fetch('https://newstoremanager.herokuapp.com/api/v1/products', options)
+  fetch(`${url}`, options)
     .then(res => res.json())
     .then((data) => {
       if (data.success === true) {
