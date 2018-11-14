@@ -36,19 +36,19 @@ const getProducts = () => {
               <a href='product-item.html'>
                 <p>${product.productname}</p>
                 <p>${product.price}</p>
+                <p>${product.id}</p>
               </a>
               <button>Add to cart</button>
               <div class='edit-product-div'>
                 <button class='edit-product'>Edit</button>
-                <button class='delete-product' onclick='deleteProduct()'>Delete</button>
+                <button class='delete-product' onclick='deleteProduct(${product.id})'>Delete</button>
               </div>
             <div>
           </div>
         `;
         document.getElementById('products-list').innerHTML += output;
 
-        const productId = product.id;
-        deleteProduct = () => {
+        deleteProduct = (productId) => {
           const options = {
             method: 'DELETE',
             headers: new Headers({
@@ -60,7 +60,7 @@ const getProducts = () => {
             .then(res => res.json())
             .then((data) => {
               if (data.success === true) {
-                console.log('Product deleted!');
+                console.log(`Product with id ${productId} deleted!`);
               } else { console.log('Not successful!'); }
             })
             .catch(err => console.log(err));
