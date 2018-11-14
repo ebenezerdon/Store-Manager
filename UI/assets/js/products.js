@@ -39,7 +39,7 @@ const getProducts = () => {
               <button>Add to cart</button>
               <div class='edit-product-div'>
                 <button class='edit-product'>Edit</button>
-                <button class='delete-product'>Delete</button>
+                <button class='delete-product' onclick='deleteProductModal()'>Delete</button>
               </div>
             <div>
           </div>
@@ -67,12 +67,7 @@ const getProducts = () => {
         };
       });
       document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
-      const classname = document.getElementsByClassName('delete-product');
-      for (let i = 0; i < classname.length; i += 1) {
-        classname[i].addEventListener('click', deleteProductModal);
-      }
       document.getElementById('close-delete-modal').addEventListener('click', closeDeleteModal);
-      console.log(data[1].id);
     });
 };
 
