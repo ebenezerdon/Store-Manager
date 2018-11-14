@@ -138,3 +138,18 @@ body {
 .edit-product-div {
     display: inline;
 }
+
+.confirm-delete {
+    position: fixed;
+    z-index: 21;
+    background: white;
+    width: 60%;
+    height: 30%;
+    left: 20%;
+    top: 45%;
+    display: none;
+}
+
+.confirm-delete h3 {
+    margin-top: 75px;
+}
