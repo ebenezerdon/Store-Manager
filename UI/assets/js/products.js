@@ -1,5 +1,6 @@
 const addProductDiv = document.getElementById('add-product');
 const deleteProductDiv = document.getElementById('confirm-delete');
+let deleteProduct;
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
@@ -39,16 +40,15 @@ const getProducts = () => {
               <button>Add to cart</button>
               <div class='edit-product-div'>
                 <button class='edit-product'>Edit</button>
-                <button class='delete-product' onclick='deleteProductModal()'>Delete</button>
+                <button class='delete-product' onclick='deleteProduct()'>Delete</button>
               </div>
             <div>
           </div>
         `;
         document.getElementById('products-list').innerHTML += output;
-        const productId = product.id;
 
-        const deleteProduct = (e) => {
-          e.preventDefault();
+        const productId = product.id;
+        deleteProduct = () => {
           const options = {
             method: 'DELETE',
             headers: new Headers({
@@ -67,7 +67,6 @@ const getProducts = () => {
         };
       });
       document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
-      document.getElementById('close-delete-modal').addEventListener('click', closeDeleteModal);
     });
 };
 
