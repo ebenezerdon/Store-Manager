@@ -130,7 +130,12 @@ body {
     padding: 11px;
 }
 
-.reg {
+.add-product-class {
+    margin-top: 10px;
+    display: none;
+}
+
+.edit-product-class {
     margin-top: 10px;
     display: none;
 }
