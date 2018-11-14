@@ -1,6 +1,8 @@
 const addProductDiv = document.getElementById('add-product');
-const deleteProductDiv = document.getElementById('confirm-delete');
+/* const deleteProductDiv = document.getElementById('confirm-delete'); */
 let deleteProduct;
+let confirmDeleteModal;
+let closeDeleteModal;
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
@@ -8,12 +10,12 @@ const closeProductModal = () => {
   addProductDiv.style.display = 'none';
 };
 
-const deleteProductModal = () => {
+/* const deleteProductModal = () => {
   deleteProductDiv.style.display = 'block';
 };
 const closeDeleteModal = () => {
   deleteProductDiv.style.display = 'none';
-};
+}; */
 
 const getProducts = () => {
   fetch('https://newstoremanager.herokuapp.com/api/v1/products', {
@@ -41,12 +43,24 @@ const getProducts = () => {
               <button>Add to cart</button>
               <div class='edit-product-div'>
                 <button class='edit-product'>Edit</button>
-                <button class='delete-product' onclick='deleteProduct(${product.id})'>Delete</button>
+                <button class='delete-product' onclick='confirmDeleteModal(${product.id})'>Delete</button>
               </div>
             <div>
           </div>
+          <div class="confirm-delete" id="${product.id}">
+            <h3>Are you sure you want to delete this product?</h3>
+            <button id="confirm-delete-btn" onclick='deleteProduct(${product.id}); closeDeleteModal(${product.id})'>Yes</button>
+            <button id="close-delete-modal" onclick="closeDeleteModal(${product.id})">No</button>
+          </div>
         `;
         document.getElementById('products-list').innerHTML += output;
+
+        confirmDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'block';
+        };
+        closeDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'none';
+        };
 
         deleteProduct = (productId) => {
           const options = {
