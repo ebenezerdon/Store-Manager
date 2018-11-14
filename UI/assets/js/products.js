@@ -28,6 +28,8 @@ const getProducts = () => {
     .then((data) => {
       let output;
       data.forEach((product) => {
+        const editProductId = `edit${product.id}`;
+        console.log(editProductId);
         console.log(product.productimage);
         output = `
           <div class='product'>
@@ -42,11 +44,23 @@ const getProducts = () => {
               </a>
               <button>Add to cart</button>
               <div class='edit-product-div'>
-                <button class='edit-product'>Edit</button>
+                <button class='edit-product' onclick='editProductModal(${editProductId})'>Edit</button>
                 <button class='delete-product' onclick='confirmDeleteModal(${product.id})'>Delete</button>
               </div>
             <div>
           </div>
+          <form class="reg edit-product-class" id="${editProductId}">
+            <input type="text" class="reg-input" placeholder="Product Name" id="productname" value="${product.productname}">
+            <input type="text" class="reg-input" placeholder="Description" id="description" value="${product.description}">
+            <input type="text" class="reg-input" placeholder="Price" id="price" value="${product.price}">
+            <input type="number" class="reg-input" placeholder="Quantity" id="quantity" value="${product.quantity}">
+            <input type="number" class="reg-input" placeholder="Minimum quantiy allowed" id="minallowed" value="${product.minallowed}">
+            <label for="productimage" class="user-image">Select Product Image</label>
+            <button id="upload-image">upload</button> <br></br>
+            <input type="file" class="select-user-image" value="${product.productimage}" id="productimage">
+            <button type="submit"class="btn p-modal">Update product</button>
+            <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
+          </form>
           <div class="confirm-delete" id="${product.id}">
             <h3>Are you sure you want to delete this product?</h3>
             <button id="confirm-delete-btn" onclick='deleteProduct(${product.id}); closeDeleteModal(${product.id})'>Yes</button>
@@ -54,6 +68,10 @@ const getProducts = () => {
           </div>
         `;
         document.getElementById('products-list').innerHTML += output;
+
+        editProductModal = (editProductId) => {
+          document.getElementById(editProductId).style.display = 'block';
+        };
 
         confirmDeleteModal = (productId) => {
           document.getElementById(productId).style.display = 'block';
