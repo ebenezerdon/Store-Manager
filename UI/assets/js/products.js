@@ -1,4 +1,5 @@
 const addProductDiv = document.getElementById('add-product');
+const url = 'https://newstoremanager.herokuapp.com/api/v1/products';
 /* const deleteProductDiv = document.getElementById('confirm-delete'); */
 /* let deleteProduct;
 let confirmDeleteModal;
@@ -19,7 +20,7 @@ const closeDeleteModal = () => {
 }; */
 
 const getProducts = () => {
-  fetch('https://newstoremanager.herokuapp.com/api/v1/products', {
+  fetch(`${url}`, {
     headers: {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
@@ -55,9 +56,6 @@ const getProducts = () => {
             <input type="text" class="reg-input" placeholder="Price" id="editprice" value="${product.price}">
             <input type="number" class="reg-input" placeholder="Quantity" id="editquantity" value="${product.quantity}">
             <input type="number" class="reg-input" placeholder="Minimum quantiy allowed" id="editminallowed" value="${product.minallowed}">
-            <label for="productimage" class="user-image">Select Product Image</label>
-            <button id="upload-image">upload</button> <br></br>
-            <input type="file" class="select-user-image" value="${product.productimage}" id="editproductimage">
             <button type="submit"class="btn p-modal" onClick='editProduct(${product.id})'>Update product</button>
             <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
           </form>
@@ -86,7 +84,7 @@ const getProducts = () => {
           console.log(editProductDetails);
           console.log(localStorage.accesstoken);
           const options = {
-            method: 'PUT',
+            method: 'PUT',  
             body: JSON.stringify(editProductDetails),
             headers: new Headers({
               'Content-Type': 'application/json',
@@ -95,7 +93,7 @@ const getProducts = () => {
           };
           console.log(options.body);
           console.log(productId);
-          fetch(`https://newstoremanager.herokuapp.com/api/v1/products/${productId}`, options)
+          fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
               if (data.success === true) {
@@ -121,7 +119,7 @@ const getProducts = () => {
               accesstoken: localStorage.accesstoken,
             }),
           };
-          fetch(`https://newstoremanager.herokuapp.com/api/v1/products/${productId}`, options)
+          fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
               if (data.success === true) {
@@ -155,7 +153,7 @@ const postProduct = (e) => {
     }),
   };
   console.log(options.body);
-  fetch('https://newstoremanager.herokuapp.com/api/v1/products', options)
+  fetch(`${url}`, options)
     .then(res => res.json())
     .then((data) => {
       if (data.success === true) {
