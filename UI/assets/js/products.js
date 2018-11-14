@@ -1,10 +1,21 @@
 const addProductDiv = document.getElementById('add-product');
+/* const deleteProductDiv = document.getElementById('confirm-delete'); */
+let deleteProduct;
+let confirmDeleteModal;
+let closeDeleteModal;
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
 const closeProductModal = () => {
   addProductDiv.style.display = 'none';
 };
+
+/* const deleteProductModal = () => {
+  deleteProductDiv.style.display = 'block';
+};
+const closeDeleteModal = () => {
+  deleteProductDiv.style.display = 'none';
+}; */
 
 const getProducts = () => {
   fetch('https://newstoremanager.herokuapp.com/api/v1/products', {
@@ -27,16 +38,47 @@ const getProducts = () => {
               <a href='product-item.html'>
                 <p>${product.productname}</p>
                 <p>${product.price}</p>
+                <p>${product.id}</p>
               </a>
               <button>Add to cart</button>
               <div class='edit-product-div'>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button class='edit-product'>Edit</button>
+                <button class='delete-product' onclick='confirmDeleteModal(${product.id})'>Delete</button>
               </div>
             <div>
           </div>
+          <div class="confirm-delete" id="${product.id}">
+            <h3>Are you sure you want to delete this product?</h3>
+            <button id="confirm-delete-btn" onclick='deleteProduct(${product.id}); closeDeleteModal(${product.id})'>Yes</button>
+            <button id="close-delete-modal" onclick="closeDeleteModal(${product.id})">No</button>
+          </div>
         `;
         document.getElementById('products-list').innerHTML += output;
+
+        confirmDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'block';
+        };
+        closeDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'none';
+        };
+
+        deleteProduct = (productId) => {
+          const options = {
+            method: 'DELETE',
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              accesstoken: localStorage.accesstoken,
+            }),
+          };
+          fetch(`https://newstoremanager.herokuapp.com/api/v1/products/${productId}`, options)
+            .then(res => res.json())
+            .then((data) => {
+              if (data.success === true) {
+                console.log(`Product with id ${productId} deleted!`);
+              } else { console.log('Not successful!'); }
+            })
+            .catch(err => console.log(err));
+        };
       });
       document.getElementById('products-list').innerHTML += '<div class="footer"></div>';
     });
