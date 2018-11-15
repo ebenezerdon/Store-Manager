@@ -9,7 +9,7 @@ records. This application is meant for use in a single store.
 ## Github Pages
 
 [Index](https://ebenezerdon.github.io/Store-Manager/UI/index.html) |
- [User Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/userdashboard.html) |
+ [User Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/attendantdashboard.html) |
  [Admin Dashboard](https://ebenezerdon.github.io/Store-Manager/UI/pages/admindashboard.html)
 
 ## Server side hosted on Heroku
