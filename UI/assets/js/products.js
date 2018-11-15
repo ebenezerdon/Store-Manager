@@ -1,10 +1,11 @@
 const addProductDiv = document.getElementById('add-product');
 const url = 'https://newstoremanager.herokuapp.com/api/v1/products';
 /* const deleteProductDiv = document.getElementById('confirm-delete'); */
-/* let deleteProduct;
+let deleteProduct;
 let confirmDeleteModal;
 let closeDeleteModal;
-let editProductModal; */
+let editProduct;
+let editProductModal;
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
@@ -84,7 +85,7 @@ const getProducts = () => {
           console.log(editProductDetails);
           console.log(localStorage.accesstoken);
           const options = {
-            method: 'PUT',  
+            method: 'PUT',
             body: JSON.stringify(editProductDetails),
             headers: new Headers({
               'Content-Type': 'application/json',
@@ -96,7 +97,7 @@ const getProducts = () => {
           fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
-              if (data.success === true) {
+              if (data) {
                 console.log('Edit Product successful!');
               } else { console.log('Edit Product Not successful!'); }
             })
