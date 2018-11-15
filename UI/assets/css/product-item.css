@@ -1,6 +1,6 @@
 @import "lib/nav.css";
 @import "lib/footer.css";
-@import "userdashboard.css";
+@import "attendantdashboard.css";
 
 figcaption button {
     border: 1px solid #262734;

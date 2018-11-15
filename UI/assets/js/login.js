@@ -20,7 +20,7 @@ const loginUser = (e) => {
           window.location.replace('./pages/admindashboard.html');
           return;
         }
-        window.location.replace('./pages/userdashboard.html');
+        window.location.replace('./pages/attendantdashboard.html');
       }
     })
     .catch(err => console.log(err));
