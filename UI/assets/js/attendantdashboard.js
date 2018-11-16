@@ -37,13 +37,10 @@ const getSales = () => {
     .then((data) => {
       console.log(data);
       let output;
-      console.log('Yo', output);
       for (let i = 0; i < 4; i += 1) {
-        output += `
-          <h1>Yo!</h1>
+        output = `
           <li><a href="product-item.html">${data[i].productname}</a></li>
         `;
-        console.log('Yo!!!', output);
         document.getElementById('sale-list').innerHTML += output;
       }
     });
