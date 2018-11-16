@@ -2,6 +2,9 @@ const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const userList = document.getElementById('user-list');
 let editUser;
 let editUserModal;
+let deleteUser;
+let confirmDeleteModal;
+let closeDeleteModal;
 
 const createUser = (e) => {
   e.preventDefault();
@@ -52,7 +55,7 @@ const getUsers = () => {
               <td>${user.role}</td>
               <td>
                 <button class="button" onclick='editUserModal(${user.id}${user.phonenumber})'>Update</button>
-                <button class="button">Delete</button>
+                <button class="button" onclick='confirmDeleteModal(${user.id})'>Delete</button>
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
@@ -107,6 +110,34 @@ const getUsers = () => {
             })
             .catch(err => alert(err));
         };
+
+        confirmDeleteModal = (userId) => {
+          console.log(userId);
+          document.getElementById(userId).style.display = 'block';
+        };
+        closeDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'none';
+        };
+
+        deleteUser = (userId) => {
+          const options = {
+            method: 'DELETE',
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              accesstoken: localStorage.accesstoken,
+            }),
+          };
+          fetch(`${url}/users/${userId}`, options)
+            .then(res => res.json())
+            .then((data) => {
+              if (data.success === true) {
+                console.log(`User with id ${userId} deleted!`);
+                console.log(data);
+              } else { console.log('Not successful!\n', data); }
+            })
+            .catch(err => console.log(err));
+        };
+
       });
     });
 };
