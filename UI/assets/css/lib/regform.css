@@ -1,5 +1,4 @@
 
-
 .reg {
     width: 70%;
     margin: auto;
@@ -71,4 +70,27 @@
 
   .green-button:hover {
     background: #111516;
+  }
+
+  .user-image {
+    float: left;
+    margin-left: 25px;
+    margin-right: 15px;
+    margin-top: -5px;
+    background:linear-gradient(to bottom, #2c2d3a 5%, #1d2942 100%);
+    color: #fff;
+    padding: 5px;
+    border: 1px solid gray;
+  }
+
+  .user-image:hover {
+    cursor: pointer;
+  }
+
+  .select-user-image {
+    display: none;
+  }
+
+  #upload-image {
+    float: left;
   }
