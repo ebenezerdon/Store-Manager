@@ -38,8 +38,8 @@ const getUsers = () => {
       let output;
       for (let i = 0; i < 4; i++) {
         output = `
-        <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
-              `;
+          <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
+      `;
         document.getElementById('userlist').innerHTML += output;
       }
     });
