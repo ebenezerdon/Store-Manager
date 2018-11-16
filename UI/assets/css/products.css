@@ -130,7 +130,35 @@ body {
     padding: 11px;
 }
 
-.reg {
+.add-product-class {
     margin-top: 10px;
     display: none;
+}
+
+.edit-product-class {
+    position: fixed;
+    z-index: 21;
+    max-width: 50%;
+    left: 25%;
+    top: -10px;
+    display: none;
+}
+
+.edit-product-div {
+    display: inline;
+}
+
+.confirm-delete {
+    position: fixed;
+    z-index: 21;
+    background: white;
+    width: 60%;
+    height: 30%;
+    left: 20%;
+    top: 45%;
+    display: none;
+}
+
+.confirm-delete h3 {
+    margin-top: 75px;
 }
