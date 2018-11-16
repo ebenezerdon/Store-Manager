@@ -133,11 +133,11 @@ const getUsers = () => {
               if (data.success === true) {
                 console.log(`User with id ${userId} deleted!`);
                 console.log(data);
+                window.location = window.location;
               } else { console.log('Not successful!\n', data); }
             })
             .catch(err => console.log(err));
         };
-
       });
     });
 };
