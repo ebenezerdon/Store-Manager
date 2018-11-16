@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 
 const getUsers = () => {
