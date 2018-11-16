@@ -50,7 +50,7 @@ const addUser = (req, res) => {
     ];
     pool.query(addQuery, values, (err, data) => {
       if (err) throw err;
-      return res.status(400).json({
+      return res.status(201).json({
         message: 'User successfully created',
         success: true,
         userDetails: data.rows[0],
