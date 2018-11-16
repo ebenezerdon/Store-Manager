@@ -56,11 +56,11 @@ const getUsers = () => {
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Full Name" id="editedfullname" value="${user.fullname}">
-              <input type="text" class="reg-input" placeholder="Email Address" id="editedemailaddress" value="${user.emailaddress}">
-              <input type="tel" class="reg-input" placeholder="Phone Number" id="editedphonenumber" value="${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Password" id="editedpassword" value="${user.password}">
-              <input type="text" class="reg-input" placeholder="Role" id="editedrole" value="${user.role}">
+              <input type="text" class="reg-input" placeholder="Full Name" id="${user.id}editedfullname" value="${user.fullname}">
+              <input type="text" class="reg-input" placeholder="Email Address" readonly id="${user.id}editedemailaddress" value="${user.emailaddress}">
+              <input type="tel" class="reg-input" placeholder="Phone Number" id="${user.id}editedphonenumber" value="${user.phonenumber}">
+              <input type="text" class="reg-input" placeholder="Password" id="${user.id}editedpassword" value="${user.password}">
+              <input type="text" class="reg-input" placeholder="Role" id="${user.id}editedrole" value="${user.role}">
               <button type="submit"class="btn p-modal" onClick='editUser(${user.id})'>Update User</button>
               <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
             </div>
@@ -76,15 +76,14 @@ const getUsers = () => {
           console.log(userId);
           document.getElementById(userId).style.display = 'block';
         };
-
         editUser = (userId) => {
           const editedUserDetails = {
-            fullname: document.getElementById('editedfullname').value,
-            emailaddress: document.getElementById('editedemailaddress').value,
-            phonenumber: document.getElementById('editedphonenumber').value,
+            fullname: document.getElementById(`${userId}editedfullname`).value,
+            emailaddress: document.getElementById(`${userId}editedemailaddress`).value,
+            phonenumber: document.getElementById(`${userId}editedphonenumber`).value,
             userimage: user.userimage,
-            password: document.getElementById('editedpassword').value,
-            role: document.getElementById('editedrole').value,
+            password: document.getElementById(`${userId}editedpassword`).value,
+            role: document.getElementById(`${userId}editedrole`).value,
           };
           console.log(editedUserDetails);
           console.log(localStorage.accesstoken);
@@ -103,6 +102,7 @@ const getUsers = () => {
             .then((data) => {
               if (data) {
                 console.log('Edit User successful!');
+                console.log(data);
               } else { console.log('Edit User Not successful!'); }
             })
             .catch(err => alert(err));
