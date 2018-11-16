@@ -13,13 +13,13 @@
   <script src="main.js"></script>
 </head>
 
-<body>
+<body onload = getUsers()>
   <header>
     <div class="top-nav">
       <div class="logo">
         <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
       </div>
-      <a href="userdashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
       <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
       <a href="#"><i class="far fa-bell"></i></a>
       <p>Hello, <span id="name">Josh</span></p>
@@ -41,72 +41,18 @@
 
   <main>
     <a href="adduser.html" class="button add-new">Add New Attendant</a>
-    <table>
+    <table id="user-list" onload = getUsers()>
       <tr>
         <th>Name</th>
-        <th>Number of Sales</th>
-        <th>Total Worth of Goods Sold</th>
+        <th>Email Address</th>
+        <th>Role</th>
         <th>Action</th>
       </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      <tr>
-        <td>Josh Odogwu</td>
-        <td>351</td>
-        <td>₦215,000</td>
-        <td>
-          <button><a href="">Make Admin</a></button>
-          <button><a href="">Remove User</a></button>
-        </td>
-      </tr>
-      
     </table>
   </main>
 
   <footer></footer>
+  <script type="text/javascript" src="../assets/js/users.js"></script>
 </body>
 
 </html>
