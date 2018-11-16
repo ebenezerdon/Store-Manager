@@ -55,11 +55,11 @@ const getProducts = () => {
                 width='300'>
             </a>
               `;
-        document.getElementById('t-products').innerHTML += output;
+        document.getElementById('products-list').innerHTML += output;
       }
-      document.getElementById('t-products').innerHTML += '<a href="products.html" class="green-button">See All Products</a>';
     });
 };
 
-window.onload = getUsers();
+window.onload = getProducts();
 window.onload = getSales();
+window.onload = getUsers();
