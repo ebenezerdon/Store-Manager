@@ -1,5 +1,30 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
+const { userId } = localStorage;
+
+const getCurrentUser = () => {
+  fetch(`${url}/users/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      accesstoken: localStorage.accesstoken,
+    },
+  })
+    .then(res => res.json())
+    .then((data) => {
+      console.log(data);
+      const output = `
+        <figure class="profile">
+          <div class="profile-image"><img src="${data.userimage}"
+               alt="User Image" /></div>
+          <figcaption>
+            <h3>${data.fullname}</h3>
+            <h4>Store ${data.role}</h4>
+          </figcaption>
+        </figure>
+      `;
+      document.getElementById('user-profile').innerHTML += output;
+    });
+};
 
 const getUsers = () => {
   fetch(`${url}/users`, {
@@ -61,6 +86,7 @@ const getProducts = () => {
     });
 };
 
+window.onload = getCurrentUser();
 window.onload = getProducts();
 window.onload = getSales();
 window.onload = getUsers();
