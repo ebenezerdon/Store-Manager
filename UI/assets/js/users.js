@@ -1,3 +1,6 @@
+const url = 'https://newstoremanager.herokuapp.com/api/v1';
+const userList = document.getElementById('user-list');
+
 const createUser = (e) => {
   e.preventDefault();
   const userDetails = {
@@ -17,7 +20,7 @@ const createUser = (e) => {
       accesstoken: localStorage.accesstoken,
     }),
   };
-  fetch('https://newstoremanager.herokuapp.com/api/v1/auth/signup', options)
+  fetch(`${url}/auth/signup`, options)
     .then(res => res.json())
     .then((data) => {
       if (data.success === true) {
@@ -27,5 +30,34 @@ const createUser = (e) => {
     })
     .catch(err => console.log(err));
 };
+
+const getUsers = () => {
+  fetch(`${url}/users`, {
+    headers: {
+      'Content-Type': 'application/json',
+      accesstoken: localStorage.accesstoken,
+    },
+  })
+    .then(res => res.json())
+    .then((data) => {
+      let output;
+      data.forEach((user) => {
+        output = `
+            <tr>
+              <td>${user.fullname}</td>
+              <td>${user.emailaddress}</td>
+              <td>${user.role}</td>
+              <td>
+                <button class="button">Update</button>
+                <button class="button">Delete</button>
+              </td>
+            </tr>
+            `;
+        userList.innerHTML += output;
+      });
+    });
+};
+
+userList.onload = getUsers();
 
 document.getElementById('add-user').addEventListener('submit', createUser);
