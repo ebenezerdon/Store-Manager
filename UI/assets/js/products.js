@@ -97,6 +97,7 @@ const getProducts = () => {
           fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
+              console.log(data);
               if (data) {
                 console.log('Edit Product successful!');
               } else { console.log('Edit Product Not successful!'); }
