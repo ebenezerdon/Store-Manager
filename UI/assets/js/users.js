@@ -2,6 +2,8 @@ const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const userList = document.getElementById('user-list');
 let editUser;
 let editUserModal;
+let confirmDeleteModal;
+let closeDeleteModal;
 
 const createUser = (e) => {
   e.preventDefault();
@@ -52,7 +54,7 @@ const getUsers = () => {
               <td>${user.role}</td>
               <td>
                 <button class="button" onclick='editUserModal(${user.id}${user.phonenumber})'>Update</button>
-                <button class="button">Delete</button>
+                <button class="button" onclick='confirmDeleteModal(${user.id})'>Delete</button>
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
@@ -106,6 +108,14 @@ const getUsers = () => {
               } else { console.log('Edit User Not successful!'); }
             })
             .catch(err => alert(err));
+        };
+
+        confirmDeleteModal = (productId) => {
+          console.log(productId);
+          document.getElementById(productId).style.display = 'block';
+        };
+        closeDeleteModal = (productId) => {
+          document.getElementById(productId).style.display = 'none';
         };
       });
     });
