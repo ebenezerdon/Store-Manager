@@ -141,6 +141,8 @@ describe('Create New user', () => {
           .send({
             fullname: 'Josh Odogwu',
             emailaddress: 'joshodogwu@gmail.com',
+            phonenumber: '09038948732',
+            userimage: 'https://celebritypics.info/images/2018/05/handsome-black-american-actors-unique-30-hot-black-male-actors-under-30-for-2015-of-handsome-black-american-actors.jpg',
             password: 'passswordy',
             role: 'attendant',
           })
@@ -151,6 +153,7 @@ describe('Create New user', () => {
           });
       });
   });
+
   it('it should return error if email already exists', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
