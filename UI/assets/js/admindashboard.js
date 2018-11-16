@@ -50,7 +50,7 @@ const getProducts = () => {
       let output;
       for (let i = 0; i < 4; i += 1) {
         output = `
-        <a href="product-item.html">
+            <a href="product-item.html">
               <img src='${data[i].productimage}'
                 width='300'>
             </a>
