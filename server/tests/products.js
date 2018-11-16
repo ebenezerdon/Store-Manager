@@ -91,7 +91,8 @@ describe('Create New Product', () => {
           })
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(200);
+            expect(data).to.have.status(201);
+            expect(data.body.success).to.equal(true);
             done();
           });
       });
