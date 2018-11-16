@@ -1,9 +1,8 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
-const { userId } = localStorage;
 
-const getCurrentUser = () => {
-  fetch(`${url}/users/${userId}`, {
+const getMyProfile = () => {
+  fetch(`${url}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
@@ -68,6 +67,6 @@ const getProducts = () => {
     });
 };
 
-window.onload = getCurrentUser();
+window.onload = getMyProfile();
 window.onload = getProducts();
 window.onload = getSales();
