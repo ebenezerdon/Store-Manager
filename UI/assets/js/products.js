@@ -93,7 +93,7 @@ const getProducts = () => {
             }),
           };
           console.log(options.body);
-          console.log(productId);
+          console.log('yo', productId);
           fetch(`${url}/${productId}`, options)
             .then(res => res.json())
             .then((data) => {
