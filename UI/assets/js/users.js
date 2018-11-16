@@ -1,5 +1,7 @@
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const userList = document.getElementById('user-list');
+let editUser;
+let editUserModal;
 
 const createUser = (e) => {
   e.preventDefault();
@@ -48,12 +50,65 @@ const getUsers = () => {
               <td>${user.emailaddress}</td>
               <td>${user.role}</td>
               <td>
-                <button class="button">Update</button>
+                <button class="button" onclick='editUserModal(${user.id}${user.phonenumber})'>Update</button>
                 <button class="button">Delete</button>
               </td>
             </tr>
+            <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
+              <input type="text" class="reg-input" placeholder="Full Name" id="editfullname" value="${user.fullname}">
+              <input type="text" class="reg-input" placeholder="Email Address" id="editemailaddress" value="${user.emailaddress}">
+              <input type="tel" class="reg-input" placeholder="Phone Number" id="editphonenumber" value="${user.phonenumber}">
+              <input type="text" class="reg-input" placeholder="Password" id="editpassword" value="${user.password}">
+              <select selected="${user.role}">
+                <option value='attendant'></option>
+                <option value='admin'></option>
+              </select>
+              <button type="submit"class="btn p-modal" onClick='editUser(${user.id})'>Update User</button>
+              <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
+            </div>
+            <div class="confirm-delete" id="${user.id}">
+              <h3>Are you sure you want to delete this user?</h3>
+              <button id="confirm-delete-btn" onclick='deleteUser(${user.id}); closeDeleteModal(${user.id})'>Yes</button>
+              <button id="close-delete-modal" onclick="closeDeleteModal(${user.id})">No</button>
+            </div>
             `;
         userList.innerHTML += output;
+
+        editUserModal = (userId) => {
+          console.log(userId);
+          document.getElementById(userId).style.display = 'block';
+        };
+
+        editUser = (userId) => {
+          const editedUserDetails = {
+            fullname: document.getElementById('editedusername').value,
+            emailaddress: document.getElementById('editedemailaddress').value,
+            phonenumber: document.getElementById('editedphonenumber').value,
+            userimage: user.userimage,
+            password: document.getElementById('editedpassword').value,
+            role: document.getElementById('editedrole').value,
+          };
+          console.log(editedUserDetails);
+          console.log(localStorage.accesstoken);
+          const options = {
+            method: 'PUT',
+            body: JSON.stringify(editedUserDetails),
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              accesstoken: localStorage.accesstoken,
+            }),
+          };
+          console.log(options.body);
+          console.log(userId);
+          fetch(`${url}/users/${userId}`, options)
+            .then(res => res.json())
+            .then((data) => {
+              if (data) {
+                console.log('Edit User successful!');
+              } else { console.log('Edit User Not successful!'); }
+            })
+            .catch(err => alert(err));
+        };
       });
     });
 };
