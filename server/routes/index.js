@@ -6,7 +6,7 @@ import {
   getAllSales, getOneSale, getMySale, getAttendantSale, addSale, updateSale, deleteSale,
 } from './controllers/salesController';
 import {
-  getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser, makeAdmin,
+  getAllUsers, getOneUser, addUser, updateUser, deleteUser, loginUser, getMyProfile,
 } from './controllers/usersController';
 import { authenticate, verifyAdmin, verifyAttendant } from './middleware/verify';
 import {
@@ -38,10 +38,10 @@ router.put('/sales/:id', authenticate, verifyAdmin, validateId, validateSaleInpu
 router.delete('/sales/:id', authenticate, verifyAdmin, validateId, deleteSale);
 
 /* Users Router */
+router.get('/users/me', authenticate, getMyProfile);
 router.get('/users', authenticate, verifyAdmin, getAllUsers);
 router.get('/users/:id', authenticate, verifyAdmin, validateId, getOneUser);
 router.put('/users/:id', authenticate, validateUserInput, validateId, verifyAdmin, updateUser);
-router.put('/users/makeadmin/:id', authenticate, validateId, verifyAdmin, makeAdmin);
 router.delete('/users/:id', authenticate, verifyAdmin, validateId, deleteUser);
 router.post('/auth/signup', authenticate, verifyAdmin, validateUserSignup, addUser);
 router.post('/auth/login', validateUserInput, loginUser);
