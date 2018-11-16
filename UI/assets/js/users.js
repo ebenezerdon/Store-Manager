@@ -14,6 +14,7 @@ const createUser = (e) => {
     role: document.querySelector('input[name="role"]:checked').value,
   };
   console.log(userDetails);
+  console.log(localStorage.accesstoken);
   const options = {
     method: 'POST',
     body: JSON.stringify(userDetails),
@@ -22,13 +23,13 @@ const createUser = (e) => {
       accesstoken: localStorage.accesstoken,
     }),
   };
+  console.log(options.body);
   fetch(`${url}/auth/signup`, options)
     .then(res => res.json())
     .then((data) => {
       if (data.success === true) {
         console.log('User created!');
-      }
-      console.log('Not successful!');
+      } else { console.log(data); }
     })
     .catch(err => console.log(err));
 };
@@ -55,14 +56,11 @@ const getUsers = () => {
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Full Name" id="editfullname" value="${user.fullname}">
-              <input type="text" class="reg-input" placeholder="Email Address" id="editemailaddress" value="${user.emailaddress}">
-              <input type="tel" class="reg-input" placeholder="Phone Number" id="editphonenumber" value="${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Password" id="editpassword" value="${user.password}">
-              <select selected="${user.role}">
-                <option value='attendant'></option>
-                <option value='admin'></option>
-              </select>
+              <input type="text" class="reg-input" placeholder="Full Name" id="editedfullname" value="${user.fullname}">
+              <input type="text" class="reg-input" placeholder="Email Address" id="editedemailaddress" value="${user.emailaddress}">
+              <input type="tel" class="reg-input" placeholder="Phone Number" id="editedphonenumber" value="${user.phonenumber}">
+              <input type="text" class="reg-input" placeholder="Password" id="editedpassword" value="${user.password}">
+              <input type="text" class="reg-input" placeholder="Role" id="editedrole" value="${user.role}">
               <button type="submit"class="btn p-modal" onClick='editUser(${user.id})'>Update User</button>
               <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
             </div>
@@ -81,7 +79,7 @@ const getUsers = () => {
 
         editUser = (userId) => {
           const editedUserDetails = {
-            fullname: document.getElementById('editedusername').value,
+            fullname: document.getElementById('editedfullname').value,
             emailaddress: document.getElementById('editedemailaddress').value,
             phonenumber: document.getElementById('editedphonenumber').value,
             userimage: user.userimage,
@@ -113,6 +111,6 @@ const getUsers = () => {
     });
 };
 
-userList.onload = getUsers();
+/* userList.onload = getUsers(); */
 
 document.getElementById('add-user').addEventListener('submit', createUser);
