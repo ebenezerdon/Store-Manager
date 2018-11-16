@@ -1,5 +1,6 @@
 @import "lib/nav.css";
 @import "lib/table.css";
+@import "products.css";
 
 
 body {
@@ -25,4 +26,13 @@ button a {
     color: white;
     text-decoration: none;
     font-size:15px;
+}
+
+.edit-user-class {
+    position: fixed;
+    z-index: 21;
+    max-width: 50%;
+    left: 25%;
+    top: -10px;
+    display: none;
 }
