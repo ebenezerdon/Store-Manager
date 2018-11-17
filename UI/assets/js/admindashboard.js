@@ -1,9 +1,8 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
-const { userId } = localStorage;
 
 const getCurrentUser = () => {
-  fetch(`${url}/users/${userId}`, {
+  fetch(`${url}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
@@ -38,8 +37,8 @@ const getUsers = () => {
       let output;
       for (let i = 0; i < 4; i++) {
         output = `
-        <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
-              `;
+          <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
+      `;
         document.getElementById('userlist').innerHTML += output;
       }
     });
