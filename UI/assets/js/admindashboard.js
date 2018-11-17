@@ -1,5 +1,6 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
+// eslint-disable-next-line no-unused-vars
 const saveProductId = (id) => {
   localStorage.setItem('productId', id);
 };
