@@ -36,13 +36,13 @@ const getAttendantSales = () => {
       let output;
       data.forEach((sales) => {
         output = `
-            <tr>
-              <td>${sales.created_at}</td>
-              <td>${sales.productname}</td>
-              <td>${sales.quantity}</td>
-              <td>${sales.price}</td>
-            </tr>
-            `;
+          <tr>
+            <td>${sales.created_at}</td>
+            <td>${sales.productname}</td>
+            <td>${sales.quantity}</td>
+            <td>${sales.price}</td>
+          </tr>
+          `;
         document.getElementById('sales-record').innerHTML += output;
       });
     });
