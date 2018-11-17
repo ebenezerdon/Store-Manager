@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const { attendantId } = localStorage;
 
