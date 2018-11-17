@@ -2,71 +2,56 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add New User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/product-item.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
-    <script src="main.js"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Add New User</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/product-item.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <script src="main.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="top-nav">
-            <div class="logo">
-                <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
-            </div>
-            <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
-            <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
-            <a href="#"><i class="far fa-bell"></i></a>
-            <p>Hello, <span id="name">Josh</span></p>
+  <header>
+    <div class="top-nav">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
+      </div>
+      <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="#"><i class="far fa-bell"></i></a>
+      <p>Hello, <span id="name">Josh</span></p>
+    </div>
+    <div class="nav-2">
+      <div class="option-select">
+        <div class="user-select">
+          <select>
+            <option>Dashboard</option>
+            <option>Products</option>
+          </select>
         </div>
-        <div class="nav-2">
-            <div class="option-select">
-                <div class="user-select">
-                    <select>
-                        <option>Dashboard</option>
-                        <option>Products</option>
-                    </select>
-                </div>
-            </div>
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Search">
-                    <button type="submit" class="searchButton">
-                        <div class="icon"><i class="fa fa-search"></i></div>
-                    </button>
-                </div>
-            </div>
+      </div>
+      <div class="wrap">
+        <div class="search">
+          <input type="text" class="searchTerm" placeholder="Search">
+          <button type="submit" class="searchButton">
+            <div class="icon"><i class="fa fa-search"></i></div>
+          </button>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <div class="row">
-            <div class='product'>
-                <h1>Long Sleeve Hooded T Shirt- Wine & Grey</h1>
-                <figure class="profile">
-                    <div class="profile-image"><img src="https://ng.jumia.is/8OQU5DiXVftEqmGAcFd62dHs9T8=/fit-in/680x680/filters:fill(white):sharpen(1,0,false):quality(100)/product/18/08299/1.jpg?3454"
-                            alt="" /></div>
-                    <figcaption>
-                        <h3>Quantity in Inventory</h3>
-                        <h4>53</h4>
-                        <h3>Minimum Product Quantity</h3>
-                        <h4>10</h4>
-                        <h3>Price</h3>
-                        <h4>₦3,300</h4>
-                        <button>Add to cart</button>
-                    </figcaption>
-                </figure>
+  <main>
+    <div class="row">
+      <div class='product' id="product-item"></div>
+    </div>
+  </main>
 
-            </div>
-        </div>
-    </main>
-
-    <footer></footer>
+  <footer></footer>
+  <script type="text/javascript" src="../assets/js/product-item.js"></script>
 </body>
 
 </html>

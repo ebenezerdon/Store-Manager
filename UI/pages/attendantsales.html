@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sale record</title>
+  <title>Attendant Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/product-item.css">
   <link rel="stylesheet" href="../assets/css/salesrecord.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
@@ -14,18 +15,24 @@
 </head>
 
 <body>
-  <header
+  <header>
     <div class="top-nav">
       <div class="logo">
-        <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
-        <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
+        <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
       </div>
-      <a href="#"><i class="far fa-user-circle"></i></a>
+      <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
+      <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
       <a href="#"><i class="far fa-bell"></i></a>
       <p>Hello, <span id="name">Josh</span></p>
     </div>
     <div class="nav-2">
       <div class="option-select">
+        <div class="user-select">
+          <select>
+            <option>Dashboard</option>
+            <option>Products</option>
+          </select>
+        </div>
       </div>
       <div class="wrap">
         <div class="search">
@@ -39,19 +46,22 @@
   </header>
 
   <main>
-    <table id="sales-record">
-      <tr>
-        <th>Date</th>
-        <th>Name of Product</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Attendant Id</th>
-      </tr>
-    </table>
+    <div class="row">
+      <div class='product'>
+        <div id="user-profile"></div>
+        <table id="sales-record">
+          <tr>
+            <th>Date</th>
+            <th>Name of Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+          </tr>
+        </table>
+      </div>
   </main>
 
   <footer></footer>
-  <script type="text/javascript" src="../assets/js/sales.js"></script>
+  <script type="text/javascript" src="../assets/js/attendantsales.js"></script>
 </body>
 
 </html>

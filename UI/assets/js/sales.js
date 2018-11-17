@@ -1,3 +1,8 @@
+// eslint-disable-next-line no-unused-vars
+const saveAttendantId = (id) => {
+  localStorage.setItem('attendantId', id);
+};
+
 const getSales = () => {
   fetch('https://newstoremanager.herokuapp.com/api/v1/sales', {
     headers: {
@@ -15,7 +20,7 @@ const getSales = () => {
             <td>${sales.productname}</td>
             <td>${sales.quantity}</td>
             <td>${sales.price}</td>
-            <td>${sales.attendant_id}</td>
+            <td><a href='attendantsales.html' onClick='saveAttendantId(${sales.attendant_id})'>${sales.attendant_id}</a></td>
           </tr>
           `;
         document.getElementById('sales-record').innerHTML += output;

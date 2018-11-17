@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const userList = document.getElementById('user-list');
 let editUser;
@@ -5,6 +6,10 @@ let editUserModal;
 let deleteUser;
 let confirmDeleteModal;
 let closeDeleteModal;
+
+const saveAttendantId = (id) => {
+  localStorage.setItem('attendantId', id);
+};
 
 const createUser = (e) => {
   e.preventDefault();
@@ -50,7 +55,11 @@ const getUsers = () => {
       data.forEach((user) => {
         output = `
             <tr>
-              <td>${user.fullname}</td>
+              <td>
+                <a href='attendantsales.html' onClick='saveAttendantId(${user.id})'>
+                  ${user.fullname}
+                </a>
+              </td>
               <td>${user.emailaddress}</td>
               <td>${user.role}</td>
               <td>

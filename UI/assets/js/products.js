@@ -13,12 +13,10 @@ const closeProductModal = () => {
   addProductDiv.style.display = 'none';
 };
 
-/* const deleteProductModal = () => {
-  deleteProductDiv.style.display = 'block';
+// eslint-disable-next-line no-unused-vars
+const saveProductId = (id) => {
+  localStorage.setItem('productId', id);
 };
-const closeDeleteModal = () => {
-  deleteProductDiv.style.display = 'none';
-}; */
 
 const getProducts = () => {
   fetch(`${url}`, {
@@ -36,10 +34,10 @@ const getProducts = () => {
         output = `
           <div class='product'>
             <div class='product-item hover-effect'>
-              <a href="product-item.html">
+              <a href="product-item.html" onClick='saveProductId(${product.id})'>
                 <img src=${product.productimage} width='300'>
               </a>
-              <a href='product-item.html'>
+              <a href='product-item.html' onClick='saveProductId(${product.id})'>
                 <p>${product.productname}</p>
                 <p>${product.price}</p>
                 <p>${product.id}</p>
