@@ -45,7 +45,8 @@ const getAttendantSales = () => {
           `;
         document.getElementById('sales-record').innerHTML += output;
       });
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 window.onload = getUserProfile();
