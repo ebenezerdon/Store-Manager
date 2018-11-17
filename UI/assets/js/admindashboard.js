@@ -1,5 +1,8 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
+const saveProductId = (id) => {
+  localStorage.setItem('productId', id);
+};
 
 const getCurrentUser = () => {
   fetch(`${url}/users/me`, {
@@ -74,7 +77,7 @@ const getProducts = () => {
       let output;
       for (let i = 0; i < 4; i += 1) {
         output = `
-            <a href="product-item.html">
+            <a href="product-item.html" onClick='saveProductId(${data[i].id})'>
               <img src='${data[i].productimage}'
                 width='300'>
             </a>
