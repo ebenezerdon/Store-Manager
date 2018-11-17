@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const { attendantId } = localStorage;
 
@@ -45,7 +46,8 @@ const getAttendantSales = () => {
           `;
         document.getElementById('sales-record').innerHTML += output;
       });
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 window.onload = getUserProfile();
