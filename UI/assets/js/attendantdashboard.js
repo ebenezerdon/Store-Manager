@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 
-const getCurrentUser = () => {
+const getMyProfile = () => {
   fetch(`${url}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
@@ -25,27 +25,8 @@ const getCurrentUser = () => {
     });
 };
 
-const getUsers = () => {
-  fetch(`${url}/users`, {
-    headers: {
-      'Content-Type': 'application/json',
-      accesstoken: localStorage.accesstoken,
-    },
-  })
-    .then(res => res.json())
-    .then((data) => {
-      let output;
-      for (let i = 0; i < 4; i++) {
-        output = `
-          <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
-      `;
-        document.getElementById('userlist').innerHTML += output;
-      }
-    });
-};
-
 const getSales = () => {
-  fetch(`${url}/sales`, {
+  fetch(`${url}/sales/user`, {
     headers: {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
@@ -53,11 +34,12 @@ const getSales = () => {
   })
     .then(res => res.json())
     .then((data) => {
+      console.log(data);
       let output;
       for (let i = 0; i < 4; i += 1) {
         output = `
-        <li><a href="product-item.html">${data[i].productname}</a></li>
-              `;
+          <li><a href="product-item.html">${data[i].productname}</a></li>
+        `;
         document.getElementById('sale-list').innerHTML += output;
       }
     });
@@ -85,7 +67,6 @@ const getProducts = () => {
     });
 };
 
-window.onload = getCurrentUser();
+window.onload = getMyProfile();
 window.onload = getProducts();
 window.onload = getSales();
-window.onload = getUsers();

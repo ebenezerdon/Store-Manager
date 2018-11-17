@@ -87,17 +87,11 @@ const updateUser = (req, res) => {
   });
 };
 
-const makeAdmin = (req, res) => {
-  const text = `UPDATE users
-    SET role=$1
-    WHERE id=$2 returning *`;
-  const values = [
-    'admin',
-    req.params.id,
-  ];
-  pool.query(text, values, (err, data) => {
+const getMyProfile = (req, res) => {
+  const text = 'SELECT * FROM users WHERE id = $1';
+  pool.query(text, [req.decoded.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(200).json({
+      return res.status(404).json({
         message: 'Hi! There\'s no user with that id',
         success: false,
       });
@@ -156,5 +150,5 @@ export {
   updateUser,
   deleteUser,
   loginUser,
-  makeAdmin,
+  getMyProfile,
 };
