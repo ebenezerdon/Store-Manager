@@ -10,7 +10,6 @@ const getCurrentUser = () => {
   })
     .then(res => res.json())
     .then((data) => {
-      console.log(data);
       const output = `
         <figure class="profile">
           <div class="profile-image"><img src="${data.userimage}"
