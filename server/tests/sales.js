@@ -55,7 +55,7 @@ describe('Get sales', () => {
           .set('accesstoken', token)
           .end((error, data) => {
             expect(data).to.have.status(200);
-            expect(41).to.equal(data.body.attendant_id);
+            expect(41).to.equal(data.body[0].attendant_id);
             done();
           });
       });
