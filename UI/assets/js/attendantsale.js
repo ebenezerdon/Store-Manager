@@ -49,3 +49,4 @@ const getAttendantSales = () => {
 };
 
 window.onload = getUserProfile();
+window.onload = getAttendantSales();
