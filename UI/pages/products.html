@@ -10,39 +10,11 @@
   <link rel="stylesheet" href="../assets/css/products.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
-  <script src="main.js"></script>
 </head>
 
 <body>
   <header>
-    <div class="top-nav">
-      <div class="logo">
-        <img src="../assets/images/logo.png" alt="">
-      </div>
-      <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
-      <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
-      <a href="#"><i class="far fa-bell"></i></a>
-      <p>Hello, <span id="name">Josh</span></p>
-    </div>
-    <div class="nav-2">
-      <!--
-      <div class="option-select">
-        <div class="user-select">
-          <select>
-            <option>Products</option>
-            <option>Dashboard</option>
-          </select>
-        </div>
-      </div> -->
-      <div class="wrap">
-        <div class="search">
-          <input type="text" class="searchTerm" placeholder="Search">
-          <button type="submit" class="searchButton">
-            <div class="icon"><i class="fa fa-search"></i></div>
-          </button>
-        </div>
-      </div>
-    </div>
+    <nav id="navbar"></nav>
   </header>
 
   <button class="btn" id="add-product-btn">Add New Product</button>
@@ -61,6 +33,7 @@
   
   <div class='row' id="products-list"></div>
 
+  <script type="text/javascript" src="../assets/js/nav.js"></script>
   <script type="text/javascript" src="../assets/js/products.js"></script>
 
 </body>
