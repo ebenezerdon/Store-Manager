@@ -19,5 +19,14 @@ const nav = `
     </div>
   </div>
 `;
-
 document.getElementById('navbar').innerHTML = nav;
+
+const logoutButton = document.getElementById('logout-button');
+const logout = () => {
+  localStorage.removeItem('accesstoken');
+  localStorage.removeItem('role');
+  localStorage.removeItem('userId');
+  window.location.replace('../index.html');
+};
+
+logoutButton.addEventListener('click', logout);
