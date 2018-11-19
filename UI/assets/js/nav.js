@@ -4,9 +4,8 @@ const nav = `
       <a href="../index.html"><img src="../assets/images/logo.png" alt=""></a>
     </div>
     <p id="logout-button">Logout</p>
-    <a href="attendantdashboard.html"><i class="far fa-user-circle"></i></a>
-    <a href="admindashboard.html"><i class="far fa-user-circle"></i></a>
-    <a href="#"><i class="far fa-bell"></i></a>
+    <a href="attendantdashboard.html" id="attendant-logo"><i class="far fa-user-circle"></i></a>
+    <a href="admindashboard.html" id="admin-logo"><i class="far fa-user-circle"></i></a>
   </div>
   <div class="nav-2">
     <div class="wrap">
@@ -20,6 +19,12 @@ const nav = `
   </div>
 `;
 document.getElementById('navbar').innerHTML = nav;
+
+if (localStorage.role === 'admin') {
+  document.getElementById('attendant-logo').style.display = 'none';
+} else {
+  document.getElementById('admin-logo').style.display = 'none';
+}
 
 const logoutButton = document.getElementById('logout-button');
 const logout = () => {
