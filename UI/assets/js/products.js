@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 const addProductDiv = document.getElementById('add-product');
 const url = 'https://newstoremanager.herokuapp.com/api/v1/products';
 /* const deleteProductDiv = document.getElementById('confirm-delete'); */
@@ -6,6 +8,8 @@ let confirmDeleteModal;
 let closeDeleteModal;
 let editProduct;
 let editProductModal;
+const addProductBtn = document.getElementById('add-product-btn');
+const productsList = document.getElementById('products-list');
 const addProductModal = () => {
   addProductDiv.style.display = 'block';
 };
@@ -29,8 +33,6 @@ const getProducts = () => {
     .then((data) => {
       let output;
       data.forEach((product) => {
-        console.log(`${product.id}${product.quantity}`);
-        console.log(product.productimage);
         output = `
           <div class='product'>
             <div class='product-item hover-effect'>
@@ -64,10 +66,14 @@ const getProducts = () => {
             <button id="close-delete-modal" onclick="closeDeleteModal(${product.id})">No</button>
           </div>
         `;
-        document.getElementById('products-list').innerHTML += output;
+        productsList.innerHTML += output;
+        const editClass = document.querySelectorAll('.edit-product-div');
+        if (localStorage.role === 'attendant') {
+          // eslint-disable-next-line no-return-assign
+          editClass.forEach(x => x.style.display = 'none');
+        }
 
         editProductModal = (ProductId) => {
-          console.log(ProductId);
           document.getElementById(ProductId).style.display = 'block';
         };
 
@@ -163,8 +169,13 @@ const postProduct = (e) => {
     .catch(err => console.log(err));
 };
 
-document.getElementById('add-product-btn').addEventListener('click', addProductModal);
+addProductBtn.addEventListener('click', addProductModal);
 document.getElementById('close-modal-btn').addEventListener('click', closeProductModal);
 document.getElementById('add-product').addEventListener('submit', postProduct);
 
 window.onload = getProducts();
+
+if (localStorage.role === 'attendant') {
+  addProductBtn.style.display = 'none';
+  productsList.style.marginTop = '150px';
+}
