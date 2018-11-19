@@ -51,23 +51,6 @@ main {
   top: 6.5px;
 }
 
-/* .showcase {
-  background: url(https://images.pexels.com/photos/338027/pexels-photo-338027.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
-  height: 200px;
-  width: 700px;
-  position: absolute;
-  z-index: 20;
-  top: 110px;
-  left: 20px;
-  right: 20px;
-} */
-
-/* .card-div {
-  position: absolute;
-  display: flex;
-  flex-flow: row wrap;
-} */
-
 .login-form {
   position: absolute;
   top: 300px;
@@ -91,4 +74,8 @@ main {
 button a {
   text-decoration: none;
   color: white;
+}
+
+#logout-button:hover {
+  cursor: pointer;
 }
