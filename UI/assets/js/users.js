@@ -151,6 +151,4 @@ const getUsers = () => {
     });
 };
 
-/* userList.onload = getUsers(); */
-
 document.getElementById('add-user').addEventListener('submit', createUser);
