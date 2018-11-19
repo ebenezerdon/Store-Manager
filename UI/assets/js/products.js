@@ -44,7 +44,7 @@ const getProducts = () => {
                 <p>${product.price}</p>
                 <p>${product.id}</p>
               </a>
-              <button>Add to cart</button>
+              <button class="cart-btn">Add to cart</button>
               <div class='edit-product-div'>
                 <button class='edit-product' onclick='editProductModal(${product.id}${product.quantity})'>Edit</button>
                 <button class='delete-product' onclick='confirmDeleteModal(${product.id})'>Delete</button>
@@ -68,9 +68,14 @@ const getProducts = () => {
         `;
         productsList.innerHTML += output;
         const editClass = document.querySelectorAll('.edit-product-div');
+        const cartBtn = document.querySelectorAll('.cart-btn');
         if (localStorage.role === 'attendant') {
           // eslint-disable-next-line no-return-assign
           editClass.forEach(x => x.style.display = 'none');
+        }
+        if (localStorage.role === 'admin') {
+          // eslint-disable-next-line no-return-assign
+          cartBtn.forEach(x => x.style.display = 'none');
         }
 
         editProductModal = (ProductId) => {
