@@ -1,7 +1,5 @@
 const validateUserInput = (req, res, next) => {
-  const {
-    body,
-  } = req;
+  const { body } = req;
 
   if (!String(body.emailAddress)) {
     return res.status(400).json({
