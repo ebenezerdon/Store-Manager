@@ -1,3 +1,15 @@
+const addStatusMessageDiv = () => {
+  document.body.innerHTML += '<div id="status-msg"></div>';
+};
+
+const snackbar = (text) => {
+  const statusMessageDiv = document.getElementById('status-msg');
+  statusMessageDiv.innerHTML = text;
+  statusMessageDiv.style.display = 'block';
+  // eslint-disable-next-line no-return-assign
+  setTimeout(() => statusMessageDiv.style.display = 'none', 4000);
+};
+
 const loginUser = (e) => {
   e.preventDefault();
   const loginDetails = {
@@ -24,8 +36,13 @@ const loginUser = (e) => {
         }
         window.location.replace('./pages/attendantdashboard.html');
       }
+      snackbar(data.message);
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      snackbar('There was an error. Can you try again?');
+    });
 };
 
+window.onload = addStatusMessageDiv();
 document.getElementById('login').addEventListener('submit', loginUser);
