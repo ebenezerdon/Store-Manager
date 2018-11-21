@@ -25,8 +25,12 @@ const loginUser = (e) => {
         }
         window.location.replace('./pages/attendantdashboard.html');
       }
+      snackbar(data.message);
     })
-    .catch(err => snackbar(err));
+    .catch((err) => {
+      console.log(err);
+      snackbar('There was an error. Can you try again?');
+    });
 };
 
 document.getElementById('login').addEventListener('submit', loginUser);
