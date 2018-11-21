@@ -1,0 +1,35 @@
+#status-msg {
+    display: none;
+    max-width: 50px;
+    height: 40px;
+    margin: auto;
+    padding-top: 20px;
+    background-color: #7c0000;
+    color: #fff;
+    font-size: 17px;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 22;
+    left: 0;
+    right:0;
+    top: 150px;
+    animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s;
+}
+
+@keyframes fadein {
+    from {font-size: 0px; opacity: 0;}
+    to {font-size: 0px; opacity: 1;}
+}
+
+@keyframes expand {
+    from {font-size: 0px; min-width: 50px}
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+
+/* @Keyframes inspired by https://codepen.io/kipp0/pen/pPNrrj */
