@@ -1,3 +1,4 @@
+
 const loginUser = (e) => {
   e.preventDefault();
   const loginDetails = {
@@ -25,7 +26,7 @@ const loginUser = (e) => {
         window.location.replace('./pages/attendantdashboard.html');
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => snackbar(err));
 };
 
 document.getElementById('login').addEventListener('submit', loginUser);
