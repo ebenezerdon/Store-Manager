@@ -37,6 +37,7 @@ const loginUser = (e) => {
         window.location.replace('./pages/attendantdashboard.html');
       }
       snackbar(data.message);
+      console.log(data);
     })
     .catch((err) => {
       console.log(err);

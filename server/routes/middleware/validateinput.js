@@ -4,21 +4,26 @@ const validateUserInput = (req, res, next) => {
   } = req;
 
   if (!String(body.emailAddress)) {
-    return (
-      res.status(400).json('The user\'s email adress has to be a string!')
-    );
+    return res.status(400).json({
+      message: 'The user\'s email adress has to be a string!',
+      success: false,
+    });
   }
   if (body.password.length < 6) {
-    return (
-      res.status(400).json('The user\'s password has to be more than 6 characters!')
-    );
+    return res.status(400).json({
+      message: 'The user\'s password has to be more than 6 characters!',
+      success: false,
+    });
   }
   return next();
 };
 
 const validateId = (req, res, next) => {
   if (!Number(req.params.id)) {
-    return res.status(401).json('Hi! The id has to be a number');
+    return res.status(400).json({
+      message: 'Hi! The id has to be a number',
+      success: false,
+    });
   }
   return next();
 };
@@ -32,9 +37,10 @@ const validateUserSignup = (req, res, next) => {
     });
   }
   if (!String(body.fullname)) {
-    return (
-      res.status(400).json('The user\'s name has to be a string!')
-    );
+    return res.status(400).json({
+      message: 'The user\'s name has to be a string!',
+      success: false,
+    });
   }
   if (!body.fullname || !body.emailaddress
     || !body.role || !body.password) {
@@ -51,9 +57,10 @@ const validateProductInput = (req, res, next) => {
     body,
   } = req;
   if (!body.productname || !body.description || !body.price || !body.quantity || !body.minallowed) {
-    return (
-      res.status(400).json('Hi! Some details are missing. Can you check and try again?')
-    );
+    return res.status(400).json({
+      message: 'Some details are missing. Can you check and try again?',
+      success: false,
+    });
   }
   return next();
 };
@@ -63,9 +70,10 @@ const validateSaleInput = (req, res, next) => {
     body,
   } = req;
   if (!body.productname || !body.price || !body.quantity) {
-    return (
-      res.status(400).json('Hi! Some details are missing. Can you check and try again?')
-    );
+    return res.status(400).json({
+      message: 'Some details are missing. Can you check and try again?',
+      success: false,
+    });
   }
   return next();
 };
