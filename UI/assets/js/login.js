@@ -1,3 +1,14 @@
+const addStatusMessageDiv = () => {
+  document.body.innerHTML += '<div id="status-msg"></div>';
+};
+
+const snackbar = (text) => {
+  const statusMessageDiv = document.getElementById('status-msg');
+  statusMessageDiv.innerHTML = text;
+  statusMessageDiv.style.display = 'block';
+  // eslint-disable-next-line no-return-assign
+  setTimeout(() => statusMessageDiv.style.display = 'none', 4000);
+};
 
 const loginUser = (e) => {
   e.preventDefault();
@@ -33,4 +44,5 @@ const loginUser = (e) => {
     });
 };
 
+window.onload = addStatusMessageDiv();
 document.getElementById('login').addEventListener('submit', loginUser);
