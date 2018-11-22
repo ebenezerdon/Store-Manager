@@ -1,8 +1,8 @@
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 // eslint-disable-next-line no-unused-vars
-const saveProductId = (id) => {
-  localStorage.setItem('productId', id);
+const saveId = (nameOfId, id) => {
+  localStorage.setItem(nameOfId, id);
 };
 
 const getCurrentUser = () => {
@@ -42,7 +42,7 @@ const getUsers = () => {
       let output;
       for (let i = 0; i < 4; i++) {
         output = `
-          <li><a href="attendantdashboard.html">${data[i].fullname}</a></li>
+          <li><a href="attendantsales.html" onClick='saveId("attendantId", ${data[i].id})'>${data[i].fullname}</a></li>
       `;
         document.getElementById('userlist').innerHTML += output;
       }
@@ -58,6 +58,7 @@ const getSales = () => {
   })
     .then(res => res.json())
     .then((data) => {
+      data.reverse();
       let output;
       for (let i = 0; i < 4; i += 1) {
         output = `
@@ -77,10 +78,11 @@ const getProducts = () => {
   })
     .then(res => res.json())
     .then((data) => {
+      data.reverse();
       let output;
       for (let i = 0; i < 4; i += 1) {
         output = `
-            <a href="product-item.html" onClick='saveProductId(${data[i].id})'>
+            <a href="product-item.html" onClick='saveId("productId", ${data[i].id})'>
               <img src='${data[i].productimage}'
                 width='300'>
             </a>
