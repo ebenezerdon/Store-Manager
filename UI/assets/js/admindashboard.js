@@ -25,7 +25,8 @@ const getCurrentUser = () => {
         </figure>
       `;
       document.getElementById('user-profile').innerHTML += output;
-      statusMessage(`Hello ${data.fullname}, welcome!`);
+      // eslint-disable-next-line no-undef
+      statusMessage(`Hello ${data.fullname.split(' ')[0]}!`, 'darkgreen', '110px');
     });
 };
 
