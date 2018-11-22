@@ -13,4 +13,4 @@ const statusMessage = (text, color, top) => {
   setTimeout(() => { statusMessageDiv.style.display = 'none'; }, 4000);
 };
 
-window.onload = addStatusMessageDiv();
+window.body.onload = addStatusMessageDiv();
