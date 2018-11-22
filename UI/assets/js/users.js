@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 const userList = document.getElementById('user-list');
@@ -36,10 +38,17 @@ const createUser = (e) => {
     .then(res => res.json())
     .then((data) => {
       if (data.success === true) {
+        statusMessage('The user has been successfully registered!', 'green');
         console.log('User created!');
-      } else { console.log(data); }
+      } else {
+        statusMessage(data.message);
+        console.log(data);
+      }
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      statusMessage('There was an error in processing your request');
+      console.log(err);
+    });
 };
 
 const getUsers = () => {
@@ -68,11 +77,11 @@ const getUsers = () => {
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Full Name" id="${user.id}editedfullname" value="${user.fullname}">
-              <input type="text" class="reg-input" placeholder="Email Address" readonly id="${user.id}editedemailaddress" value="${user.emailaddress}">
-              <input type="tel" class="reg-input" placeholder="Phone Number" id="${user.id}editedphonenumber" value="${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Password" id="${user.id}editedpassword" value="${user.password}">
-              <input type="text" class="reg-input" placeholder="Role" id="${user.id}editedrole" value="${user.role}">
+              <input type="text" class="reg-input" placeholder="Full Name" id="${user.id}editedfullname" value="${user.fullname}" required>
+              <input type="text" class="reg-input" placeholder="Email Address" readonly id="${user.id}editedemailaddress" value="${user.emailaddress}" required>
+              <input type="tel" class="reg-input" placeholder="Phone Number" id="${user.id}editedphonenumber" value="${user.phonenumber}" required>
+              <input type="text" class="reg-input" placeholder="Password" id="${user.id}editedpassword" value="${user.password}" required>
+              <input type="text" class="reg-input" placeholder="Role" id="${user.id}editedrole" value="${user.role}" required>
               <button type="submit"class="btn p-modal" onClick='editUser(${user.id})'>Update User</button>
               <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
             </div>
@@ -113,11 +122,18 @@ const getUsers = () => {
             .then(res => res.json())
             .then((data) => {
               if (data) {
+                statusMessage('The user has been successfully updated', 'green');
                 console.log('Edit User successful!');
                 console.log(data);
-              } else { console.log('Edit User Not successful!'); }
+              } else {
+                statusMessage('There was an error in editing this user!');
+                console.log('Edit User Not successful!'); 
+              }
             })
-            .catch(err => alert(err));
+            .catch((err) => {
+              statusMessage('There was an error in processing your request');
+              console.log(err);
+            });
         };
 
         confirmDeleteModal = (userId) => {
@@ -140,15 +156,27 @@ const getUsers = () => {
             .then(res => res.json())
             .then((data) => {
               if (data.success === true) {
+                statusMessage('The user has been successfully deleted!');
                 console.log(`User with id ${userId} deleted!`);
-                console.log(data);
                 window.location = window.location;
-              } else { console.log('Not successful!\n', data); }
+              } else {
+                statusMessage(data.message);
+                console.log('Not successful!\n', data); 
+              }
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+              statusMessage('There was an error in processing your request');
+              console.log(err);
+            });
         };
       });
+    })
+    .catch((err) => {
+      statusMessage('There was an error in processing your request');
+      console.log(err);
     });
 };
 
-document.getElementById('add-user').addEventListener('submit', createUser);
+if (document.title === 'Add New User') {
+  document.getElementById('add-user').addEventListener('submit', createUser);
+}

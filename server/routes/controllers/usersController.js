@@ -17,7 +17,10 @@ const getOneUser = (req, res) => {
   const text = 'SELECT * FROM users WHERE id = $1';
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
-      return res.status(404).json('Hi! There\'s no user with that id');
+      return res.status(404).json({
+        message: 'Hi! There\'s no user with that id',
+        success: false,
+      });
     }
     if (err) throw err;
     return res.status(200).json(data.rows[0]);
@@ -129,7 +132,12 @@ const loginUser = (req, res) => {
     ],
   };
   pool.query(query).then((data) => {
-    if (!data.rowCount) return (res.status(404).json('Hi! Can you check again? Ther\'s no user with those details'));
+    if (!data.rowCount) {
+      return res.status(404).json({
+        message: 'Hi! Can you check again? Ther\'s no user with those details',
+        success: false,
+      });
+    }
     const token = jwt.sign(data.rows[0], secret, {
       expiresIn: '24hrs',
     });
@@ -151,4 +159,4 @@ export {
   deleteUser,
   loginUser,
   getMyProfile,
-};
+}

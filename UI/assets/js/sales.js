@@ -25,6 +25,11 @@ const getSales = () => {
           `;
         document.getElementById('sales-record').innerHTML += output;
       });
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-undef
+      statusMessage('There was an error in loading sales record');
+      console.log(err);
     });
 };
 

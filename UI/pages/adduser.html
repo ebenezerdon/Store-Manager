@@ -26,10 +26,10 @@
                 <input type="radio" name="role" value="admin" id="admin" class="reg-switch-input">
                 <label for="admin" class="switch-label">Admin</label>
             </div>
-            <input type="text" class="reg-input" placeholder="Full Name" id="fullname">
-            <input type="email" class="reg-input" placeholder="Email address" id="emailaddress">
-            <input type="text" class="reg-input" placeholder="Phone Number" id="phonenumber">
-            <input type="text" class="reg-input" placeholder="Password" id="password">
+            <input type="text" class="reg-input" placeholder="Full Name" id="fullname" required>
+            <input type="email" class="reg-input" placeholder="Email address" id="emailaddress" required>
+            <input type="text" class="reg-input" placeholder="Phone Number" id="phonenumber" required>
+            <input type="text" class="reg-input" placeholder="Password" id="password" required>
             <label for="userimage" class="user-image">Select User Image</label>
             <!-- in future, when user has selected image, something should happen to the select-image guy
               Use select-user-image .hascontent to tweak this buddy 
@@ -42,6 +42,7 @@
 
   <footer></footer>
   <script type="text/javascript" src="../assets/js/nav.js"></script>
+  <script type="text/javascript" src="assets/js/statusmessage.js"></script>
   <script type="text/javascript" src="../assets/js/users.js"></script>
 </body>
 

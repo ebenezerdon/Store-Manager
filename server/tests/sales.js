@@ -60,7 +60,7 @@ describe('Get sales', () => {
           });
       });
   });
-  it('it should return status 401 if id not valid', (done) => {
+  it('it should return status 400 if id not valid', (done) => {
     chai.request(app).post('/api/v1/auth/login')
       .send({
         emailaddress: 'admin@gmail.com',
@@ -72,7 +72,7 @@ describe('Get sales', () => {
           .get('/api/v1/sales/d')
           .set('accesstoken', token)
           .end((error, data) => {
-            expect(data).to.have.status(401);
+            expect(data).to.have.status(400);
             done();
           });
       });

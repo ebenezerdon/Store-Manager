@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const loginUser = (e) => {
   e.preventDefault();
   const loginDetails = {
@@ -24,8 +25,13 @@ const loginUser = (e) => {
         }
         window.location.replace('./pages/attendantdashboard.html');
       }
+      statusMessage(data.message);
+      console.log(data);
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      statusMessage('There was an error. Can you try again?');
+    });
 };
 
 document.getElementById('login').addEventListener('submit', loginUser);
