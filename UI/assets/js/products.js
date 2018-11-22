@@ -32,7 +32,7 @@ const getProducts = () => {
     .then(res => res.json())
     .then((data) => {
       let output;
-      data.forEach((product) => {
+      data.reverse().forEach((product) => {
         output = `
           <div class='product'>
             <div class='product-item hover-effect'>
@@ -111,7 +111,11 @@ const getProducts = () => {
                 console.log('Edit Product successful!');
               } else { console.log('Edit Product Not successful!'); }
             })
-            .catch(err => alert(err));
+            .catch((err) => {
+              alert(err);
+              // eslint-disable-next-line no-undef
+              statusMessage('There was an error in processing your request.');
+            });
         };
 
         confirmDeleteModal = (productId) => {
@@ -132,10 +136,18 @@ const getProducts = () => {
           };
           fetch(`${url}/${productId}`, options)
             .then(res => res.json())
-            .then((data) => {
-              if (data.success === true) {
+            .then((resData) => {
+              if (resData.success === true) {
                 console.log(`Product with id ${productId} deleted!`);
-              } else { console.log('Not successful!'); }
+                // eslint-disable-next-line no-undef
+                statusMessage('The product has been deleted successfully!', 'green');
+                productsList.innerHTML = '';
+                getProducts();
+              } else {
+                // eslint-disable-next-line no-undef
+                statusMessage(resData.message);
+                console.log('Not successful!'); 
+              }
             })
             .catch(err => console.log(err));
         };
@@ -169,6 +181,10 @@ const postProduct = (e) => {
     .then((data) => {
       if (data.success === true) {
         console.log('Product created!');
+        // eslint-disable-next-line no-undef
+        statusMessage('The product has been added successfully!', 'green');
+        productsList.innerHTML = '';
+        getProducts();
       } else { console.log('Not successful!'); }
     })
     .catch(err => console.log(err));

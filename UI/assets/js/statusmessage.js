@@ -10,8 +10,7 @@ const statusMessage = (text, color, top) => {
   statusMessageDiv.style.background = color;
   statusMessageDiv.style.top = top;
   statusMessageDiv.style.display = 'block';
-  // eslint-disable-next-line no-return-assign
-  setTimeout(() => statusMessageDiv.style.display = 'none', 4000);
+  setTimeout(() => { statusMessageDiv.style.display = 'none'; }, 4000);
 };
 
 window.onload = addStatusMessageDiv();
