@@ -1,20 +1,21 @@
 #status-msg {
     display: none;
-    max-width: 50px;
+    max-width: 70%;
     height: 40px;
     margin: auto;
-    padding-top: 20px;
+    vertical-align: middle; 
+    line-height: 40px;
     background-color: #7c0000;
     color: #fff;
-    font-size: 17px;
+    font-size: 1.1em;
     text-align: center;
-    border-radius: 2px;
     position: fixed;
     z-index: 22;
     left: 0;
     right:0;
     top: 150px;
     animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s;
 }
 
 @keyframes fadein {
