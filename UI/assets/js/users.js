@@ -77,11 +77,11 @@ const getUsers = () => {
               </td>
             </tr>
             <div class="reg edit-user-class" id="${user.id}${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Full Name" id="${user.id}editedfullname" value="${user.fullname}">
-              <input type="text" class="reg-input" placeholder="Email Address" readonly id="${user.id}editedemailaddress" value="${user.emailaddress}">
-              <input type="tel" class="reg-input" placeholder="Phone Number" id="${user.id}editedphonenumber" value="${user.phonenumber}">
-              <input type="text" class="reg-input" placeholder="Password" id="${user.id}editedpassword" value="${user.password}">
-              <input type="text" class="reg-input" placeholder="Role" id="${user.id}editedrole" value="${user.role}">
+              <input type="text" class="reg-input" placeholder="Full Name" id="${user.id}editedfullname" value="${user.fullname}" required>
+              <input type="text" class="reg-input" placeholder="Email Address" readonly id="${user.id}editedemailaddress" value="${user.emailaddress}" required>
+              <input type="tel" class="reg-input" placeholder="Phone Number" id="${user.id}editedphonenumber" value="${user.phonenumber}" required>
+              <input type="text" class="reg-input" placeholder="Password" id="${user.id}editedpassword" value="${user.password}" required>
+              <input type="text" class="reg-input" placeholder="Role" id="${user.id}editedrole" value="${user.role}" required>
               <button type="submit"class="btn p-modal" onClick='editUser(${user.id})'>Update User</button>
               <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
             </div>

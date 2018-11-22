@@ -149,9 +149,18 @@ const getProducts = () => {
                 console.log('Not successful!'); 
               }
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+              // eslint-disable-next-line no-undef
+              statusMessage('There was an error in processing your request');
+              console.log(err);
+            });
         };
       });
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-undef
+      statusMessage('An error occured while trying to get products');
+      console.log(err);
     });
 };
 
@@ -187,7 +196,11 @@ const postProduct = (e) => {
         getProducts();
       } else { console.log('Not successful!'); }
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      // eslint-disable-next-line no-undef
+      statusMessage('There was an error in processing your request');
+      console.log(err);
+    });
 };
 
 addProductBtn.addEventListener('click', addProductModal);
@@ -198,5 +211,5 @@ window.onload = getProducts();
 
 if (localStorage.role === 'attendant') {
   addProductBtn.style.display = 'none';
-  productsList.style.marginTop = '150px';
+  productsList.style.marginTop = '100px';
 }
