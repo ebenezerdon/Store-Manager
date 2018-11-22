@@ -25,6 +25,7 @@ const getCurrentUser = () => {
         </figure>
       `;
       document.getElementById('user-profile').innerHTML += output;
+      statusMessage(`Hello ${data.fullname}, welcome!`);
     });
 };
 

@@ -22,6 +22,10 @@ main {
   margin-bottom: 60px;
 }
 
+#login-tag {
+  margin-top: -50px;
+}
+
 .container {
   position: absolute;
   text-align: center;
