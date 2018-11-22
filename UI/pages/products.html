@@ -17,9 +17,9 @@
   <header>
     <nav id="navbar"></nav>
   </header>
-
-  <button class="btn" id="add-product-btn">Add New Product</button>
-  <form class="reg add-product-class" id="add-product">
+  <main id="#products-tag">
+    <button class="btn" id="add-product-btn">Add New Product</button>
+    <form class="reg add-product-class" id="add-product">
       <input type="text" class="reg-input" placeholder="Product Name" id="productname">
       <input type="text" class="reg-input" placeholder="Description" id="description">
       <input type="text" class="reg-input" placeholder="Price" id="price">
@@ -28,11 +28,12 @@
       <label for="productimage" class="user-image">Select Product Image</label>
       <button id="upload-image">upload</button> <br></br>
       <input type="file" class="select-user-image" value="Select product image" id="productimage">
-      <button type="submit"class="btn p-modal">Add product</button>
+      <button type="submit" class="btn p-modal">Add product</button>
       <a href="" class="btn p-modal" id="close-modal-btn">Close</a>
-  </form>
-  
-  <div class='row' id="products-list"></div>
+    </form>
+
+    <div class='row' id="products-list"></div>
+  </main>
 
   <script type="text/javascript" src="../assets/js/nav.js"></script>
   <script type="text/javascript" src="../assets/js/statusmessage.js"></script>
