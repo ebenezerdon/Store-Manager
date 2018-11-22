@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 const url = 'https://newstoremanager.herokuapp.com/api/v1';
 // eslint-disable-next-line no-unused-vars
@@ -25,6 +26,13 @@ const getMyProfile = () => {
         </figure>
       `;
       document.getElementById('user-profile').innerHTML += output;
+      // eslint-disable-next-line no-undef
+      statusMessage(`Hello ${data.fullname.split(' ')[0]}!`, 'darkgreen', '110px');
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-undef
+      statusMessage('There was an error in processing your request');
+      console.log(err);
     });
 };
 
@@ -45,7 +53,8 @@ const getSales = () => {
         `;
         document.getElementById('sale-list').innerHTML += output;
       }
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 const getProducts = () => {
