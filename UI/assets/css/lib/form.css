@@ -60,7 +60,7 @@
 	position: relative 
 }
 
-.login-form form input[type="text"],
+.login-form form input[type="email"],
 .login-form input[type="password"] {
 	border-radius: 3px;
 	box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;

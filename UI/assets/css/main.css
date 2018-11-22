@@ -6,6 +6,7 @@
 @import "lib/form.css";
 @import "lib/nav2.css";
 @import "lib/search.css";
+@import "lib/snackbar.css";
 
 
 body {
@@ -19,6 +20,10 @@ body {
 main {
   margin-top: 100px;
   margin-bottom: 60px;
+}
+
+#login-tag{
+  margin-top: -50px;
 }
 
 .container {
