@@ -48,7 +48,7 @@ const getAttendantSale = (req, res) => {
   pool.query(text, [req.params.id], (err, data) => {
     if (!data.rowCount) {
       return res.status(404).json({
-        message: 'Hi! There\'s no sale record with that attendant_id',
+        message: 'Hi! There\'s no sale record with that attendant id',
         success: false,
       });
     }
@@ -71,7 +71,7 @@ const addSale = (req, res) => {
     req.decoded.id,
   ];
   pool.query(text, values, (err, data) => {
-    if (!data.rowCount) { 
+    if (!data.rowCount) {
       return res.status(404).json({
         message: 'Hi! There\'s no sale record with that id',
         success: false,
