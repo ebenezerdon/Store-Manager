@@ -11,9 +11,6 @@
     "ecmaVersion": 2017,
     "sourceType": "module"
   },
-  "rules": {
-    "linebreak-style": ["error", "windows"]
-  },
   "globals": {
     "localStorage": true,
     "fetch": true
