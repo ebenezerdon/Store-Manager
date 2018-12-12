@@ -7,14 +7,14 @@ const getProductItem = () => {
       'Content-Type': 'application/json',
       accesstoken: localStorage.accesstoken,
     },
-  })
+  }) 
     .then(res => res.json())
     .then((data) => {
       const output = `
           <h1>${data.productname}</h1>
           <figure class="profile">
             <div class="profile-image"><img src="${data.productimage}"
-                 alt="Sample photo of ${data.productname}" />
+              alt="Sample photo of ${data.productname}" />
             </div>
             <figcaption>
               <p>${data.description}</p>
