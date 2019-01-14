@@ -7,7 +7,7 @@
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "migration": "babel-node server/models/migration.js dropTables && babel-node server/models/migration.js createTables",
     "seed": "babel-node server/models/seed.js seedProducts && babel-node server/models/seed.js seedSales && babel-node server/models/seed.js seedUsers",
-    "test": "npm run migration && npm run seed && nyc mocha ./server/tests --compilers js:babel-core/register --timeout 1000 --exit"
+    "test": "npm run migration && npm run seed && nyc mocha ./server/tests --compilers js:babel-core/register --timeout 10000 --exit"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
