@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/api/v1', router);
 
 app.get('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
   res.json({ message: 'Hey there! Storemanager API' });
 });
 
