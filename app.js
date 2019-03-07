@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
+app.options('*', cors());
 
 // use body parser to parse request
 app.use(bodyParser.urlencoded({ extended: true }));
