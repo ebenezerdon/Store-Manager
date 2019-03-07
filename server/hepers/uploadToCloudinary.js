@@ -1,4 +1,15 @@
 import cloudinary from 'cloudinary';
+import multer from 'multer';
+import cloudinaryStorage from 'multer-storage-cloudinary';
+
+const storage = cloudinaryStorage({
+  cloudinary,
+  folder: 'demo',
+  allowedFormats: ['jpg', 'png'],
+  transformation: [{ width: 500, height: 500, crop: 'limit' }],
+});
+
+const parser = multer({ storage });
 
 const uploadToCloudinary = async (imageFilePath) => {
   cloudinary.config({
@@ -18,4 +29,4 @@ const uploadToCloudinary = async (imageFilePath) => {
   return response;
 };
 
-export default uploadToCloudinary;
+export { uploadToCloudinary, parser };

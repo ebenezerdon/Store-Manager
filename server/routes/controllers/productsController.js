@@ -1,6 +1,6 @@
 /* import moment from 'moment'; */
 import pool from '../../models/db';
-import uploadToCloudinary from '../../hepers/uploadToCloudinary';
+import { uploadToCloudinary } from '../../hepers/uploadToCloudinary';
 
 const getAllProducts = (req, res) => {
   const text = 'SELECT * FROM products';
