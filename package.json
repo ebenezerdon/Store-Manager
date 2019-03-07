@@ -28,6 +28,7 @@
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
+    "cloudinary": "^1.13.2",
     "config": "^1.20.1",
     "consign": "^0.1.6",
     "cookie-parser": "~1.4.3",
