@@ -25,7 +25,7 @@ router.get('/sales/users/:id', authenticate, verifyAdmin, getAttendantSale);
 /* Products Router */
 router.get('/products', authenticate, getAllProducts);
 router.get('/products/:id', authenticate, validateId, getOneProduct);
-router.post('/products', authenticate, parser.single('image'), validateProductInput, verifyAdmin, addProduct);
+router.post('/products', authenticate, validateProductInput, verifyAdmin, parser.single('image'), addProduct);
 router.put('/products/:id', authenticate, validateId, validateProductInput, verifyAdmin, updateProduct);
 router.delete('/products/:id', authenticate, verifyAdmin, deleteProduct);
 
