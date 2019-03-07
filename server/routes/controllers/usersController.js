@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import pool from '../../models/db';
+import uploadToCloudinary from '../../hepers/uploadToCloudinary';
 
 dotenv.config();
 const secret = process.env.SECRET_KEY;
@@ -27,10 +28,9 @@ const getOneUser = (req, res) => {
   });
 };
 
-const addUser = (req, res) => {
-  const {
-    body
-  } = req;
+const addUser = async (req, res) => {
+  const { body } = req;
+  const userImageUrl = await uploadToCloudinary(body.userimage);
   const text = 'SELECT * FROM users WHERE emailaddress = $1';
   pool.query(text, [body.emailaddress], (err, data) => {
     if (data.rowCount) {
@@ -47,7 +47,7 @@ const addUser = (req, res) => {
       body.fullname,
       body.emailaddress,
       body.phonenumber,
-      body.userimage,
+      userImageUrl,
       body.password,
       body.role,
     ];
@@ -64,7 +64,7 @@ const addUser = (req, res) => {
 
 const updateUser = (req, res) => {
   const {
-    body
+    body,
   } = req;
   const text = `UPDATE users
     SET fullname=$1, emailaddress=$2, phonenumber=$3, userimage=$4, password=$5, role=$6
@@ -159,4 +159,4 @@ export {
   deleteUser,
   loginUser,
   getMyProfile,
-}
+};
