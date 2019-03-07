@@ -1,6 +1,5 @@
 /* import moment from 'moment'; */
 import pool from '../../models/db';
-import uploadToCloudinary from '../../hepers/uploadToCloudinary';
 
 const getAllProducts = (req, res) => {
   const text = 'SELECT * FROM products';
@@ -28,9 +27,8 @@ const getOneProduct = (req, res) => {
   });
 };
 
-const addProduct = async (req, res) => {
+const addProduct = (req, res) => {
   const { body } = req;
-  const productImageUrl = await uploadToCloudinary(body.productimage);
   const text = 'SELECT * FROM products WHERE productname = $1';
   pool.query(text, [body.productname], (err, data) => {
     if (data.rowCount) {
@@ -46,7 +44,7 @@ const addProduct = async (req, res) => {
     const values = [
       body.productname,
       body.description,
-      productImageUrl,
+      body.productimage,
       body.price,
       body.quantity,
       body.minallowed,
