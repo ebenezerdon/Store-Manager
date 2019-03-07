@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import pool from '../../models/db';
-import uploadToCloudinary from '../../hepers/uploadToCloudinary';
+import { uploadToCloudinary } from '../../hepers/uploadToCloudinary';
 
 dotenv.config();
 const secret = process.env.SECRET_KEY;
